@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@300;400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;background:#2A1740;font-family:'Inter','Noto Sans SC',sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:#D9B94A}
+  a:hover{color:#F1EAD8}
+  pre{margin:0;white-space:pre-wrap;word-break:break-all}
+  .step-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:600 12px 'Inter',sans-serif;flex:none}
+  .step-line{height:1px;flex:1;margin-top:14px}
+  button{cursor:pointer;font-family:inherit;white-space:nowrap}
+</style>
+</helmet>
+
+<div style="width:100%;min-height:100vh;display:flex;flex-direction:column;color:#EDE7E0;background:#2A1740;font-family:'Inter','Noto Sans SC',sans-serif;box-sizing:border-box">
+
+  <div style="max-width:760px;width:100%;margin:0 auto;padding:36px 24px 0;box-sizing:border-box">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="width:6px;height:6px;border-radius:50%;background:#D9B94A;display:inline-block"></span>
+      <div style="font:600 12px 'Inter',sans-serif;letter-spacing:.12em;color:rgba(237,231,224,.65)">SERVER CONSOLE</div>
+      <a href="Server Console.dc.html" style="margin-left:auto;font:500 12px 'Noto Sans SC',sans-serif">← 返回控制台</a>
+    </div>
+    <div style="font:400 34px/1.2 'Noto Serif SC',serif;color:#F1EAD8;margin-top:18px">部署引导</div>
+    <div style="font:400 13px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.5);margin-top:8px">一步步把后端服务架设到你的机器上,内部使用为主,预留外部接口</div>
+  </div>
+
+  <!-- step indicator -->
+  <div style="max-width:760px;width:100%;margin:0 auto;padding:28px 24px 0;box-sizing:border-box;display:flex;align-items:flex-start">
+    <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;width:64px">
+        <div class="step-dot" style="background:{{ s.dotBg }};color:{{ s.dotColor }};border:1px solid {{ s.dotBorder }}">{{ s.num }}</div>
+        <div style="font:500 10px 'Noto Sans SC',sans-serif;color:{{ s.labelColor }};text-align:center">{{ s.label }}</div>
+      </div>
+      <div class="step-line" style="background:{{ s.lineColor }}"></div>
+    </sc-for>
+  </div>
+
+  <div style="max-width:760px;width:100%;margin:0 auto;padding:28px 24px 60px;box-sizing:border-box;flex:1">
+
+<!-- Step 1: intro -->
+    <sc-if value="{{ isStep1 }}">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="font:600 20px 'Noto Sans SC',sans-serif;color:#F1EAD8">第一步 · 准备一台机器</div>
+        <div style="font:400 13px/1.8 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.65)">
+          内部使用为主,不一定要租云主机 —— 你自己的 Windows 电脑或一台 Linux 机器都可以,只要能被团队成员访问到即可(同一局域网,或后续用 VPN/内网穿透)。
+        </div>
+        <div style="font:500 13px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.6)">选择你的机器类型:</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <button onClick="{{ selectWindows }}" style="flex:1;min-width:180px;text-align:left;background:{{ winCardBg }};border:1px solid {{ winCardBorder }};border-radius:8px;padding:16px 18px;display:flex;flex-direction:column;gap:6px">
+            <div style="font:600 14px 'Noto Sans SC',sans-serif;color:#F1EAD8">🖥 Windows PC</div>
+            <div style="font:400 11px/1.6 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.5)">用自己的电脑,不花云费用。适合家里/实验室一台常开的机器。</div>
+          </button>
+          <button onClick="{{ selectLinux }}" style="flex:1;min-width:180px;text-align:left;background:{{ linuxCardBg }};border:1px solid {{ linuxCardBorder }};border-radius:8px;padding:16px 18px;display:flex;flex-direction:column;gap:6px">
+            <div style="font:600 14px 'Noto Sans SC',sans-serif;color:#F1EAD8">🐧 Linux 机器 / 云主机</div>
+            <div style="font:400 11px/1.6 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.5)">服务器、闲置电脑装 Linux,或香港云主机。适合长期挂机。</div>
+          </button>
+        </div>
+        <div style="background:rgba(237,231,224,.04);border:1px solid rgba(237,231,224,.1);border-radius:8px;padding:16px 18px;font:400 12px/1.7 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.55)">
+          最低要求:1 核 CPU · 1GB 内存 · 有终端(PowerShell / SSH)访问权限。<br/>
+          默认部署为「内部模式」:服务只在这台机器本机监听,团队通过内网/VPN 访问,不需要公网 IP、不需要备案。
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- Step 2: download & run -->
+    <sc-if value="{{ isStep2 }}">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="font:600 20px 'Noto Sans SC',sans-serif;color:#F1EAD8">第二步 · 一键安装后端 <span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.4)">({{ platformLabel }})</span></div>
+        <div style="font:400 13px/1.8 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.65)">把项目里的 <code style="color:#D9B94A">backend/</code> 文件夹传到你的机器上(scp / U 盘 / git clone 均可),然后在该目录下执行:</div>
+
+        <sc-if value="{{ isWindows }}">
+          <div style="background:#1C1130;border:1px solid rgba(237,231,224,.12);border-radius:8px;padding:16px 18px;font:400 13px/1.7 ui-monospace,Menlo,monospace;color:#8FCB9E">
+            <pre>cd backend
+powershell -ExecutionPolicy Bypass -File install.ps1</pre>
+          </div>
+          <div style="font:400 12px/1.7 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.5)">
+            请以管理员身份打开 PowerShell 运行。脚本会自动:通过 winget 安装 Node.js(若没有)→ 安装依赖 → 生成管理员 Token → 注册后台自启动(有 NSSM 则注册为 Windows 服务,否则用任务计划程序在每次登录时自动运行)。完成后会打印本机访问地址与 Token。
+          </div>
+        </sc-if>
+        <sc-if value="{{ isLinux }}">
+          <div style="background:#1C1130;border:1px solid rgba(237,231,224,.12);border-radius:8px;padding:16px 18px;font:400 13px/1.7 ui-monospace,Menlo,monospace;color:#8FCB9E">
+            <pre>cd backend
+chmod +x install.sh
+sudo bash install.sh</pre>
+          </div>
+          <div style="font:400 12px/1.7 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.5)">
+            脚本会自动:安装 Node.js(若没有)→ 安装依赖 → 生成管理员 Token → 注册为 systemd 服务(开机自启)→ 启动服务。完成后会打印出本机访问地址与 Token,记下它们,下一步要用到。
+          </div>
+        </sc-if>
+        <div style="font:400 12px/1.7 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.4)">默认内部模式,只监听 127.0.0.1:8787。若要保留未来外部访问入口,见第四步。</div>
+      </div>
+    </sc-if>
+
+    <!-- Step 3: connect -->
+    <sc-if value="{{ isStep3 }}">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="font:600 20px 'Noto Sans SC',sans-serif;color:#F1EAD8">第三步 · 连接控制台</div>
+        <div style="font:400 13px/1.8 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.65)">
+          如果你现在就在部署机器本机上打开这个页面,可以直接在下面测试连接。若在其他电脑上访问,请把地址换成该机器的内网 IP(如 http://192.168.1.10:8787)。
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <label style="font:500 11px 'Inter',sans-serif;color:rgba(237,231,224,.5);letter-spacing:.05em">后端地址</label>
+          <input value="{{ apiBase }}" onChange="{{ onApiBaseChange }}" placeholder="http://127.0.0.1:8787" style="background:rgba(237,231,224,.06);border:1px solid rgba(237,231,224,.18);border-radius:6px;padding:10px 12px;color:#F1EAD8;font:400 13px 'Inter',sans-serif;outline:none" />
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <button onClick="{{ testConnection }}" style="background:#D9B94A;border:1px solid #D9B94A;color:#2A1740;border-radius:6px;padding:9px 18px;font:600 12px 'Noto Sans SC',sans-serif">测试连接</button>
+          <span style="font:500 12px 'Inter',sans-serif;color:{{ connColor }}">{{ connMessage }}</span>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- Step 4: internal vs external -->
+    <sc-if value="{{ isStep4 }}">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="font:600 20px 'Noto Sans SC',sans-serif;color:#F1EAD8">第四步 · 内部使用 / 预留外部接口</div>
+        <div style="font:400 13px/1.8 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.65)">当前推荐保持「内部模式」。如果未来需要让外部用户访问某些接口(例如公开的 AI 模型 API),再按以下方式切换,无需重装:</div>
+<sc-if value="{{ isWindows }}">
+          <div style="background:#1C1130;border:1px solid rgba(237,231,224,.12);border-radius:8px;padding:16px 18px;font:400 13px/1.7 ui-monospace,Menlo,monospace;color:#8FCB9E">
+            <pre>powershell -ExecutionPolicy Bypass -File install.ps1 -Mode external -Port 8787 -AdminToken 你的Token</pre>
+          </div>
+          <div style="font:400 12px/1.7 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.5)">
+            外部模式会监听 0.0.0.0,并要求所有写操作(添加/删除)带上 <code style="color:#D9B94A">Authorization: Bearer &lt;Token&gt;</code>。需要在 Windows 防火墙里放行对应端口的入站规则,并建议在前面再套一层反向代理 + HTTPS。
+          </div>
+        </sc-if>
+        <sc-if value="{{ isLinux }}">
+          <div style="background:#1C1130;border:1px solid rgba(237,231,224,.12);border-radius:8px;padding:16px 18px;font:400 13px/1.7 ui-monospace,Menlo,monospace;color:#8FCB9E">
+            <pre>sudo MODE=external PORT=8787 ADMIN_TOKEN=你的Token bash install.sh</pre>
+          </div>
+          <div style="font:400 12px/1.7 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.5)">
+            外部模式会监听 0.0.0.0,并要求所有写操作(添加/删除)带上 <code style="color:#D9B94A">Authorization: Bearer &lt;Token&gt;</code>。建议再套一层 nginx + HTTPS,并只对外开放确需公开的接口(如模型调用 API),其余仍保持内部访问。
+          </div>
+        </sc-if>
+        <div style="background:rgba(217,185,74,.08);border:1px solid rgba(217,185,74,.3);border-radius:8px;padding:14px 16px;font:400 12px/1.7 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.7)">
+          提示:先跑内部模式验证一切正常,外部开放是后续按需再做的一步,不影响现在使用。
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- Step 5: done -->
+    <sc-if value="{{ isStep5 }}">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="font:600 20px 'Noto Sans SC',sans-serif;color:#F1EAD8">完成</div>
+        <div style="font:400 13px/1.8 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.65)">后端已就绪。回到控制台,右上角「数据源设置」里填入同样的后端地址并保存,即可用真实数据替换空态。</div>
+        <a href="Server Console.dc.html" style="display:inline-flex;width:fit-content;background:#D9B94A;border:1px solid #D9B94A;color:#2A1740;border-radius:6px;padding:10px 20px;font:600 12px 'Noto Sans SC',sans-serif;text-decoration:none">前往控制台</a>
+<sc-if value="{{ isLinux }}">
+          <div style="font:400 12px/1.7 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.4);margin-top:8px">日常运维:<code style="color:#D9B94A">systemctl status server-console-backend</code> 查看状态,<code style="color:#D9B94A">journalctl -u server-console-backend -f</code> 看日志。</div>
+        </sc-if>
+        <sc-if value="{{ isWindows }}">
+          <div style="font:400 12px/1.7 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.4);margin-top:8px">日常运维:打开「任务计划程序」(或 NSSM 服务列表)找到 ServerConsoleBackend 查看状态/日志/重启。</div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <div style="display:flex;justify-content:space-between;margin-top:40px;padding-top:24px;border-top:1px solid rgba(237,231,224,.1)">
+      <button onClick="{{ prevStep }}" disabled="{{ isFirstStep }}" style="background:none;border:1px solid rgba(237,231,224,.2);color:{{ prevColor }};border-radius:6px;padding:9px 20px;font:600 12px 'Noto Sans SC',sans-serif">上一步</button>
+      <button onClick="{{ nextStep }}" disabled="{{ isLastStep }}" style="background:{{ nextBg }};border:1px solid {{ nextBg }};color:#2A1740;border-radius:6px;padding:9px 20px;font:600 12px 'Noto Sans SC',sans-serif;opacity:{{ nextOpacity }}">下一步</button>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { step: 1, apiBase: 'http://127.0.0.1:8787', connStatus: 'idle', connMsg: '', platform: 'linux' };
+
+  labels = ['准备机器', '一键安装', '连接测试', '内部/外部', '完成'];
+
+  async testConnection() {
+    this.setState({ connStatus: 'connecting', connMsg: '连接中…' });
+    try {
+      const res = await fetch(this.state.apiBase.trim().replace(/\/$/, '') + '/api/health');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      this.setState({ connStatus: 'ok', connMsg: '连接成功 · 模式: ' + (data.mode === 'external' ? '外部' : '内部') });
+    } catch (e) {
+      this.setState({ connStatus: 'error', connMsg: '连接失败 · ' + ((e && e.message) || '请确认后端已启动') });
+    }
+  }
+
+  renderVals() {
+    const cur = this.state.step;
+    const steps = this.labels.map((label, i) => {
+      const num = i + 1;
+      const done = num < cur, active = num === cur;
+      return {
+        num, label,
+        dotBg: active ? '#D9B94A' : (done ? 'rgba(217,185,74,.2)' : 'rgba(237,231,224,.06)'),
+        dotColor: active ? '#2A1740' : (done ? '#D9B94A' : 'rgba(237,231,224,.4)'),
+        dotBorder: active || done ? 'rgba(217,185,74,.5)' : 'rgba(237,231,224,.2)',
+        labelColor: active ? '#F1EAD8' : 'rgba(237,231,224,.4)',
+        lineColor: num < cur ? 'rgba(217,185,74,.4)' : 'rgba(237,231,224,.12)',
+      };
+    });
+    const connColorMap = { idle: 'rgba(237,231,224,.4)', connecting: '#D9B94A', ok: '#8FCB9E', error: '#E9998A' };
+    const platform = this.state.platform;
+    return {
+      steps,
+      selectWindows: () => this.setState({ platform: 'windows' }),
+      selectLinux: () => this.setState({ platform: 'linux' }),
+      isWindows: platform === 'windows', isLinux: platform === 'linux',
+      platformLabel: platform === 'windows' ? 'Windows' : 'Linux',
+      winCardBg: platform === 'windows' ? 'rgba(217,185,74,.1)' : 'transparent',
+      winCardBorder: platform === 'windows' ? 'rgba(217,185,74,.45)' : 'rgba(237,231,224,.15)',
+      linuxCardBg: platform === 'linux' ? 'rgba(217,185,74,.1)' : 'transparent',
+      linuxCardBorder: platform === 'linux' ? 'rgba(217,185,74,.45)' : 'rgba(237,231,224,.15)',
+      isStep1: cur === 1, isStep2: cur === 2, isStep3: cur === 3, isStep4: cur === 4, isStep5: cur === 5,
+      isFirstStep: cur === 1, isLastStep: cur === 5,
+      prevColor: cur === 1 ? 'rgba(237,231,224,.25)' : 'rgba(237,231,224,.7)',
+      nextBg: cur === 5 ? 'rgba(217,185,74,.4)' : '#D9B94A',
+      nextOpacity: cur === 5 ? 0.5 : 1,
+      prevStep: () => this.setState(s => ({ step: Math.max(1, s.step - 1) })),
+      nextStep: () => this.setState(s => ({ step: Math.min(5, s.step + 1) })),
+      apiBase: this.state.apiBase,
+      onApiBaseChange: (e) => this.setState({ apiBase: e.target.value }),
+      testConnection: () => this.testConnection(),
+      connColor: connColorMap[this.state.connStatus],
+      connMessage: this.state.connMsg,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "server-console-backend",
+  "version": "1.0.0",
+  "description": "后端服务 · 多功能服务器架构设计 — 为 Server Console 提供真实数据接口",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5"
+  }
+}

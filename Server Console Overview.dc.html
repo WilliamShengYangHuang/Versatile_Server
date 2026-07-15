@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@300;400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;background:#EDE9E1;font-family:'Inter','Noto Sans SC',sans-serif;-webkit-font-smoothing:antialiased}
+  .dv-turn{padding:48px 48px 40px}
+  .dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 24px}
+  .dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 8px;background:#1A1A17;color:#EDE9E1;border-radius:4px;text-decoration:none}
+  .dv-tname{font:500 14px/1.3 'Inter',sans-serif;color:#1A1A17}
+  .dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}
+  .dv-opt{flex:none;display:flex;flex-direction:column;gap:10px}
+  .dv-oid{font:700 11px ui-monospace,Menlo,monospace;padding:3px 8px;background:rgba(26,26,23,.08);color:#1A1A17;border-radius:5px;text-decoration:none}
+  .dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 12px/1.3 'Inter',sans-serif;color:rgba(26,26,23,.55)}
+  .dv-card{background:#FBFAF7;border:1px solid rgba(26,26,23,.1);box-shadow:0 1px 2px rgba(26,26,23,.05), 0 12px 32px rgba(26,26,23,.06);overflow:hidden}
+  .dv-next{margin:26px 0 0;font:12px/1.6 'Inter',sans-serif;color:rgba(26,26,23,.5)}
+  .seal{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:3px;background:#A7301F;color:#fff;font:700 11px/1 'Noto Sans SC',sans-serif;flex:none}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t12">
+  <div class="dv-thd"><a class="dv-tid" href="#t12">12</a><span class="dv-tname">基于 <a class="dv-oid" href="#11a">11a</a> 加入"流量与用量"模块 · 南京大学紫金配色 3 个方案</span></div>
+  <div class="dv-opts">
+
+    <!-- 12A: 紫为主色,金为强调,浅底 -->
+    <div class="dv-opt" id="12a">
+      <div class="dv-olabel"><a class="dv-oid" href="#12a">12a</a>紫主金辅 · 浅底,紫色替代原红棕强调色</div>
+      <div class="dv-card" style="width:1180px;height:840px;display:flex;flex-direction:column;color:#241C2E;background:#F8F5F2">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:32px 56px 0">
+          <div style="display:flex;align-items:center;gap:9px"><span style="width:5px;height:5px;border-radius:50%;background:#4B1F6E;display:inline-block"></span><div style="font:500 10.5px 'Inter',sans-serif;letter-spacing:.14em">CONSOLE</div></div>
+          <div style="display:flex;gap:34px;font:400 12px 'Noto Sans SC',sans-serif;color:rgba(36,28,46,.42)"><span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>用量</span><span>安全</span></div>
+        </div>
+        <div style="padding:14px 56px 32px;display:flex;align-items:baseline;justify-content:space-between">
+          <div style="font:300 44px/1 'Noto Serif SC',serif">总览</div>
+          <div style="font:400 12px 'Inter',sans-serif;color:rgba(36,28,46,.38)">HK 节点 · 2026.07.14</div>
+        </div>
+        <div style="padding:0 56px;display:flex;gap:20px;border-top:1px solid rgba(36,28,46,.1);padding-top:24px">
+          <div style="background:rgba(75,31,110,.08);border:1px solid rgba(75,31,110,.3);border-radius:8px;padding:16px 22px;display:flex;flex-direction:column;gap:6px;min-width:180px">
+            <div style="font:500 11px 'Inter',sans-serif;color:#4B1F6E;letter-spacing:.05em">待处理 · 需关注</div>
+            <div style="display:flex;align-items:baseline;gap:10px"><div style="font:400 34px 'Inter',sans-serif;color:#4B1F6E">01</div><div style="font:400 12px 'Noto Sans SC',sans-serif;color:rgba(36,28,46,.6)">docs-site 构建失败</div></div>
+          </div>
+          <div style="flex:1;display:flex;gap:32px;padding:16px 0 16px 4px">
+            <div><div style="font:400 10.5px 'Inter',sans-serif;color:rgba(36,28,46,.38);letter-spacing:.06em">在线站点</div><div style="font:300 26px 'Inter',sans-serif;margin-top:6px">07</div></div>
+            <div><div style="font:400 10.5px 'Inter',sans-serif;color:rgba(36,28,46,.38);letter-spacing:.06em">模型端点</div><div style="font:300 26px 'Inter',sans-serif;margin-top:6px">03</div></div>
+            <div><div style="font:400 10.5px 'Inter',sans-serif;color:rgba(36,28,46,.38);letter-spacing:.06em">本周部署</div><div style="font:300 26px 'Inter',sans-serif;margin-top:6px">12</div></div>
+            <div><div style="font:400 10.5px 'Inter',sans-serif;color:rgba(36,28,46,.38);letter-spacing:.06em">本月流量</div><div style="font:300 26px 'Inter',sans-serif;margin-top:6px;color:#B08A2E">1.8<span style="font-size:15px">TB</span></div></div>
+          </div>
+        </div>
+        <div style="flex:1;padding:36px 56px 24px;display:flex;flex-direction:column">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(36,28,46,.09)"><span style="font:500 14px 'Noto Sans SC',sans-serif">网站托管</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(36,28,46,.46)">portfolio.site · blog.site · docs.site 部署中</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(36,28,46,.09)"><span style="font:500 14px 'Noto Sans SC',sans-serif">AI 模型</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(36,28,46,.46)">/v1/chat 120ms · /v1/embed 正常</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(36,28,46,.09)"><span style="font:500 14px 'Noto Sans SC',sans-serif">内容发布</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(36,28,46,.46)">3 篇草稿 · 1 篇待审核</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(36,28,46,.09)"><span style="font:500 14px 'Noto Sans SC',sans-serif">GitHub / CI-CD</span><span style="font:400 12px 'Inter',sans-serif;color:#4B1F6E">docs-site 构建失败 · 14分钟前</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0"><span style="font:500 14px 'Noto Sans SC',sans-serif">流量与用量</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(36,28,46,.46)">1.8TB · 未超阈值 · 无限流触发</span></div>
+        </div>
+        <div style="padding:16px 56px;border-top:1px solid rgba(36,28,46,.1);font:400 11px 'Inter',sans-serif;color:rgba(36,28,46,.36);display:flex;justify-content:space-between"><span>周明 · 李颀 · 陈舒</span><span>更新于 4 分钟前</span></div>
+      </div>
+    </div>
+
+    <!-- 12B: 深紫底,金色文字点缀,更庄重 -->
+    <div class="dv-opt" id="12b">
+      <div class="dv-olabel"><a class="dv-oid" href="#12b">12b</a>深紫底金字 · 校色为主基调,字号层级与布局重排</div>
+      <div class="dv-card" style="width:1280px;height:720px;display:flex;flex-direction:column;color:#EDE7E0;background:#2A1740">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:24px 56px 0">
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:#D9B94A;display:inline-block"></span><div style="font:600 12px 'Inter',sans-serif;letter-spacing:.12em;color:rgba(237,231,224,.65)">SERVER CONSOLE</div></div>
+          <div style="display:flex;gap:30px;font:500 13px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.55)"><span style="color:#F1EAD8">总览</span><span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>用量</span><span>安全</span></div>
+        </div>
+        <div style="padding:16px 56px 28px;display:flex;align-items:baseline;justify-content:space-between">
+          <div style="font:400 36px/1 'Noto Serif SC',serif;color:#F1EAD8;letter-spacing:.01em">伺服器总览</div>
+          <div style="font:500 13px 'Inter',sans-serif;color:rgba(237,231,224,.48)">HK 节点 · 2026.07.14</div>
+        </div>
+
+        <!-- primary row: pending alert first (workflow priority), then quick stats -->
+        <div style="padding:0 56px;display:flex;gap:18px;border-top:1px solid rgba(237,231,224,.14);padding-top:22px">
+          <div style="background:rgba(217,185,74,.12);border:1px solid rgba(217,185,74,.45);border-radius:8px;padding:16px 22px;display:flex;align-items:center;gap:16px;min-width:260px">
+            <div style="font:600 32px 'Inter',sans-serif;color:#D9B94A;line-height:1">01</div>
+            <div style="display:flex;flex-direction:column;gap:3px">
+              <div style="font:600 12px 'Inter',sans-serif;color:#D9B94A;letter-spacing:.04em">待处理 · 需关注</div>
+              <div style="font:500 14px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.85)">docs-site 构建失败</div>
+            </div>
+          </div>
+          <div style="flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:0">
+            <div style="padding:0 20px;border-right:1px solid rgba(237,231,224,.12)"><div style="font:500 12px 'Inter',sans-serif;color:rgba(237,231,224,.48);letter-spacing:.04em">在线站点</div><div style="font:600 26px 'Inter',sans-serif;margin-top:8px;color:#F1EAD8">07</div></div>
+            <div style="padding:0 20px;border-right:1px solid rgba(237,231,224,.12)"><div style="font:500 12px 'Inter',sans-serif;color:rgba(237,231,224,.48);letter-spacing:.04em">模型端点</div><div style="font:600 26px 'Inter',sans-serif;margin-top:8px;color:#F1EAD8">03</div></div>
+            <div style="padding:0 20px;border-right:1px solid rgba(237,231,224,.12)"><div style="font:500 12px 'Inter',sans-serif;color:rgba(237,231,224,.48);letter-spacing:.04em">本周部署</div><div style="font:600 26px 'Inter',sans-serif;margin-top:8px;color:#F1EAD8">12</div></div>
+            <div style="padding:0 20px"><div style="font:500 12px 'Inter',sans-serif;color:rgba(237,231,224,.48);letter-spacing:.04em">本月流量</div><div style="font:600 26px 'Inter',sans-serif;margin-top:8px;color:#D9B94A">1.8<span style="font-size:15px;font-weight:500">TB</span></div></div>
+          </div>
+        </div>
+
+        <!-- module detail list -->
+        <div style="padding:0 56px;display:grid;grid-template-columns:1.4fr 3fr .8fr;gap:0;font:600 11px 'Inter',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:rgba(237,231,224,.4);padding-top:26px;padding-bottom:8px">
+          <div>模块</div><div>详情</div><div style="text-align:right">状态</div>
+        </div>
+        <div style="flex:1;padding:0 56px 22px;display:flex;flex-direction:column">
+          <div style="display:grid;grid-template-columns:1.4fr 3fr .8fr;align-items:center;padding:14px 0;border-bottom:1px solid rgba(237,231,224,.1)"><span style="font:600 15px 'Noto Sans SC',sans-serif;color:#F1EAD8">网站托管</span><span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.55)">portfolio.site · blog.site · docs.site 部署中</span><span style="justify-self:end;display:inline-flex;align-items:center;justify-content:center;width:64px;height:26px;font:600 11px 'Inter',sans-serif;color:#8FCB9E;border:1px solid rgba(143,203,158,.45);border-radius:4px">正常</span></div>
+          <div style="display:grid;grid-template-columns:1.4fr 3fr .8fr;align-items:center;padding:14px 0;border-bottom:1px solid rgba(237,231,224,.1)"><span style="font:600 15px 'Noto Sans SC',sans-serif;color:#F1EAD8">AI 模型</span><span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.55)">/v1/chat 120ms · /v1/embed 正常</span><span style="justify-self:end;display:inline-flex;align-items:center;justify-content:center;width:64px;height:26px;font:600 11px 'Inter',sans-serif;color:#8FCB9E;border:1px solid rgba(143,203,158,.45);border-radius:4px">正常</span></div>
+          <div style="display:grid;grid-template-columns:1.4fr 3fr .8fr;align-items:center;padding:14px 0;border-bottom:1px solid rgba(237,231,224,.1)"><span style="font:600 15px 'Noto Sans SC',sans-serif;color:#F1EAD8">内容发布</span><span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.55)">3 篇草稿 · 1 篇待审核</span><span style="justify-self:end;display:inline-flex;align-items:center;justify-content:center;width:64px;height:26px;font:600 11px 'Inter',sans-serif;color:#D9B94A;border:1px solid rgba(217,185,74,.45);border-radius:4px">待审核</span></div>
+          <div style="display:grid;grid-template-columns:1.4fr 3fr .8fr;align-items:center;padding:14px 0;border-bottom:1px solid rgba(237,231,224,.1)"><span style="font:600 15px 'Noto Sans SC',sans-serif;color:#F1EAD8">GitHub / CI-CD</span><span style="font:500 13px 'Inter',sans-serif;color:#D9B94A">docs-site 构建失败 · 14分钟前</span><span style="justify-self:end;display:inline-flex;align-items:center;justify-content:center;width:64px;height:26px;font:600 11px 'Inter',sans-serif;color:#E9998A;border:1px solid rgba(233,153,138,.5);border-radius:4px">异常</span></div>
+          <div style="display:grid;grid-template-columns:1.4fr 3fr .8fr;align-items:center;padding:14px 0"><span style="font:600 15px 'Noto Sans SC',sans-serif;color:#F1EAD8">流量与用量</span><span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.55)">1.8TB · 未超阈值 · 无限流触发</span><span style="justify-self:end;display:inline-flex;align-items:center;justify-content:center;width:64px;height:26px;font:600 11px 'Inter',sans-serif;color:#8FCB9E;border:1px solid rgba(143,203,158,.45);border-radius:4px">正常</span></div>
+        </div>
+        <div style="padding:16px 56px;border-top:1px solid rgba(237,231,224,.1);font:500 12px 'Inter',sans-serif;color:rgba(237,231,224,.42);display:flex;justify-content:space-between"><span>黄圣扬 | 南京大学人工智能创造力实验室</span><span>更新于 4 分钟前</span></div>
+      </div>
+    </div>
+
+    <!-- 12C: 浅底,紫金双色分明用于不同语义(紫=品牌/导航, 金=告警/流量) -->
+    <div class="dv-opt" id="12c">
+      <div class="dv-olabel"><a class="dv-oid" href="#12c">12c</a>语义分色 · 紫标品牌/导航,金标告警与流量</div>
+      <div class="dv-card" style="width:1180px;height:840px;display:flex;flex-direction:column;color:#241C2E;background:#FAF8F5">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:32px 56px 0">
+          <div style="display:flex;align-items:center;gap:9px"><span style="width:5px;height:5px;border-radius:50%;background:#4B1F6E;display:inline-block"></span><div style="font:500 10.5px 'Inter',sans-serif;letter-spacing:.14em;color:#4B1F6E">CONSOLE</div></div>
+          <div style="display:flex;gap:34px;font:400 12px 'Noto Sans SC',sans-serif;color:rgba(36,28,46,.42)"><span style="color:#4B1F6E">总览</span><span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>用量</span></div>
+        </div>
+        <div style="padding:14px 56px 32px;display:flex;align-items:baseline;justify-content:space-between">
+          <div style="font:300 44px/1 'Noto Serif SC',serif">总览</div>
+          <div style="font:400 12px 'Inter',sans-serif;color:rgba(36,28,46,.38)">HK 节点 · 2026.07.14</div>
+        </div>
+        <div style="padding:0 56px;display:flex;gap:20px;border-top:1px solid rgba(36,28,46,.1);padding-top:24px">
+          <div style="background:rgba(176,138,46,.08);border:1px solid rgba(176,138,46,.35);border-radius:8px;padding:16px 22px;display:flex;flex-direction:column;gap:6px;min-width:180px">
+            <div style="font:500 11px 'Inter',sans-serif;color:#B08A2E;letter-spacing:.05em">待处理 · 需关注</div>
+            <div style="display:flex;align-items:baseline;gap:10px"><div style="font:400 34px 'Inter',sans-serif;color:#B08A2E">01</div><div style="font:400 12px 'Noto Sans SC',sans-serif;color:rgba(36,28,46,.6)">docs-site 构建失败</div></div>
+          </div>
+          <div style="flex:1;display:flex;gap:32px;padding:16px 0 16px 4px">
+            <div><div style="font:400 10.5px 'Inter',sans-serif;color:rgba(36,28,46,.38);letter-spacing:.06em">在线站点</div><div style="font:300 26px 'Inter',sans-serif;margin-top:6px">07</div></div>
+            <div><div style="font:400 10.5px 'Inter',sans-serif;color:rgba(36,28,46,.38);letter-spacing:.06em">模型端点</div><div style="font:300 26px 'Inter',sans-serif;margin-top:6px">03</div></div>
+            <div><div style="font:400 10.5px 'Inter',sans-serif;color:rgba(36,28,46,.38);letter-spacing:.06em">本周部署</div><div style="font:300 26px 'Inter',sans-serif;margin-top:6px">12</div></div>
+            <div><div style="font:400 10.5px 'Inter',sans-serif;color:rgba(36,28,46,.38);letter-spacing:.06em">本月流量</div><div style="font:300 26px 'Inter',sans-serif;margin-top:6px;color:#B08A2E">1.8<span style="font-size:15px">TB</span></div></div>
+          </div>
+        </div>
+        <div style="flex:1;padding:36px 56px 24px;display:flex;flex-direction:column">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(36,28,46,.09)"><span style="font:500 14px 'Noto Sans SC',sans-serif">网站托管</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(36,28,46,.46)">portfolio.site · blog.site · docs.site 部署中</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(36,28,46,.09)"><span style="font:500 14px 'Noto Sans SC',sans-serif">AI 模型</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(36,28,46,.46)">/v1/chat 120ms · /v1/embed 正常</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(36,28,46,.09)"><span style="font:500 14px 'Noto Sans SC',sans-serif">内容发布</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(36,28,46,.46)">3 篇草稿 · 1 篇待审核</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(36,28,46,.09)"><span style="font:500 14px 'Noto Sans SC',sans-serif">GitHub / CI-CD</span><span style="font:400 12px 'Inter',sans-serif;color:#B08A2E">docs-site 构建失败 · 14分钟前</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0"><span style="font:500 14px 'Noto Sans SC',sans-serif">流量与用量</span><span style="font:400 12px 'Inter',sans-serif;color:#B08A2E">1.8TB · 未超阈值 · 无限流触发</span></div>
+        </div>
+        <div style="padding:16px 56px;border-top:1px solid rgba(36,28,46,.1);font:400 11px 'Inter',sans-serif;color:rgba(36,28,46,.36);display:flex;justify-content:space-between"><span>周明 · 李颀 · 陈舒</span><span>更新于 4 分钟前</span></div>
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">下一步可以试："定 <a class="dv-oid" href="#12a">12a</a>，展开各模块详情页" · "把 <a class="dv-oid" href="#12b">12b</a> 深紫底用于登录页" · "紫金再浓/再淡一点"</p>
+</section>
+
+<section class="dv-turn" id="t11">
+  <div class="dv-thd"><a class="dv-tid" href="#t11">11</a><span class="dv-tname">优化 <a class="dv-oid" href="#10a">10a</a> · 收紧指标间距,按主从关系重排(待处理优先且更显眼)</span></div>
+  <div class="dv-opts">
+
+    <div class="dv-opt" id="11a">
+      <div class="dv-olabel"><a class="dv-oid" href="#11a">11a</a>待处理前置 + 高亮卡 · 其余指标紧凑排列</div>
+      <div class="dv-card" style="width:1180px;height:800px;display:flex;flex-direction:column;color:#22201C;background:#FAF7F0">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:32px 56px 0">
+          <div style="display:flex;align-items:center;gap:9px"><span style="width:5px;height:5px;border-radius:50%;background:#A43F2E;display:inline-block"></span><div style="font:500 10.5px 'Inter',sans-serif;letter-spacing:.14em">CONSOLE</div></div>
+          <div style="display:flex;gap:34px;font:400 12px 'Noto Sans SC',sans-serif;color:rgba(34,32,28,.42)"><span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>安全</span></div>
+        </div>
+        <div style="padding:14px 56px 32px;display:flex;align-items:baseline;justify-content:space-between">
+          <div style="font:300 44px/1 'Noto Serif SC',serif;letter-spacing:.015em">总览</div>
+          <div style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.38)">HK 节点 · 2026.07.14</div>
+        </div>
+
+        <!-- primary row: 待处理 as a distinct highlighted card, then compact metric cluster -->
+        <div style="padding:0 56px;display:flex;gap:20px;border-top:1px solid rgba(34,32,28,.1);padding-top:24px;align-items:stretch">
+          <div style="background:rgba(164,63,46,.08);border:1px solid rgba(164,63,46,.3);border-radius:8px;padding:16px 22px;display:flex;flex-direction:column;gap:6px;min-width:180px">
+            <div style="font:500 11px 'Inter',sans-serif;color:#A43F2E;letter-spacing:.05em">待处理 · 需关注</div>
+            <div style="display:flex;align-items:baseline;gap:10px"><div style="font:400 34px 'Inter',sans-serif;color:#A43F2E">01</div><div style="font:400 12px 'Noto Sans SC',sans-serif;color:rgba(34,32,28,.6)">docs-site 构建失败</div></div>
+          </div>
+          <div style="flex:1;display:flex;gap:36px;padding:16px 0 16px 4px">
+            <div><div style="font:400 10.5px 'Inter',sans-serif;color:rgba(34,32,28,.38);letter-spacing:.06em">在线站点</div><div style="font:300 26px 'Inter',sans-serif;margin-top:6px">07</div></div>
+            <div><div style="font:400 10.5px 'Inter',sans-serif;color:rgba(34,32,28,.38);letter-spacing:.06em">模型端点</div><div style="font:300 26px 'Inter',sans-serif;margin-top:6px">03</div></div>
+            <div><div style="font:400 10.5px 'Inter',sans-serif;color:rgba(34,32,28,.38);letter-spacing:.06em">本周部署</div><div style="font:300 26px 'Inter',sans-serif;margin-top:6px">12</div></div>
+          </div>
+        </div>
+
+        <div style="flex:1;padding:36px 56px 48px;display:flex;flex-direction:column">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(34,32,28,.09)"><span style="font:500 14px 'Noto Sans SC',sans-serif">网站托管</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.46)">portfolio.site · blog.site · docs.site 部署中</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(34,32,28,.09)"><span style="font:500 14px 'Noto Sans SC',sans-serif">AI 模型</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.46)">/v1/chat 120ms · /v1/embed 正常</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(34,32,28,.09)"><span style="font:500 14px 'Noto Sans SC',sans-serif">内容发布</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.46)">3 篇草稿 · 1 篇待审核</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0"><span style="font:500 14px 'Noto Sans SC',sans-serif">GitHub / CI-CD</span><span style="font:400 12px 'Inter',sans-serif;color:#A43F2E">docs-site 构建失败 · 14分钟前</span></div>
+        </div>
+        <div style="padding:16px 56px;border-top:1px solid rgba(34,32,28,.1);font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.36);display:flex;justify-content:space-between"><span>周明 · 李颀 · 陈舒</span><span>更新于 4 分钟前</span></div>
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">下一步可以试："定 <a class="dv-oid" href="#11a">11a</a>，展开各模块详情页" · "待处理卡再加一个操作按钮" · "指标数量再增减"</p>
+</section>
+
+<section class="dv-turn" id="t10">
+  <div class="dv-thd"><a class="dv-tid" href="#t10">10</a><span class="dv-tname">优化 <a class="dv-oid" href="#5a">5a</a> · 精修字距/留白/行高与状态色</span></div>
+  <div class="dv-opts">
+
+    <div class="dv-opt" id="10a">
+      <div class="dv-olabel"><a class="dv-oid" href="#10a">10a</a>5a 精修版 · 更克制的字号阶梯与呼吸感</div>
+      <div class="dv-card" style="width:1180px;height:800px;display:flex;flex-direction:column;color:#22201C;background:#FAF7F0">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:32px 56px 0">
+          <div style="display:flex;align-items:center;gap:9px"><span style="width:5px;height:5px;border-radius:50%;background:#A43F2E;display:inline-block"></span><div style="font:500 10.5px 'Inter',sans-serif;letter-spacing:.14em">CONSOLE</div></div>
+          <div style="display:flex;gap:34px;font:400 12px 'Noto Sans SC',sans-serif;color:rgba(34,32,28,.42)"><span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>安全</span></div>
+        </div>
+        <div style="padding:14px 56px 44px;display:flex;align-items:baseline;justify-content:space-between">
+          <div style="font:300 44px/1 'Noto Serif SC',serif;letter-spacing:.015em">总览</div>
+          <div style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.38);letter-spacing:.01em">HK 节点 · 2026.07.14</div>
+        </div>
+        <div style="padding:0 56px;display:flex;gap:80px;border-top:1px solid rgba(34,32,28,.1);padding-top:28px">
+          <div><div style="font:400 10.5px 'Inter',sans-serif;color:rgba(34,32,28,.38);letter-spacing:.08em">在线站点</div><div style="font:300 28px 'Inter',sans-serif;margin-top:10px;letter-spacing:-.01em">07</div></div>
+          <div><div style="font:400 10.5px 'Inter',sans-serif;color:rgba(34,32,28,.38);letter-spacing:.08em">模型端点</div><div style="font:300 28px 'Inter',sans-serif;margin-top:10px;letter-spacing:-.01em">03</div></div>
+          <div><div style="font:400 10.5px 'Inter',sans-serif;color:rgba(34,32,28,.38);letter-spacing:.08em">本周部署</div><div style="font:300 28px 'Inter',sans-serif;margin-top:10px;letter-spacing:-.01em">12</div></div>
+          <div><div style="font:400 10.5px 'Inter',sans-serif;color:rgba(34,32,28,.38);letter-spacing:.08em">待处理</div><div style="font:300 28px 'Inter',sans-serif;margin-top:10px;letter-spacing:-.01em;color:#A43F2E">01</div></div>
+        </div>
+        <div style="flex:1;padding:40px 56px 48px;display:flex;flex-direction:column">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(34,32,28,.09)"><span style="font:500 14px 'Noto Sans SC',sans-serif;letter-spacing:.005em">网站托管</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.46)">portfolio.site · blog.site · docs.site 部署中</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(34,32,28,.09)"><span style="font:500 14px 'Noto Sans SC',sans-serif;letter-spacing:.005em">AI 模型</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.46)">/v1/chat 120ms · /v1/embed 正常</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid rgba(34,32,28,.09)"><span style="font:500 14px 'Noto Sans SC',sans-serif;letter-spacing:.005em">内容发布</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.46)">3 篇草稿 · 1 篇待审核</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0"><span style="font:500 14px 'Noto Sans SC',sans-serif;letter-spacing:.005em">GitHub / CI-CD</span><span style="font:400 12px 'Inter',sans-serif;color:#A43F2E">docs-site 构建失败 · 14分钟前</span></div>
+        </div>
+        <div style="padding:16px 56px;border-top:1px solid rgba(34,32,28,.1);font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.36);display:flex;justify-content:space-between;letter-spacing:.01em"><span>周明 · 李颀 · 陈舒</span><span>更新于 4 分钟前</span></div>
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">下一步可以试："定 <a class="dv-oid" href="#10a">10a</a>，展开各模块详情页" · "再微调标题字号" · "补一版可视化"</p>
+</section>
+
+<section class="dv-turn" id="t9">
+  <div class="dv-thd"><a class="dv-tid" href="#t9">9</a><span class="dv-tname">深化 <a class="dv-oid" href="#8b">8b</a> · 黑 + 灰 + 金,打散严格网格</span></div>
+  <div class="dv-opts">
+
+    <div class="dv-opt" id="9a">
+      <div class="dv-olabel"><a class="dv-oid" href="#9a">9a</a>黑灰金 · 不对称分组,金色作强调而非填充</div>
+      <div class="dv-card" style="width:1240px;height:820px;display:flex;flex-direction:column;color:#E9E5DC;background:#141312">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;padding:44px 52px 30px;border-bottom:1px solid rgba(233,229,220,.1)">
+          <div style="font:300 54px/1 'Noto Serif SC',serif;letter-spacing:.01em">总览</div>
+          <div style="text-align:right;font:400 13px 'Noto Serif SC',serif;color:rgba(233,229,220,.5)">香港节点 · 运行正常<br/><span style="font:400 11px 'Inter',sans-serif;letter-spacing:.03em">2026.07.14 · 22:32</span></div>
+        </div>
+
+        <div style="flex:1;padding:36px 52px 44px;display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:auto auto;gap:16px;overflow:hidden">
+
+          <!-- big hero: 网站托管, spans 2 rows -->
+          <div style="grid-row:1/3;border:1px solid rgba(233,229,220,.1);border-radius:10px;padding:24px 26px;display:flex;flex-direction:column;gap:16px;background:linear-gradient(160deg, rgba(201,162,39,.06), transparent 60%)">
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:400 20px 'Noto Serif SC',serif">网站托管</div><div style="font:400 11px 'Inter',sans-serif;color:#C9A227;letter-spacing:.05em">7 在线</div></div>
+            <div style="display:flex;flex-direction:column;gap:10px;flex:1">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid rgba(233,229,220,.08)"><span style="font:400 13px 'Noto Sans SC',sans-serif">portfolio.site</span><span style="font:400 11px 'Inter',sans-serif;color:rgba(233,229,220,.4)">在线</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px solid rgba(233,229,220,.08)"><span style="font:400 13px 'Noto Sans SC',sans-serif">blog.site</span><span style="font:400 11px 'Inter',sans-serif;color:rgba(233,229,220,.4)">在线</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center"><span style="font:400 13px 'Noto Sans SC',sans-serif">docs.site</span><span style="font:400 11px 'Inter',sans-serif;color:#C9A227">部署中</span></div>
+            </div>
+            <svg width="100%" height="34" viewBox="0 0 340 34" preserveAspectRatio="none"><polyline points="0,26 40,24 80,20 120,22 160,14 200,17 240,10 280,12 320,5 340,4" fill="none" stroke="#C9A227" stroke-width="1.3" opacity="0.75"/></svg>
+          </div>
+
+          <!-- AI 模型 -->
+          <div style="border:1px solid rgba(233,229,220,.1);border-radius:10px;padding:22px 24px;display:flex;flex-direction:column;gap:10px">
+            <div style="font:400 18px 'Noto Serif SC',serif">AI 模型</div>
+            <div style="display:flex;justify-content:space-between;font:400 12.5px 'Noto Sans SC',sans-serif;color:rgba(233,229,220,.6)"><span>/v1/chat</span><span style="font-family:'Inter'">120ms</span></div>
+            <div style="display:flex;justify-content:space-between;font:400 12.5px 'Noto Sans SC',sans-serif;color:rgba(233,229,220,.6)"><span>/v1/embed</span><span style="font-family:'Inter'">45ms</span></div>
+          </div>
+
+          <!-- 待处理 highlight, gold border -->
+          <div style="border:1px solid rgba(201,162,39,.45);border-radius:10px;padding:22px 24px;display:flex;flex-direction:column;gap:8px;background:rgba(201,162,39,.06)">
+            <div style="font:400 18px 'Noto Serif SC',serif;color:#D9B94A">待处理</div>
+            <div style="font:400 13px 'Noto Sans SC',sans-serif;color:rgba(233,229,220,.75)">docs-site 构建失败</div>
+            <div style="font:400 11px 'Inter',sans-serif;color:rgba(233,229,220,.4)">14 分钟前</div>
+          </div>
+
+          <!-- 内容发布 -->
+          <div style="border:1px solid rgba(233,229,220,.1);border-radius:10px;padding:22px 24px;display:flex;flex-direction:column;gap:10px">
+            <div style="font:400 18px 'Noto Serif SC',serif">内容发布</div>
+            <div style="font:400 12.5px 'Noto Sans SC',sans-serif;color:rgba(233,229,220,.6)">3 篇草稿 · 1 篇待审核</div>
+          </div>
+
+          <!-- 团队 -->
+          <div style="border:1px solid rgba(233,229,220,.1);border-radius:10px;padding:22px 24px;display:flex;flex-direction:column;gap:12px">
+            <div style="font:400 18px 'Noto Serif SC',serif">团队</div>
+            <div style="display:flex;gap:-4px">
+              <div style="width:30px;height:30px;border-radius:50%;background:rgba(233,229,220,.15);border:1.5px solid #141312"></div>
+              <div style="width:30px;height:30px;border-radius:50%;background:rgba(233,229,220,.15);border:1.5px solid #141312;margin-left:-8px"></div>
+              <div style="width:30px;height:30px;border-radius:50%;background:rgba(233,229,220,.15);border:1.5px solid #141312;margin-left:-8px"></div>
+            </div>
+            <div style="font:400 11px 'Inter',sans-serif;color:rgba(233,229,220,.4)">3 位成员在线</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">下一步可以试："定 <a class="dv-oid" href="#9a">9a</a>，展开各模块详情页" · "金色再克制/再浓一点" · "换一种不对称布局"</p>
+</section>
+
+<section class="dv-turn" id="t8">
+  <div class="dv-thd"><a class="dv-tid" href="#t8">8</a><span class="dv-tname">参考深色智能面板 · 现代中国 + 现代日本 + 现代瑞士,2 个方向</span></div>
+  <div class="dv-opts">
+
+    <!-- 8A: 左侧信息栏(明体大字时钟感) + 右侧分组卡片,直接对应参考图结构 -->
+    <div class="dv-opt" id="8a">
+      <div class="dv-olabel"><a class="dv-oid" href="#8a">8a</a>左栏状态 + 右侧分组卡片 · 明体大标题,近参考图结构</div>
+      <div class="dv-card" style="width:1240px;height:800px;display:flex;color:#ECE9E2;background:#17181B;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse 900px 500px at 15% 20%, rgba(255,255,255,.05), transparent 60%)"></div>
+        <div style="width:300px;padding:44px 36px;display:flex;flex-direction:column;gap:26px;flex:none;position:relative;z-index:1">
+          <div style="font:300 56px/1 'Noto Serif SC',serif;letter-spacing:.01em">22:32</div>
+          <div style="font:400 15px 'Noto Serif SC',serif;color:rgba(236,233,226,.65)">星期二<br/>2026年7月14日</div>
+          <div style="font:400 15px 'Noto Sans SC',sans-serif;margin-top:8px">系统运行正常</div>
+          <div style="font:400 12px 'Inter',sans-serif;color:rgba(236,233,226,.45)">全部服务在线 · 1 项待处理</div>
+          <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px">
+            <div style="height:1px;background:rgba(236,233,226,.12)"></div>
+            <div style="display:flex;justify-content:space-between;font:400 12px 'Inter',sans-serif;color:rgba(236,233,226,.4)"><span>香港节点</span><span>3 位成员</span></div>
+          </div>
+        </div>
+        <div style="flex:1;padding:44px 40px 40px 0;display:flex;flex-direction:column;gap:34px;position:relative;z-index:1;overflow:hidden">
+
+          <div>
+            <div style="font:400 22px 'Noto Serif SC',serif;margin-bottom:14px">网站托管</div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+              <div style="background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:14px">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(236,233,226,.6)" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9z"/></svg>
+                <div><div style="font:400 13px 'Noto Sans SC',sans-serif">portfolio.site</div><div style="font:400 11px 'Inter',sans-serif;color:rgba(236,233,226,.4);margin-top:2px">在线</div></div>
+              </div>
+              <div style="background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:14px">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(236,233,226,.6)" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9z"/></svg>
+                <div><div style="font:400 13px 'Noto Sans SC',sans-serif">blog.site</div><div style="font:400 11px 'Inter',sans-serif;color:rgba(236,233,226,.4);margin-top:2px">在线</div></div>
+              </div>
+              <div style="background:rgba(193,72,58,.12);border:1px solid rgba(193,72,58,.35);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:14px">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D98A80" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9z"/></svg>
+                <div><div style="font:400 13px 'Noto Sans SC',sans-serif">docs.site</div><div style="font:400 11px 'Inter',sans-serif;color:#D98A80;margin-top:2px">部署中</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div style="font:400 22px 'Noto Serif SC',serif;margin-bottom:14px">AI 模型 &amp; GitHub</div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+              <div style="background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:14px">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(236,233,226,.6)" stroke-width="1.4"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg>
+                <div><div style="font:400 13px 'Noto Sans SC',sans-serif">/v1/chat</div><div style="font:400 11px 'Inter',sans-serif;color:rgba(236,233,226,.4);margin-top:2px">120ms</div></div>
+              </div>
+              <div style="background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:14px">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(236,233,226,.6)" stroke-width="1.4"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg>
+                <div><div style="font:400 13px 'Noto Sans SC',sans-serif">/v1/embed</div><div style="font:400 11px 'Inter',sans-serif;color:rgba(236,233,226,.4);margin-top:2px">正常</div></div>
+              </div>
+              <div style="background:rgba(193,72,58,.12);border:1px solid rgba(193,72,58,.35);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:14px">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D98A80" stroke-width="1.4"><path d="M6 3v18M18 9a3 3 0 100-6 3 3 0 000 6zM6 15a3 3 0 106 0c0-3-3-3-3-9"/></svg>
+                <div><div style="font:400 13px 'Noto Sans SC',sans-serif">docs-site 构建</div><div style="font:400 11px 'Inter',sans-serif;color:#D98A80;margin-top:2px">失败</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div style="font:400 22px 'Noto Serif SC',serif;margin-bottom:14px">内容发布 &amp; 团队</div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+              <div style="background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:14px">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(236,233,226,.6)" stroke-width="1.4"><path d="M6 3h9l3 3v15H6z"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>
+                <div><div style="font:400 13px 'Noto Sans SC',sans-serif">草稿</div><div style="font:400 11px 'Inter',sans-serif;color:rgba(236,233,226,.4);margin-top:2px">3 篇</div></div>
+              </div>
+              <div style="background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between">
+                <div style="display:flex;align-items:center;gap:8px"><div style="width:26px;height:26px;border-radius:50%;background:rgba(236,233,226,.15)"></div><div style="font:400 13px 'Noto Sans SC',sans-serif">周明</div></div>
+              </div>
+              <div style="background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between">
+                <div style="display:flex;align-items:center;gap:8px"><div style="width:26px;height:26px;border-radius:50%;background:rgba(236,233,226,.15)"></div><div style="font:400 13px 'Noto Sans SC',sans-serif">李颀</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 8B: 无左栏,纯分组网格,顶部巨型时间/标题,更疏离的瑞士章法 -->
+    <div class="dv-opt" id="8b">
+      <div class="dv-olabel"><a class="dv-oid" href="#8b">8b</a>顶部巨型标题 · 纯分组网格,瑞士章法 + 日式留白</div>
+      <div class="dv-card" style="width:1240px;height:800px;display:flex;flex-direction:column;color:#ECE9E2;background:#17181B">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;padding:40px 48px 28px;border-bottom:1px solid rgba(236,233,226,.1)">
+          <div style="font:300 52px/1 'Noto Serif SC',serif">总览</div>
+          <div style="text-align:right;font:400 13px 'Noto Sans SC',sans-serif;color:rgba(236,233,226,.5)">香港节点 · 运行正常<br/><span style="font:400 11px 'Inter',sans-serif">2026.07.14 · 22:32</span></div>
+        </div>
+        <div style="flex:1;padding:36px 48px 44px;display:flex;flex-direction:column;gap:36px;overflow:hidden">
+
+          <div>
+            <div style="font:500 12px 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:rgba(236,233,226,.4);margin-bottom:14px">网站托管</div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+              <div style="border:1px solid rgba(236,233,226,.1);border-radius:8px;padding:16px 18px"><div style="font:400 13px 'Noto Sans SC',sans-serif">portfolio.site</div><div style="font:400 11px 'Inter',sans-serif;color:rgba(236,233,226,.4);margin-top:6px">在线</div></div>
+              <div style="border:1px solid rgba(236,233,226,.1);border-radius:8px;padding:16px 18px"><div style="font:400 13px 'Noto Sans SC',sans-serif">blog.site</div><div style="font:400 11px 'Inter',sans-serif;color:rgba(236,233,226,.4);margin-top:6px">在线</div></div>
+              <div style="border:1px solid rgba(193,72,58,.4);border-radius:8px;padding:16px 18px;background:rgba(193,72,58,.08)"><div style="font:400 13px 'Noto Sans SC',sans-serif">docs.site</div><div style="font:400 11px 'Inter',sans-serif;color:#D98A80;margin-top:6px">部署中</div></div>
+              <div style="border:1px dashed rgba(236,233,226,.15);border-radius:8px;padding:16px 18px;display:flex;align-items:center;justify-content:center;color:rgba(236,233,226,.3);font:400 12px 'Inter',sans-serif">+ 添加站点</div>
+            </div>
+          </div>
+
+          <div>
+            <div style="font:500 12px 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:rgba(236,233,226,.4);margin-bottom:14px">AI 模型 / API</div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+              <div style="border:1px solid rgba(236,233,226,.1);border-radius:8px;padding:16px 18px"><div style="font:400 13px 'Noto Sans SC',sans-serif">/v1/chat</div><div style="font:400 11px 'Inter',sans-serif;color:rgba(236,233,226,.4);margin-top:6px">120ms</div></div>
+              <div style="border:1px solid rgba(236,233,226,.1);border-radius:8px;padding:16px 18px"><div style="font:400 13px 'Noto Sans SC',sans-serif">/v1/embed</div><div style="font:400 11px 'Inter',sans-serif;color:rgba(236,233,226,.4);margin-top:6px">45ms</div></div>
+            </div>
+          </div>
+
+          <div>
+            <div style="font:500 12px 'Inter',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:rgba(236,233,226,.4);margin-bottom:14px">内容发布 / GitHub</div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+              <div style="border:1px solid rgba(236,233,226,.1);border-radius:8px;padding:16px 18px"><div style="font:400 13px 'Noto Sans SC',sans-serif">草稿</div><div style="font:400 11px 'Inter',sans-serif;color:rgba(236,233,226,.4);margin-top:6px">3 篇</div></div>
+              <div style="border:1px solid rgba(236,233,226,.1);border-radius:8px;padding:16px 18px"><div style="font:400 13px 'Noto Sans SC',sans-serif">待审核</div><div style="font:400 11px 'Inter',sans-serif;color:rgba(236,233,226,.4);margin-top:6px">1 篇</div></div>
+              <div style="border:1px solid rgba(193,72,58,.4);border-radius:8px;padding:16px 18px;background:rgba(193,72,58,.08)"><div style="font:400 13px 'Noto Sans SC',sans-serif">docs-site 构建</div><div style="font:400 11px 'Inter',sans-serif;color:#D98A80;margin-top:6px">失败</div></div>
+              <div style="border:1px solid rgba(236,233,226,.1);border-radius:8px;padding:16px 18px"><div style="font:400 13px 'Noto Sans SC',sans-serif">SSL 证书</div><div style="font:400 11px 'Inter',sans-serif;color:rgba(236,233,226,.4);margin-top:6px">均有效</div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">下一步可以试："定 <a class="dv-oid" href="#8a">8a</a>，展开各模块详情页" · "把 <a class="dv-oid" href="#8b">8b</a> 的分组网格做成可折叠" · "再暗一些/再暖一些"</p>
+</section>
+
+<section class="dv-turn" id="t7">
+  <div class="dv-thd"><a class="dv-tid" href="#t7">7</a><span class="dv-tname">新方向 · 现代中国 IT 风格(蓝色系企业控制台,3 个选项)</span></div>
+  <div class="dv-opts">
+
+    <!-- 7A: 卡片式,主蓝色,类似阿里云/Arco控制台 -->
+    <div class="dv-opt" id="7a">
+      <div class="dv-olabel"><a class="dv-oid" href="#7a">7a</a>卡片式控制台 · 主蓝色,圆角卡片 + 侧边导航</div>
+      <div class="dv-card" style="width:1180px;height:800px;display:flex;color:#1D2129;background:#F2F3F5">
+        <div style="width:216px;background:#FFFFFF;border-right:1px solid #E5E6EB;padding:24px 16px;display:flex;flex-direction:column;gap:28px;flex:none">
+          <div style="display:flex;align-items:center;gap:10px;padding:0 8px">
+            <div style="width:28px;height:28px;border-radius:6px;background:#165DFF;display:flex;align-items:center;justify-content:center;color:#fff;font:700 13px 'Inter',sans-serif">C</div>
+            <div style="font:600 14px 'Noto Sans SC',sans-serif">控制台</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px;font:500 13px 'Noto Sans SC',sans-serif">
+            <div style="padding:10px 12px;background:#E8F3FF;color:#165DFF;border-radius:6px">总览</div>
+            <div style="padding:10px 12px;color:#4E5969;border-radius:6px">网站托管</div>
+            <div style="padding:10px 12px;color:#4E5969;border-radius:6px">AI 模型</div>
+            <div style="padding:10px 12px;color:#4E5969;border-radius:6px">内容发布</div>
+            <div style="padding:10px 12px;color:#4E5969;border-radius:6px">GitHub / CI-CD</div>
+            <div style="padding:10px 12px;color:#4E5969;border-radius:6px">域名与安全</div>
+          </div>
+          <div style="margin-top:auto;padding:12px;background:#F7F8FA;border-radius:8px;font:400 11px/1.6 'Inter',sans-serif;color:#86909C">香港节点 · 运行正常<br/>3 位团队成员</div>
+        </div>
+        <div style="flex:1;padding:28px 32px;display:flex;flex-direction:column;gap:20px;min-width:0">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <div style="font:700 22px 'Noto Sans SC',sans-serif">总览</div>
+            <div style="font:400 12px 'Inter',sans-serif;color:#86909C">2026年7月14日 · 星期二</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+            <div style="background:#fff;border-radius:10px;padding:18px 20px;box-shadow:0 1px 2px rgba(0,0,0,.04)"><div style="font:500 12px 'Inter',sans-serif;color:#86909C">在线站点</div><div style="font:700 28px 'Inter',sans-serif;margin-top:8px;color:#1D2129">7</div></div>
+            <div style="background:#fff;border-radius:10px;padding:18px 20px;box-shadow:0 1px 2px rgba(0,0,0,.04)"><div style="font:500 12px 'Inter',sans-serif;color:#86909C">模型端点</div><div style="font:700 28px 'Inter',sans-serif;margin-top:8px;color:#1D2129">3</div></div>
+            <div style="background:#fff;border-radius:10px;padding:18px 20px;box-shadow:0 1px 2px rgba(0,0,0,.04)"><div style="font:500 12px 'Inter',sans-serif;color:#86909C">本周部署</div><div style="font:700 28px 'Inter',sans-serif;margin-top:8px;color:#1D2129">12</div></div>
+            <div style="background:#fff;border-radius:10px;padding:18px 20px;box-shadow:0 1px 2px rgba(0,0,0,.04)"><div style="font:500 12px 'Inter',sans-serif;color:#86909C">待处理告警</div><div style="font:700 28px 'Inter',sans-serif;margin-top:8px;color:#F53F3F">1</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1">
+            <div style="background:#fff;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(0,0,0,.04);display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;justify-content:space-between;align-items:center"><span style="font:600 13px 'Noto Sans SC',sans-serif">网站托管</span><span style="font:500 11px 'Inter',sans-serif;color:#00B42A;background:#E8FFEA;padding:2px 8px;border-radius:10px">正常</span></div>
+              <div style="font:400 12px/1.6 'Inter',sans-serif;color:#4E5969">portfolio.site · blog.site<br/>docs.site 部署中…</div>
+            </div>
+            <div style="background:#fff;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(0,0,0,.04);display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;justify-content:space-between;align-items:center"><span style="font:600 13px 'Noto Sans SC',sans-serif">AI 模型</span><span style="font:500 11px 'Inter',sans-serif;color:#00B42A;background:#E8FFEA;padding:2px 8px;border-radius:10px">正常</span></div>
+              <div style="font:400 12px/1.6 'Inter',sans-serif;color:#4E5969">/v1/chat · 120ms 平均延迟<br/>/v1/embed · 正常</div>
+            </div>
+            <div style="background:#fff;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(0,0,0,.04);display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;justify-content:space-between;align-items:center"><span style="font:600 13px 'Noto Sans SC',sans-serif">内容发布</span><span style="font:500 11px 'Inter',sans-serif;color:#FF7D00;background:#FFF3E8;padding:2px 8px;border-radius:10px">待审核</span></div>
+              <div style="font:400 12px/1.6 'Inter',sans-serif;color:#4E5969">3 篇草稿 · 1 篇待审核</div>
+            </div>
+            <div style="background:#fff;border-radius:10px;padding:20px;box-shadow:0 1px 2px rgba(0,0,0,.04);display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;justify-content:space-between;align-items:center"><span style="font:600 13px 'Noto Sans SC',sans-serif">GitHub / CI-CD</span><span style="font:500 11px 'Inter',sans-serif;color:#F53F3F;background:#FFECE8;padding:2px 8px;border-radius:10px">1 处失败</span></div>
+              <div style="font:400 12px/1.6 'Inter',sans-serif;color:#4E5969">docs-site 构建失败 · 14分钟前</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7B: 深色顶栏 + 浅卡片,科技感 -->
+    <div class="dv-opt" id="7b">
+      <div class="dv-olabel"><a class="dv-oid" href="#7b">7b</a>深色顶栏 · 科技感状态条 + 浅色卡片</div>
+      <div class="dv-card" style="width:1180px;height:800px;display:flex;flex-direction:column;color:#1D2129;background:#F2F3F5">
+        <div style="background:#0C1222;padding:18px 32px;display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;border-radius:6px;background:#165DFF;display:flex;align-items:center;justify-content:center;color:#fff;font:700 12px 'Inter',sans-serif">C</div><div style="font:600 14px 'Noto Sans SC',sans-serif;color:#fff">控制台</div></div>
+          <div style="display:flex;gap:24px;font:500 12.5px 'Noto Sans SC',sans-serif;color:rgba(255,255,255,.55)"><span style="color:#fff">总览</span><span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>安全</span></div>
+          <div style="display:flex;align-items:center;gap:8px;font:600 12px 'Inter',sans-serif;color:#4CD263"><span style="width:7px;height:7px;border-radius:50%;background:#4CD263;display:inline-block"></span>全部正常</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;padding:22px 32px">
+          <div style="background:#fff;border-radius:10px;padding:16px 18px"><div style="font:500 11px 'Inter',sans-serif;color:#86909C">站点</div><div style="font:700 24px 'Inter',sans-serif;margin-top:6px">7</div></div>
+          <div style="background:#fff;border-radius:10px;padding:16px 18px"><div style="font:500 11px 'Inter',sans-serif;color:#86909C">模型调用/日</div><div style="font:700 24px 'Inter',sans-serif;margin-top:6px">48.2k</div></div>
+          <div style="background:#fff;border-radius:10px;padding:16px 18px"><div style="font:500 11px 'Inter',sans-serif;color:#86909C">本月流量</div><div style="font:700 24px 'Inter',sans-serif;margin-top:6px">1.8TB</div></div>
+          <div style="background:#fff;border-radius:10px;padding:16px 18px"><div style="font:500 11px 'Inter',sans-serif;color:#86909C">团队成员</div><div style="font:700 24px 'Inter',sans-serif;margin-top:6px">3</div></div>
+          <div style="background:#fff;border-radius:10px;padding:16px 18px"><div style="font:500 11px 'Inter',sans-serif;color:#86909C">告警</div><div style="font:700 24px 'Inter',sans-serif;margin-top:6px;color:#F53F3F">1</div></div>
+        </div>
+        <div style="flex:1;display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:14px;padding:0 32px 24px">
+          <div style="background:#fff;border-radius:10px;grid-row:1/3;padding:20px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:700 14px 'Noto Sans SC',sans-serif">部署流水线</div><div style="font:500 11px 'Inter',sans-serif;color:#86909C">GitHub / CI-CD</div></div>
+            <div style="display:flex;flex-direction:column;gap:10px;font:400 12px/1.5 'Inter',sans-serif">
+              <div style="display:flex;justify-content:space-between;border-bottom:1px solid #F2F3F5;padding-bottom:8px"><span>blog-site · main</span><span style="color:#00B42A">✓ 成功 · 4分钟前</span></div>
+              <div style="display:flex;justify-content:space-between;border-bottom:1px solid #F2F3F5;padding-bottom:8px"><span>ai-gateway · main</span><span style="color:#00B42A">✓ 成功 · 2小时前</span></div>
+              <div style="display:flex;justify-content:space-between"><span>docs-site · dev</span><span style="color:#F53F3F">✕ 构建失败</span></div>
+            </div>
+          </div>
+          <div style="background:#fff;border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:8px">
+            <div style="font:700 14px 'Noto Sans SC',sans-serif">AI 模型端点</div>
+            <div style="font:400 12px/1.6 'Inter',sans-serif;color:#4E5969">/v1/chat — 120ms<br/>/v1/embed — 正常</div>
+          </div>
+          <div style="background:#fff;border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:8px">
+            <div style="font:700 14px 'Noto Sans SC',sans-serif">内容发布</div>
+            <div style="font:400 12px/1.6 'Inter',sans-serif;color:#4E5969">3 篇草稿 · 1 篇待审核</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7C: 标签密集信息型,类似阿里云控制台 -->
+    <div class="dv-opt" id="7c">
+      <div class="dv-olabel"><a class="dv-oid" href="#7c">7c</a>标签密集型 · 表格 + 徽章,信息密度更高</div>
+      <div class="dv-card" style="width:1180px;height:800px;display:flex;flex-direction:column;color:#1D2129;background:#fff">
+        <div style="padding:20px 32px;border-bottom:1px solid #E5E6EB;display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;border-radius:6px;background:#165DFF;display:flex;align-items:center;justify-content:center;color:#fff;font:700 12px 'Inter',sans-serif">C</div><div style="font:600 15px 'Noto Sans SC',sans-serif">总览</div></div>
+          <div style="display:flex;gap:22px;font:500 12.5px 'Noto Sans SC',sans-serif;color:#4E5969"><span style="color:#165DFF">总览</span><span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>安全</span></div>
+        </div>
+        <div style="display:flex;gap:14px;padding:20px 32px;border-bottom:1px solid #E5E6EB">
+          <div style="flex:1;background:#F7F8FA;border-radius:8px;padding:14px 18px"><div style="font:500 11px 'Inter',sans-serif;color:#86909C">在线站点</div><div style="font:700 22px 'Inter',sans-serif;margin-top:4px">7</div></div>
+          <div style="flex:1;background:#F7F8FA;border-radius:8px;padding:14px 18px"><div style="font:500 11px 'Inter',sans-serif;color:#86909C">模型端点</div><div style="font:700 22px 'Inter',sans-serif;margin-top:4px">3</div></div>
+          <div style="flex:1;background:#F7F8FA;border-radius:8px;padding:14px 18px"><div style="font:500 11px 'Inter',sans-serif;color:#86909C">本周部署</div><div style="font:700 22px 'Inter',sans-serif;margin-top:4px">12</div></div>
+          <div style="flex:1;background:#F7F8FA;border-radius:8px;padding:14px 18px"><div style="font:500 11px 'Inter',sans-serif;color:#86909C">待处理</div><div style="font:700 22px 'Inter',sans-serif;margin-top:4px;color:#F53F3F">1</div></div>
+        </div>
+        <div style="padding:8px 32px;display:grid;grid-template-columns:1.6fr .8fr 1.2fr 1fr;font:600 11px 'Inter',sans-serif;color:#86909C;text-transform:uppercase;letter-spacing:.04em;padding-top:16px;padding-bottom:10px;border-bottom:1px solid #E5E6EB">
+          <div>模块</div><div>状态</div><div>关键指标</div><div>最近更新</div>
+        </div>
+        <div style="flex:1;padding:0 32px">
+          <div style="display:grid;grid-template-columns:1.6fr .8fr 1.2fr 1fr;align-items:center;padding:14px 0;border-bottom:1px solid #F2F3F5;font:500 13px 'Noto Sans SC',sans-serif">
+            <div>网站托管</div><div><span style="font:500 11px 'Inter',sans-serif;color:#00B42A;background:#E8FFEA;padding:2px 8px;border-radius:10px">正常</span></div><div style="font:400 12px 'Inter',sans-serif;color:#4E5969">7 个站点在线</div><div style="font:400 12px 'Inter',sans-serif;color:#86909C">4 分钟前</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.6fr .8fr 1.2fr 1fr;align-items:center;padding:14px 0;border-bottom:1px solid #F2F3F5;font:500 13px 'Noto Sans SC',sans-serif">
+            <div>AI 模型 / API</div><div><span style="font:500 11px 'Inter',sans-serif;color:#00B42A;background:#E8FFEA;padding:2px 8px;border-radius:10px">正常</span></div><div style="font:400 12px 'Inter',sans-serif;color:#4E5969">3 个端点 · 120ms</div><div style="font:400 12px 'Inter',sans-serif;color:#86909C">2 小时前</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.6fr .8fr 1.2fr 1fr;align-items:center;padding:14px 0;border-bottom:1px solid #F2F3F5;font:500 13px 'Noto Sans SC',sans-serif">
+            <div>内容发布</div><div><span style="font:500 11px 'Inter',sans-serif;color:#FF7D00;background:#FFF3E8;padding:2px 8px;border-radius:10px">待审核</span></div><div style="font:400 12px 'Inter',sans-serif;color:#4E5969">1 篇待审核</div><div style="font:400 12px 'Inter',sans-serif;color:#86909C">今天 09:12</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.6fr .8fr 1.2fr 1fr;align-items:center;padding:14px 0;border-bottom:1px solid #F2F3F5;font:500 13px 'Noto Sans SC',sans-serif">
+            <div>GitHub / CI-CD</div><div><span style="font:500 11px 'Inter',sans-serif;color:#F53F3F;background:#FFECE8;padding:2px 8px;border-radius:10px">1 处失败</span></div><div style="font:400 12px 'Inter',sans-serif;color:#4E5969">docs-site 构建失败</div><div style="font:400 12px 'Inter',sans-serif;color:#86909C">14 分钟前</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.6fr .8fr 1.2fr 1fr;align-items:center;padding:14px 0;font:500 13px 'Noto Sans SC',sans-serif">
+            <div>域名与安全</div><div><span style="font:500 11px 'Inter',sans-serif;color:#00B42A;background:#E8FFEA;padding:2px 8px;border-radius:10px">正常</span></div><div style="font:400 12px 'Inter',sans-serif;color:#4E5969">SSL 均有效</div><div style="font:400 12px 'Inter',sans-serif;color:#86909C">昨天</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">下一步可以试："定 <a class="dv-oid" href="#7a">7a</a>，展开各模块详情页" · "把 <a class="dv-oid" href="#7c">7c</a> 的表格用在GitHub详情页" · "颜色再收敛/更克制一点"</p>
+</section>
+
+<section class="dv-turn" id="t6">
+  <div class="dv-thd"><a class="dv-tid" href="#t6">6</a><span class="dv-tname">深化 <a class="dv-oid" href="#5a">5a</a> · 加入优雅的数据可视化(趋势线 / 环形 / 密度条)</span></div>
+  <div class="dv-opts">
+
+    <!-- 6A: 迷你趋势线,置于每个指标下方 -->
+    <div class="dv-opt" id="6a">
+      <div class="dv-olabel"><a class="dv-oid" href="#6a">6a</a>迷你趋势线 · 每项指标下方细线走势</div>
+      <div class="dv-card" style="width:1180px;height:800px;display:flex;flex-direction:column;color:#22201C;background:#FAF7F0">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:28px 52px">
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:#A43F2E;display:inline-block"></span><div style="font:500 11px 'Inter',sans-serif;letter-spacing:.1em">CONSOLE</div></div>
+          <div style="display:flex;gap:30px;font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.45)"><span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>安全</span></div>
+        </div>
+        <div style="padding:6px 52px 36px;display:flex;align-items:baseline;justify-content:space-between">
+          <div style="font:300 40px/1 'Noto Serif SC',serif;letter-spacing:.02em">总览</div>
+          <div style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.4)">HK 节点 · 2026.07.14</div>
+        </div>
+        <div style="padding:0 52px;display:flex;gap:64px;border-top:1px solid rgba(34,32,28,.12);padding-top:26px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">在线站点</div>
+            <div style="font:300 30px 'Inter',sans-serif">07</div>
+            <svg width="120" height="30" viewBox="0 0 120 30"><polyline points="0,20 15,18 30,19 45,14 60,15 75,10 90,11 105,6 120,7" fill="none" stroke="#22201C" stroke-width="1.5" opacity="0.55"/></svg>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">模型调用/日</div>
+            <div style="font:300 30px 'Inter',sans-serif">48.2k</div>
+            <svg width="120" height="30" viewBox="0 0 120 30"><polyline points="0,22 15,20 30,15 45,17 60,10 75,12 90,8 105,9 120,4" fill="none" stroke="#22201C" stroke-width="1.5" opacity="0.55"/></svg>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">本周部署</div>
+            <div style="font:300 30px 'Inter',sans-serif">12</div>
+            <svg width="120" height="30" viewBox="0 0 120 30"><polyline points="0,26 15,24 30,22 45,20 60,18 75,15 90,12 105,9 120,6" fill="none" stroke="#22201C" stroke-width="1.5" opacity="0.55"/></svg>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">待处理</div>
+            <div style="font:300 30px 'Inter',sans-serif;color:#A43F2E">01</div>
+            <svg width="120" height="30" viewBox="0 0 120 30"><polyline points="0,8 15,10 30,6 45,12 60,9 75,15 90,11 105,20 120,22" fill="none" stroke="#A43F2E" stroke-width="1.5" opacity="0.75"/></svg>
+          </div>
+        </div>
+        <div style="flex:1;padding:32px 52px 44px;display:flex;flex-direction:column">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(34,32,28,.1)"><span style="font:500 14px 'Noto Sans SC',sans-serif">网站托管</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.5)">portfolio.site · blog.site · docs.site 部署中</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(34,32,28,.1)"><span style="font:500 14px 'Noto Sans SC',sans-serif">AI 模型</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.5)">/v1/chat 120ms · /v1/embed 正常</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(34,32,28,.1)"><span style="font:500 14px 'Noto Sans SC',sans-serif">内容发布</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.5)">3 篇草稿 · 1 篇待审核</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0"><span style="font:500 14px 'Noto Sans SC',sans-serif">GitHub / CI-CD</span><span style="font:400 12px 'Inter',sans-serif;color:#A43F2E">docs-site 构建失败</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6B: 环形进度指示 -->
+    <div class="dv-opt" id="6b">
+      <div class="dv-olabel"><a class="dv-oid" href="#6b">6b</a>环形指示 · 细描边圆环表示健康度</div>
+      <div class="dv-card" style="width:1180px;height:800px;display:flex;flex-direction:column;color:#22201C;background:#FAF7F0">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:28px 52px">
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:#A43F2E;display:inline-block"></span><div style="font:500 11px 'Inter',sans-serif;letter-spacing:.1em">CONSOLE</div></div>
+          <div style="display:flex;gap:30px;font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.45)"><span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>安全</span></div>
+        </div>
+        <div style="padding:6px 52px 30px;display:flex;align-items:baseline;justify-content:space-between">
+          <div style="font:300 40px/1 'Noto Serif SC',serif">总览</div>
+          <div style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.4)">HK 节点 · 2026.07.14</div>
+        </div>
+        <div style="padding:26px 52px;display:flex;gap:56px;border-top:1px solid rgba(34,32,28,.12)">
+          <div style="display:flex;align-items:center;gap:16px">
+            <svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="none" stroke="rgba(34,32,28,.12)" stroke-width="4"/><circle cx="32" cy="32" r="27" fill="none" stroke="#22201C" stroke-width="4" stroke-dasharray="169.6" stroke-dashoffset="8.5" stroke-linecap="round" transform="rotate(-90 32 32)"/></svg>
+            <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4)">站点在线率</div><div style="font:300 22px 'Inter',sans-serif;margin-top:4px">95%</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px">
+            <svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="none" stroke="rgba(34,32,28,.12)" stroke-width="4"/><circle cx="32" cy="32" r="27" fill="none" stroke="#22201C" stroke-width="4" stroke-dasharray="169.6" stroke-dashoffset="17" stroke-linecap="round" transform="rotate(-90 32 32)"/></svg>
+            <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4)">模型可用率</div><div style="font:300 22px 'Inter',sans-serif;margin-top:4px">90%</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px">
+            <svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="none" stroke="rgba(34,32,28,.12)" stroke-width="4"/><circle cx="32" cy="32" r="27" fill="none" stroke="#22201C" stroke-width="4" stroke-dasharray="169.6" stroke-dashoffset="42" stroke-linecap="round" transform="rotate(-90 32 32)"/></svg>
+            <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4)">部署成功率</div><div style="font:300 22px 'Inter',sans-serif;margin-top:4px">75%</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px">
+            <svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="none" stroke="rgba(164,63,46,.15)" stroke-width="4"/><circle cx="32" cy="32" r="27" fill="none" stroke="#A43F2E" stroke-width="4" stroke-dasharray="169.6" stroke-dashoffset="152" stroke-linecap="round" transform="rotate(-90 32 32)"/></svg>
+            <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4)">待处理占比</div><div style="font:300 22px 'Inter',sans-serif;margin-top:4px;color:#A43F2E">10%</div></div>
+          </div>
+        </div>
+        <div style="flex:1;padding:16px 52px 44px;display:flex;flex-direction:column">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-top:1px solid rgba(34,32,28,.1);border-bottom:1px solid rgba(34,32,28,.1)"><span style="font:500 14px 'Noto Sans SC',sans-serif">网站托管</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.5)">7 个站点在线</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(34,32,28,.1)"><span style="font:500 14px 'Noto Sans SC',sans-serif">AI 模型</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.5)">3 个端点 · 平均 120ms</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(34,32,28,.1)"><span style="font:500 14px 'Noto Sans SC',sans-serif">内容发布</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.5)">1 篇待审核</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0"><span style="font:500 14px 'Noto Sans SC',sans-serif">GitHub / CI-CD</span><span style="font:400 12px 'Inter',sans-serif;color:#A43F2E">docs-site 构建失败</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6C: 横向密度条 · 模块间对比 -->
+    <div class="dv-opt" id="6c">
+      <div class="dv-olabel"><a class="dv-oid" href="#6c">6c</a>横向密度条 · 一周部署趋势 + 模块间对比条</div>
+      <div class="dv-card" style="width:1180px;height:800px;display:flex;flex-direction:column;color:#22201C;background:#FAF7F0">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:28px 52px">
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:#A43F2E;display:inline-block"></span><div style="font:500 11px 'Inter',sans-serif;letter-spacing:.1em">CONSOLE</div></div>
+          <div style="display:flex;gap:30px;font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.45)"><span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>安全</span></div>
+        </div>
+        <div style="padding:6px 52px 30px;display:flex;align-items:baseline;justify-content:space-between">
+          <div style="font:300 40px/1 'Noto Serif SC',serif">总览</div>
+          <div style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.4)">HK 节点 · 2026.07.14</div>
+        </div>
+        <div style="padding:26px 52px;border-top:1px solid rgba(34,32,28,.12);display:flex;flex-direction:column;gap:10px">
+          <div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">近 7 日部署次数</div>
+          <svg width="1076" height="64" viewBox="0 0 1076 64">
+            <polyline points="0,44 154,40 308,50 462,30 616,34 770,14 924,20 1076,6" fill="none" stroke="#22201C" stroke-width="1.5" opacity="0.55"/>
+            <circle cx="1076" cy="6" r="3" fill="#22201C"/>
+          </svg>
+        </div>
+        <div style="flex:1;padding:20px 52px 44px;display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;justify-content:space-between;font:500 13px 'Noto Sans SC',sans-serif"><span>网站托管</span><span style="font-family:'Inter';color:rgba(34,32,28,.5);font-weight:400">7</span></div>
+            <div style="height:6px;background:rgba(34,32,28,.08);border-radius:3px"><div style="height:100%;width:58%;background:#22201C;border-radius:3px"></div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;justify-content:space-between;font:500 13px 'Noto Sans SC',sans-serif"><span>AI 模型</span><span style="font-family:'Inter';color:rgba(34,32,28,.5);font-weight:400">3</span></div>
+            <div style="height:6px;background:rgba(34,32,28,.08);border-radius:3px"><div style="height:100%;width:25%;background:#22201C;border-radius:3px"></div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;justify-content:space-between;font:500 13px 'Noto Sans SC',sans-serif"><span>内容发布</span><span style="font-family:'Inter';color:rgba(34,32,28,.5);font-weight:400">9</span></div>
+            <div style="height:6px;background:rgba(34,32,28,.08);border-radius:3px"><div style="height:100%;width:75%;background:#22201C;border-radius:3px"></div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;justify-content:space-between;font:500 13px 'Noto Sans SC',sans-serif"><span>GitHub / CI-CD</span><span style="font-family:'Inter';color:#A43F2E;font-weight:400">12 · 1 失败</span></div>
+            <div style="height:6px;background:rgba(34,32,28,.08);border-radius:3px"><div style="height:100%;width:92%;background:#A43F2E;border-radius:3px"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">下一步可以试："定 <a class="dv-oid" href="#6a">6a</a>，展开各模块详情页" · "把 <a class="dv-oid" href="#6b">6b</a> 的环形指示用在模块详情" · "图表再收敛一些颜色"</p>
+</section>
+
+<section class="dv-turn" id="t5">
+  <div class="dv-thd"><a class="dv-tid" href="#t5">5</a><span class="dv-tname">深化 <a class="dv-oid" href="#4c">4c</a> · 更靠近现代日本风格(留白 / 障子格 / 印章)</span></div>
+  <div class="dv-opts">
+
+    <!-- 5A: 留白极致,明朝体标题,红印微点缀 -->
+    <div class="dv-opt" id="5a">
+      <div class="dv-olabel"><a class="dv-oid" href="#5a">5a</a>留白极致 · 明体标题,去除竖向分割线</div>
+      <div class="dv-card" style="width:1180px;height:800px;display:flex;flex-direction:column;color:#22201C;background:#FAF7F0">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:28px 52px">
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:#A43F2E;display:inline-block"></span><div style="font:500 11px 'Inter',sans-serif;letter-spacing:.1em">CONSOLE</div></div>
+          <div style="display:flex;gap:30px;font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.45)"><span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>安全</span></div>
+        </div>
+        <div style="padding:6px 52px 40px;display:flex;align-items:baseline;justify-content:space-between">
+          <div style="font:300 40px/1 'Noto Serif SC',serif;letter-spacing:.02em">総覧　総览</div>
+          <div style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.4)">HK 節點 · 2026.07.14</div>
+        </div>
+        <div style="padding:0 52px;display:flex;gap:72px;border-top:1px solid rgba(34,32,28,.12);padding-top:26px">
+          <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">在线站点</div><div style="font:300 30px 'Inter',sans-serif;margin-top:8px">07</div></div>
+          <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">模型端点</div><div style="font:300 30px 'Inter',sans-serif;margin-top:8px">03</div></div>
+          <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">本周部署</div><div style="font:300 30px 'Inter',sans-serif;margin-top:8px">12</div></div>
+          <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">待处理</div><div style="font:300 30px 'Inter',sans-serif;margin-top:8px;color:#A43F2E">01</div></div>
+        </div>
+        <div style="flex:1;padding:36px 52px 44px;display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(34,32,28,.1)"><span style="font:500 14px 'Noto Sans SC',sans-serif">网站托管</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.5)">portfolio.site · blog.site · docs.site 部署中</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(34,32,28,.1)"><span style="font:500 14px 'Noto Sans SC',sans-serif">AI 模型</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.5)">/v1/chat 120ms · /v1/embed 正常</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(34,32,28,.1)"><span style="font:500 14px 'Noto Sans SC',sans-serif">内容发布</span><span style="font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.5)">3 篇草稿 · 1 篇待审核</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 0"><span style="font:500 14px 'Noto Sans SC',sans-serif">GitHub / CI-CD</span><span style="font:400 12px 'Inter',sans-serif;color:#A43F2E">docs-site 构建失败</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5B: 障子格 · 大留白 · 纵向节奏 -->
+    <div class="dv-opt" id="5b">
+      <div class="dv-olabel"><a class="dv-oid" href="#5b">5b</a>障子格 · 大留白纵向节奏,格线更淡更疏</div>
+      <div class="dv-card" style="width:960px;height:820px;display:flex;flex-direction:column;color:#22201C;background:#FAF7F0">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:30px 48px;border-bottom:1px solid rgba(34,32,28,.1)">
+          <div style="font:400 32px/1 'Noto Serif SC',serif">总览</div>
+          <span style="width:34px;height:34px;background:#A43F2E;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#FAF7F0;font:500 13px 'Noto Sans SC',sans-serif">控</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;padding:36px 48px 0;gap:28px 40px">
+          <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">在线站点</div><div style="font:300 28px 'Inter',sans-serif;margin-top:6px">07</div></div>
+          <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">模型端点</div><div style="font:300 28px 'Inter',sans-serif;margin-top:6px">03</div></div>
+          <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">本周部署</div><div style="font:300 28px 'Inter',sans-serif;margin-top:6px">12</div></div>
+          <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">待处理</div><div style="font:300 28px 'Inter',sans-serif;margin-top:6px;color:#A43F2E">01</div></div>
+        </div>
+        <div style="flex:1;padding:44px 48px;display:flex;flex-direction:column;gap:26px">
+          <div style="display:flex;flex-direction:column;gap:6px;padding-bottom:22px;border-bottom:1px solid rgba(34,32,28,.08)"><div style="font:500 14px 'Noto Sans SC',sans-serif">网站托管</div><div style="font:400 12px/1.7 'Inter',sans-serif;color:rgba(34,32,28,.5)">7 个站点在线</div></div>
+          <div style="display:flex;flex-direction:column;gap:6px;padding-bottom:22px;border-bottom:1px solid rgba(34,32,28,.08)"><div style="font:500 14px 'Noto Sans SC',sans-serif">AI 模型</div><div style="font:400 12px/1.7 'Inter',sans-serif;color:rgba(34,32,28,.5)">3 个端点 · 平均 120ms</div></div>
+          <div style="display:flex;flex-direction:column;gap:6px;padding-bottom:22px;border-bottom:1px solid rgba(34,32,28,.08)"><div style="font:500 14px 'Noto Sans SC',sans-serif">内容发布</div><div style="font:400 12px/1.7 'Inter',sans-serif;color:rgba(34,32,28,.5)">1 篇待审核</div></div>
+          <div style="display:flex;flex-direction:column;gap:6px"><div style="font:500 14px 'Noto Sans SC',sans-serif">GitHub / CI-CD</div><div style="font:400 12px/1.7 'Inter',sans-serif;color:#A43F2E">docs-site 构建失败</div></div>
+        </div>
+        <div style="padding:18px 48px;border-top:1px solid rgba(34,32,28,.1);font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);display:flex;justify-content:space-between"><span>周明 · 李颀 · 陈舒</span><span>2026.07.14</span></div>
+      </div>
+    </div>
+
+    <!-- 5C: 印章大标题,极简侧边细线 -->
+    <div class="dv-opt" id="5c">
+      <div class="dv-olabel"><a class="dv-oid" href="#5c">5c</a>印章大标题 · 印记为视觉重心,四周极简</div>
+      <div class="dv-card" style="width:1180px;height:800px;display:flex;color:#22201C;background:#FAF7F0">
+        <div style="width:96px;border-right:1px solid rgba(34,32,28,.1);display:flex;flex-direction:column;align-items:center;padding-top:44px;flex:none">
+          <span style="width:46px;height:46px;background:#A43F2E;border-radius:4px;display:flex;align-items:center;justify-content:center;color:#FAF7F0;font:500 17px 'Noto Sans SC',sans-serif">控</span>
+          <div style="writing-mode:vertical-rl;font:400 12px 'Noto Sans SC',sans-serif;letter-spacing:.2em;color:rgba(34,32,28,.4);margin-top:36px">総覧 モジュール</div>
+        </div>
+        <div style="flex:1;padding:52px 60px;display:flex;flex-direction:column;gap:40px;min-width:0">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <div style="font:300 44px/1 'Noto Serif SC',serif">总览</div>
+            <div style="display:flex;gap:26px;font:400 12px 'Inter',sans-serif;color:rgba(34,32,28,.45)"><span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>安全</span></div>
+          </div>
+          <div style="display:flex;gap:64px">
+            <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">在线站点</div><div style="font:300 30px 'Inter',sans-serif;margin-top:8px">07</div></div>
+            <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">模型端点</div><div style="font:300 30px 'Inter',sans-serif;margin-top:8px">03</div></div>
+            <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">本周部署</div><div style="font:300 30px 'Inter',sans-serif;margin-top:8px">12</div></div>
+            <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(34,32,28,.4);letter-spacing:.06em">待处理</div><div style="font:300 30px 'Inter',sans-serif;margin-top:8px;color:#A43F2E">01</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;border-top:1px solid rgba(34,32,28,.1)">
+            <div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(34,32,28,.08);font:400 13px 'Noto Sans SC',sans-serif"><span>网站托管</span><span style="font-family:'Inter';color:rgba(34,32,28,.5)">7 站点在线</span></div>
+            <div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(34,32,28,.08);font:400 13px 'Noto Sans SC',sans-serif"><span>AI 模型</span><span style="font-family:'Inter';color:rgba(34,32,28,.5)">120ms 延迟</span></div>
+            <div style="display:flex;justify-content:space-between;padding:16px 0;font:400 13px 'Noto Sans SC',sans-serif"><span>GitHub / CI-CD</span><span style="font-family:'Inter';color:#A43F2E">构建失败</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">下一步可以试："定 <a class="dv-oid" href="#5a">5a</a>，展开各模块详情页" · "把 <a class="dv-oid" href="#5c">5c</a> 的印章用作全站品牌标记" · "标题再放大/再收敛"</p>
+</section>
+
+<section class="dv-turn" id="t4">
+  <div class="dv-thd"><a class="dv-tid" href="#t4">4</a><span class="dv-tname">深化 <a class="dv-oid" href="#3b">3b</a> · 瑞士满版网格,三个精修方向</span></div>
+  <div class="dv-opts">
+
+    <!-- 4A: 保留顶部通栏,加入模块行内迷你进度条与更细分的度量 -->
+    <div class="dv-opt" id="4a">
+      <div class="dv-olabel"><a class="dv-oid" href="#4a">4a</a>数据加密度 · 模块格内嵌迷你进度条</div>
+      <div class="dv-card" style="width:1180px;height:800px;display:flex;flex-direction:column;color:#1C1C1A;background:#FDFCFA">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:26px 44px;border-bottom:1px solid #1C1C1A">
+          <div style="font:600 15px 'Noto Sans SC',sans-serif;letter-spacing:.06em;text-transform:uppercase">控制台</div>
+          <div style="display:flex;gap:28px;font:500 12px 'Inter',sans-serif;color:rgba(28,28,26,.45)">
+            <span style="color:#1C1C1A;border-bottom:1.5px solid #1C1C1A;padding-bottom:2px">总览</span><span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>安全</span>
+          </div>
+          <div style="font:500 11px 'Inter',sans-serif;color:rgba(28,28,26,.4)">HK · 3 members</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(28,28,26,.15)">
+          <div style="padding:20px 44px;border-right:1px solid rgba(28,28,26,.15)"><div style="font:500 10px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.08em;text-transform:uppercase">在线站点</div><div style="font:300 34px 'Inter',sans-serif;margin-top:6px">07</div></div>
+          <div style="padding:20px 44px;border-right:1px solid rgba(28,28,26,.15)"><div style="font:500 10px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.08em;text-transform:uppercase">模型端点</div><div style="font:300 34px 'Inter',sans-serif;margin-top:6px">03</div></div>
+          <div style="padding:20px 44px;border-right:1px solid rgba(28,28,26,.15)"><div style="font:500 10px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.08em;text-transform:uppercase">本周部署</div><div style="font:300 34px 'Inter',sans-serif;margin-top:6px">12</div></div>
+          <div style="padding:20px 44px"><div style="font:500 10px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.08em;text-transform:uppercase">待处理</div><div style="font:300 34px 'Inter',sans-serif;margin-top:6px;color:#B33A2E">01</div></div>
+        </div>
+        <div style="flex:1;display:grid;grid-template-columns:repeat(4,1fr)">
+          <div style="padding:26px 44px;border-right:1px solid rgba(28,28,26,.15);display:flex;flex-direction:column;gap:14px">
+            <div style="font:600 13px 'Noto Sans SC',sans-serif">网站托管</div>
+            <div style="display:flex;flex-direction:column;gap:8px;font:400 11.5px 'Inter',sans-serif;color:rgba(28,28,26,.55)">
+              <div>portfolio.site<div style="height:3px;background:rgba(28,28,26,.1);border-radius:2px;margin-top:4px"><div style="height:100%;width:96%;background:#1C1C1A;border-radius:2px"></div></div></div>
+              <div>blog.site<div style="height:3px;background:rgba(28,28,26,.1);border-radius:2px;margin-top:4px"><div style="height:100%;width:99%;background:#1C1C1A;border-radius:2px"></div></div></div>
+              <div>docs.site — 部署中<div style="height:3px;background:rgba(28,28,26,.1);border-radius:2px;margin-top:4px"><div style="height:100%;width:62%;background:#B33A2E;border-radius:2px"></div></div></div>
+            </div>
+          </div>
+          <div style="padding:26px 44px;border-right:1px solid rgba(28,28,26,.15);display:flex;flex-direction:column;gap:14px">
+            <div style="font:600 13px 'Noto Sans SC',sans-serif">AI 模型</div>
+            <div style="display:flex;flex-direction:column;gap:10px;font:400 11.5px 'Inter',sans-serif;color:rgba(28,28,26,.55)">
+              <div style="display:flex;justify-content:space-between"><span>/v1/chat</span><span>120ms</span></div>
+              <div style="display:flex;justify-content:space-between"><span>/v1/embed</span><span>45ms</span></div>
+              <div style="display:flex;justify-content:space-between"><span>调用量/日</span><span>48.2k</span></div>
+            </div>
+          </div>
+          <div style="padding:26px 44px;border-right:1px solid rgba(28,28,26,.15);display:flex;flex-direction:column;gap:14px">
+            <div style="font:600 13px 'Noto Sans SC',sans-serif">内容发布</div>
+            <div style="display:flex;flex-direction:column;gap:10px;font:400 11.5px 'Inter',sans-serif;color:rgba(28,28,26,.55)">
+              <div>3 篇草稿</div><div style="color:#B33A2E">1 篇待审核</div><div>本月发布 9 篇</div>
+            </div>
+          </div>
+          <div style="padding:26px 44px;display:flex;flex-direction:column;gap:14px">
+            <div style="font:600 13px 'Noto Sans SC',sans-serif">GitHub / CI-CD</div>
+            <div style="display:flex;flex-direction:column;gap:10px;font:400 11.5px 'Inter',sans-serif;color:rgba(28,28,26,.55)">
+              <div style="color:#B33A2E">docs-site 构建失败</div><div>blog-site · 4分钟前 成功</div><div>本周 12 次部署</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:14px 44px;border-top:1px solid rgba(28,28,26,.15);font:400 11px 'Inter',sans-serif;color:rgba(28,28,26,.4)">
+          <span>周明 · 李颀 · 陈舒</span><span>2026-07-14 更新</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4B: 左侧竖排细边导航条替代顶部通栏,网格更纯粹 -->
+    <div class="dv-opt" id="4b">
+      <div class="dv-olabel"><a class="dv-oid" href="#4b">4b</a>左侧细边导航 · 网格更纯粹,负空间加倍</div>
+      <div class="dv-card" style="width:1180px;height:800px;display:flex;color:#1C1C1A;background:#FDFCFA">
+        <div style="width:168px;border-right:1px solid #1C1C1A;padding:36px 0 0;display:flex;flex-direction:column;flex:none">
+          <div style="padding:0 28px 40px;font:600 13px 'Inter',sans-serif;letter-spacing:.08em;text-transform:uppercase">控制台</div>
+          <div style="display:flex;flex-direction:column">
+            <div style="padding:12px 28px;font:500 12.5px 'Inter',sans-serif;border-left:2px solid #B33A2E;background:rgba(28,28,26,.03)">总览</div>
+            <div style="padding:12px 28px;font:500 12.5px 'Inter',sans-serif;color:rgba(28,28,26,.4)">网站托管</div>
+            <div style="padding:12px 28px;font:500 12.5px 'Inter',sans-serif;color:rgba(28,28,26,.4)">AI 模型</div>
+            <div style="padding:12px 28px;font:500 12.5px 'Inter',sans-serif;color:rgba(28,28,26,.4)">内容发布</div>
+            <div style="padding:12px 28px;font:500 12.5px 'Inter',sans-serif;color:rgba(28,28,26,.4)">GitHub</div>
+            <div style="padding:12px 28px;font:500 12.5px 'Inter',sans-serif;color:rgba(28,28,26,.4)">安全</div>
+          </div>
+          <div style="margin-top:auto;padding:20px 28px;font:400 10.5px 'Inter',sans-serif;color:rgba(28,28,26,.35);border-top:1px solid rgba(28,28,26,.15)">HK 节点<br/>3 位成员</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(28,28,26,.15)">
+            <div style="padding:34px 40px;border-right:1px solid rgba(28,28,26,.15)"><div style="font:500 10px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.08em;text-transform:uppercase">在线站点</div><div style="font:300 36px 'Inter',sans-serif;margin-top:8px">07</div></div>
+            <div style="padding:34px 40px;border-right:1px solid rgba(28,28,26,.15)"><div style="font:500 10px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.08em;text-transform:uppercase">模型端点</div><div style="font:300 36px 'Inter',sans-serif;margin-top:8px">03</div></div>
+            <div style="padding:34px 40px;border-right:1px solid rgba(28,28,26,.15)"><div style="font:500 10px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.08em;text-transform:uppercase">本周部署</div><div style="font:300 36px 'Inter',sans-serif;margin-top:8px">12</div></div>
+            <div style="padding:34px 40px"><div style="font:500 10px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.08em;text-transform:uppercase">待处理</div><div style="font:300 36px 'Inter',sans-serif;margin-top:8px;color:#B33A2E">01</div></div>
+          </div>
+          <div style="flex:1;display:grid;grid-template-columns:repeat(2,1fr)">
+            <div style="padding:32px 40px;border-right:1px solid rgba(28,28,26,.15);border-bottom:1px solid rgba(28,28,26,.15);display:flex;flex-direction:column;gap:8px"><div style="font:600 13px 'Noto Sans SC',sans-serif">网站托管</div><div style="font:400 12px/1.7 'Inter',sans-serif;color:rgba(28,28,26,.5)">7 个站点在线 · docs.site 部署中</div></div>
+            <div style="padding:32px 40px;border-bottom:1px solid rgba(28,28,26,.15);display:flex;flex-direction:column;gap:8px"><div style="font:600 13px 'Noto Sans SC',sans-serif">AI 模型</div><div style="font:400 12px/1.7 'Inter',sans-serif;color:rgba(28,28,26,.5)">3 个端点 · 平均 120ms</div></div>
+            <div style="padding:32px 40px;border-right:1px solid rgba(28,28,26,.15);display:flex;flex-direction:column;gap:8px"><div style="font:600 13px 'Noto Sans SC',sans-serif">内容发布</div><div style="font:400 12px/1.7 'Inter',sans-serif;color:rgba(28,28,26,.5)">1 篇待审核 · 3 篇草稿</div></div>
+            <div style="padding:32px 40px;display:flex;flex-direction:column;gap:8px"><div style="font:600 13px 'Noto Sans SC',sans-serif">GitHub / CI-CD</div><div style="font:400 12px/1.7 'Inter',sans-serif;color:#B33A2E">docs-site 构建失败</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4C: 融合3d巨型标题的两段式头部,网格保留 -->
+    <div class="dv-opt" id="4c">
+      <div class="dv-olabel"><a class="dv-oid" href="#4c">4c</a>两段式头部 · 巨型标题 + 网格数据区</div>
+      <div class="dv-card" style="width:1180px;height:800px;display:flex;flex-direction:column;color:#1C1C1A;background:#FDFCFA">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:24px 44px;border-bottom:1px solid rgba(28,28,26,.15)">
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:#B33A2E;display:inline-block"></span><div style="font:500 12px 'Inter',sans-serif;letter-spacing:.06em">CONSOLE</div></div>
+          <div style="display:flex;gap:26px;font:500 12px 'Inter',sans-serif;color:rgba(28,28,26,.45)"><span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>安全</span></div>
+        </div>
+        <div style="padding:22px 44px 26px;border-bottom:1.5px solid #1C1C1A;display:flex;justify-content:space-between;align-items:baseline">
+          <div style="font:300 42px/1 'Noto Sans SC',sans-serif">总览</div>
+          <div style="font:400 12px 'Inter',sans-serif;color:rgba(28,28,26,.4)">HK 节点 · 2026-07-14</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(28,28,26,.15)">
+          <div style="padding:24px 44px;border-right:1px solid rgba(28,28,26,.15)"><div style="font:500 10px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.08em;text-transform:uppercase">在线站点</div><div style="font:300 32px 'Inter',sans-serif;margin-top:6px">07</div></div>
+          <div style="padding:24px 44px;border-right:1px solid rgba(28,28,26,.15)"><div style="font:500 10px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.08em;text-transform:uppercase">模型端点</div><div style="font:300 32px 'Inter',sans-serif;margin-top:6px">03</div></div>
+          <div style="padding:24px 44px;border-right:1px solid rgba(28,28,26,.15)"><div style="font:500 10px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.08em;text-transform:uppercase">本周部署</div><div style="font:300 32px 'Inter',sans-serif;margin-top:6px">12</div></div>
+          <div style="padding:24px 44px"><div style="font:500 10px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.08em;text-transform:uppercase">待处理</div><div style="font:300 32px 'Inter',sans-serif;margin-top:6px;color:#B33A2E">01</div></div>
+        </div>
+        <div style="flex:1;display:grid;grid-template-columns:repeat(4,1fr)">
+          <div style="padding:28px 44px;border-right:1px solid rgba(28,28,26,.15);display:flex;flex-direction:column;gap:10px"><div style="font:600 13px 'Noto Sans SC',sans-serif">网站托管</div><div style="font:400 12px/1.7 'Inter',sans-serif;color:rgba(28,28,26,.5)">portfolio.site<br/>blog.site<br/>docs.site 部署中</div></div>
+          <div style="padding:28px 44px;border-right:1px solid rgba(28,28,26,.15);display:flex;flex-direction:column;gap:10px"><div style="font:600 13px 'Noto Sans SC',sans-serif">AI 模型</div><div style="font:400 12px/1.7 'Inter',sans-serif;color:rgba(28,28,26,.5)">/v1/chat 120ms<br/>/v1/embed 正常</div></div>
+          <div style="padding:28px 44px;border-right:1px solid rgba(28,28,26,.15);display:flex;flex-direction:column;gap:10px"><div style="font:600 13px 'Noto Sans SC',sans-serif">内容发布</div><div style="font:400 12px/1.7 'Inter',sans-serif;color:rgba(28,28,26,.5)">3 篇草稿<br/>1 篇待审核</div></div>
+          <div style="padding:28px 44px;display:flex;flex-direction:column;gap:10px"><div style="font:600 13px 'Noto Sans SC',sans-serif">GitHub / CI-CD</div><div style="font:400 12px/1.7 'Inter',sans-serif;color:#B33A2E">docs-site 构建失败</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">下一步可以试："定 <a class="dv-oid" href="#4a">4a</a>，展开各模块详情页" · "把 <a class="dv-oid" href="#4b">4b</a> 的左侧导航用作全局导航结构" · "再收敛一版配色"</p>
+</section>
+
+<section class="dv-turn" id="t3">
+  <div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">深化 <a class="dv-oid" href="#1a">1a</a> · 浅色底,现代日本 + 瑞士风格,4 个变体</span></div>
+  <div class="dv-opts">
+
+    <!-- 3A: 极简留白,浅灰侧栏 -->
+    <div class="dv-opt" id="3a">
+      <div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>极简留白 · 浅灰侧栏,细线分割</div>
+      <div class="dv-card" style="width:1180px;height:760px;display:flex;color:#1C1C1A;background:#FAF9F6">
+        <div style="width:212px;background:#F3F1EB;border-right:1px solid rgba(28,28,26,.1);padding:30px 24px;display:flex;flex-direction:column;gap:36px;flex:none">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:7px;height:7px;border-radius:50%;background:#B33A2E;display:inline-block"></span>
+            <div style="font:600 14px 'Noto Sans SC',sans-serif;letter-spacing:.02em">控制台</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px;font:500 13px 'Inter',sans-serif">
+            <div style="padding:9px 0;color:#1C1C1A;border-bottom:1.5px solid #1C1C1A;width:fit-content">总览</div>
+            <div style="padding:9px 0;color:rgba(28,28,26,.45)">网站托管</div>
+            <div style="padding:9px 0;color:rgba(28,28,26,.45)">AI 模型</div>
+            <div style="padding:9px 0;color:rgba(28,28,26,.45)">内容发布</div>
+            <div style="padding:9px 0;color:rgba(28,28,26,.45)">GitHub / CI-CD</div>
+            <div style="padding:9px 0;color:rgba(28,28,26,.45)">域名与安全</div>
+          </div>
+          <div style="margin-top:auto;font:400 11px/1.6 'Inter',sans-serif;color:rgba(28,28,26,.4);border-top:1px solid rgba(28,28,26,.1);padding-top:14px">香港节点 · 运行正常<br/>3 位团队成员</div>
+        </div>
+        <div style="flex:1;padding:44px 48px;display:flex;flex-direction:column;gap:36px;min-width:0">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <div style="font:600 24px/1.1 'Noto Sans SC',sans-serif;letter-spacing:.01em">总览</div>
+            <div style="font:400 12px 'Inter',sans-serif;color:rgba(28,28,26,.4)">2026年7月14日</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0">
+            <div style="padding:0 24px 0 0;border-right:1px solid rgba(28,28,26,.1)"><div style="font:500 11px 'Inter',sans-serif;color:rgba(28,28,26,.45);letter-spacing:.05em">在线站点</div><div style="font:400 32px 'Inter',sans-serif;margin-top:8px">7</div></div>
+            <div style="padding:0 24px;border-right:1px solid rgba(28,28,26,.1)"><div style="font:500 11px 'Inter',sans-serif;color:rgba(28,28,26,.45);letter-spacing:.05em">模型端点</div><div style="font:400 32px 'Inter',sans-serif;margin-top:8px">3</div></div>
+            <div style="padding:0 24px;border-right:1px solid rgba(28,28,26,.1)"><div style="font:500 11px 'Inter',sans-serif;color:rgba(28,28,26,.45);letter-spacing:.05em">本周部署</div><div style="font:400 32px 'Inter',sans-serif;margin-top:8px">12</div></div>
+            <div style="padding:0 0 0 24px"><div style="font:500 11px 'Inter',sans-serif;color:rgba(28,28,26,.45);letter-spacing:.05em">待处理</div><div style="font:400 32px 'Inter',sans-serif;margin-top:8px;color:#B33A2E">1</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid rgba(28,28,26,.1)">
+            <div style="padding:22px 24px 22px 0;border-right:1px solid rgba(28,28,26,.1);border-bottom:1px solid rgba(28,28,26,.1);display:flex;flex-direction:column;gap:6px"><div style="font:500 13px 'Noto Sans SC',sans-serif">网站托管</div><div style="font:400 12px/1.6 'Inter',sans-serif;color:rgba(28,28,26,.5)">7 个站点在线</div></div>
+            <div style="padding:22px 0 22px 24px;border-bottom:1px solid rgba(28,28,26,.1);display:flex;flex-direction:column;gap:6px"><div style="font:500 13px 'Noto Sans SC',sans-serif">AI 模型</div><div style="font:400 12px/1.6 'Inter',sans-serif;color:rgba(28,28,26,.5)">120ms 平均延迟</div></div>
+            <div style="padding:22px 24px 0 0;border-right:1px solid rgba(28,28,26,.1);display:flex;flex-direction:column;gap:6px"><div style="font:500 13px 'Noto Sans SC',sans-serif">内容发布</div><div style="font:400 12px/1.6 'Inter',sans-serif;color:rgba(28,28,26,.5)">1 篇待审核</div></div>
+            <div style="padding:22px 0 0 24px;display:flex;flex-direction:column;gap:6px"><div style="font:500 13px 'Noto Sans SC',sans-serif">GitHub / CI-CD</div><div style="font:400 12px/1.6 'Inter',sans-serif;color:rgba(28,28,26,.5)">1 处构建失败</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3B: 瑞士网格分割,红印极简点缀 -->
+    <div class="dv-opt" id="3b">
+      <div class="dv-olabel"><a class="dv-oid" href="#3b">3b</a>瑞士满版网格 · 全局细线,印记极简</div>
+      <div class="dv-card" style="width:1180px;height:760px;display:flex;flex-direction:column;color:#1C1C1A;background:#FDFCFA">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:26px 44px;border-bottom:1px solid #1C1C1A">
+          <div style="font:600 15px 'Noto Sans SC',sans-serif;letter-spacing:.06em;text-transform:uppercase">控制台</div>
+          <div style="display:flex;gap:28px;font:500 12px 'Inter',sans-serif;color:rgba(28,28,26,.45)">
+            <span style="color:#1C1C1A;border-bottom:1.5px solid #1C1C1A;padding-bottom:2px">总览</span><span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>安全</span>
+          </div>
+          <div style="font:500 11px 'Inter',sans-serif;color:rgba(28,28,26,.4)">HK · 3 members</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(28,28,26,.15)">
+          <div style="padding:20px 44px 20px 44px;border-right:1px solid rgba(28,28,26,.15)"><div style="font:500 10px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.08em;text-transform:uppercase">在线站点</div><div style="font:300 34px 'Inter',sans-serif;margin-top:6px">07</div></div>
+          <div style="padding:20px 44px;border-right:1px solid rgba(28,28,26,.15)"><div style="font:500 10px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.08em;text-transform:uppercase">模型端点</div><div style="font:300 34px 'Inter',sans-serif;margin-top:6px">03</div></div>
+          <div style="padding:20px 44px;border-right:1px solid rgba(28,28,26,.15)"><div style="font:500 10px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.08em;text-transform:uppercase">本周部署</div><div style="font:300 34px 'Inter',sans-serif;margin-top:6px">12</div></div>
+          <div style="padding:20px 44px"><div style="font:500 10px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.08em;text-transform:uppercase">待处理</div><div style="font:300 34px 'Inter',sans-serif;margin-top:6px;color:#B33A2E">01</div></div>
+        </div>
+        <div style="flex:1;display:grid;grid-template-columns:repeat(4,1fr)">
+          <div style="padding:26px 44px 26px 44px;border-right:1px solid rgba(28,28,26,.15);display:flex;flex-direction:column;gap:10px"><div style="font:600 13px 'Noto Sans SC',sans-serif">网站托管</div><div style="font:400 12px/1.7 'Inter',sans-serif;color:rgba(28,28,26,.5)">portfolio.site<br/>blog.site<br/>docs.site 部署中</div></div>
+          <div style="padding:26px 44px;border-right:1px solid rgba(28,28,26,.15);display:flex;flex-direction:column;gap:10px"><div style="font:600 13px 'Noto Sans SC',sans-serif">AI 模型</div><div style="font:400 12px/1.7 'Inter',sans-serif;color:rgba(28,28,26,.5)">/v1/chat 120ms<br/>/v1/embed 正常</div></div>
+          <div style="padding:26px 44px;border-right:1px solid rgba(28,28,26,.15);display:flex;flex-direction:column;gap:10px"><div style="font:600 13px 'Noto Sans SC',sans-serif">内容发布</div><div style="font:400 12px/1.7 'Inter',sans-serif;color:rgba(28,28,26,.5)">3 篇草稿<br/>1 篇待审核</div></div>
+          <div style="padding:26px 44px;display:flex;flex-direction:column;gap:10px"><div style="font:600 13px 'Noto Sans SC',sans-serif">GitHub / CI-CD</div><div style="font:400 12px/1.7 'Inter',sans-serif;color:#B33A2E">docs-site 构建失败</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3C: 日式留白,竖排小标签 -->
+    <div class="dv-opt" id="3c">
+      <div class="dv-olabel"><a class="dv-oid" href="#3c">3c</a>日式留白 · 竖排小标签,大量呼吸空间</div>
+      <div class="dv-card" style="width:1180px;height:760px;display:flex;color:#1C1C1A;background:#FBFAF7">
+        <div style="width:56px;border-right:1px solid rgba(28,28,26,.1);display:flex;align-items:flex-start;justify-content:center;padding-top:44px;flex:none">
+          <div style="writing-mode:vertical-rl;font:500 13px 'Noto Sans SC',sans-serif;letter-spacing:.15em;color:rgba(28,28,26,.55)">控制台 総覧</div>
+        </div>
+        <div style="width:180px;border-right:1px solid rgba(28,28,26,.1);padding:44px 22px;display:flex;flex-direction:column;gap:22px;flex:none">
+          <div style="font:500 13px 'Noto Sans SC',sans-serif;color:#1C1C1A;border-left:2px solid #B33A2E;padding-left:10px">总览</div>
+          <div style="font:400 12.5px 'Noto Sans SC',sans-serif;color:rgba(28,28,26,.45);padding-left:12px">网站托管</div>
+          <div style="font:400 12.5px 'Noto Sans SC',sans-serif;color:rgba(28,28,26,.45);padding-left:12px">AI 模型</div>
+          <div style="font:400 12.5px 'Noto Sans SC',sans-serif;color:rgba(28,28,26,.45);padding-left:12px">内容发布</div>
+          <div style="font:400 12.5px 'Noto Sans SC',sans-serif;color:rgba(28,28,26,.45);padding-left:12px">GitHub</div>
+          <div style="font:400 12.5px 'Noto Sans SC',sans-serif;color:rgba(28,28,26,.45);padding-left:12px">域名与安全</div>
+        </div>
+        <div style="flex:1;padding:56px 60px;display:flex;flex-direction:column;gap:48px;min-width:0">
+          <div style="font:300 30px/1.2 'Noto Sans SC',sans-serif;letter-spacing:.02em">总览</div>
+          <div style="display:flex;gap:64px">
+            <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.05em">在线站点</div><div style="font:300 30px 'Inter',sans-serif;margin-top:10px">7</div></div>
+            <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.05em">模型端点</div><div style="font:300 30px 'Inter',sans-serif;margin-top:10px">3</div></div>
+            <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.05em">本周部署</div><div style="font:300 30px 'Inter',sans-serif;margin-top:10px">12</div></div>
+            <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.05em">待处理</div><div style="font:300 30px 'Inter',sans-serif;margin-top:10px;color:#B33A2E">1</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(28,28,26,.1)">
+            <div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(28,28,26,.08);font:400 13px 'Noto Sans SC',sans-serif"><span>网站托管</span><span style="color:rgba(28,28,26,.45);font-family:'Inter'">7 站点在线</span></div>
+            <div style="display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(28,28,26,.08);font:400 13px 'Noto Sans SC',sans-serif"><span>AI 模型</span><span style="color:rgba(28,28,26,.45);font-family:'Inter'">120ms 延迟</span></div>
+            <div style="display:flex;justify-content:space-between;padding:16px 0;font:400 13px 'Noto Sans SC',sans-serif"><span>GitHub / CI-CD</span><span style="color:#B33A2E;font-family:'Inter'">构建失败</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3D: 顶部通栏导航,巨型标题+下划线 -->
+    <div class="dv-opt" id="3d">
+      <div class="dv-olabel"><a class="dv-oid" href="#3d">3d</a>通栏导航 · 巨型标题 + 下划线,负空间更足</div>
+      <div class="dv-card" style="width:1180px;height:760px;display:flex;flex-direction:column;color:#1C1C1A;background:#FCFBF8">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:24px 48px">
+          <div style="display:flex;align-items:center;gap:10px"><span style="width:6px;height:6px;border-radius:50%;background:#B33A2E;display:inline-block"></span><div style="font:500 13px 'Inter',sans-serif;letter-spacing:.04em">CONSOLE</div></div>
+          <div style="display:flex;gap:26px;font:500 12px 'Inter',sans-serif;color:rgba(28,28,26,.45)"><span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>安全</span></div>
+        </div>
+        <div style="padding:8px 48px 28px;border-bottom:1.5px solid #1C1C1A"><div style="font:300 46px/1 'Noto Sans SC',sans-serif;letter-spacing:.01em">总览</div></div>
+        <div style="flex:1;padding:36px 48px;display:flex;flex-direction:column;gap:32px">
+          <div style="display:flex;gap:56px">
+            <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.05em">在线站点</div><div style="font:300 28px 'Inter',sans-serif;margin-top:8px">7</div></div>
+            <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.05em">模型端点</div><div style="font:300 28px 'Inter',sans-serif;margin-top:8px">3</div></div>
+            <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.05em">本周部署</div><div style="font:300 28px 'Inter',sans-serif;margin-top:8px">12</div></div>
+            <div><div style="font:400 11px 'Inter',sans-serif;color:rgba(28,28,26,.4);letter-spacing:.05em">待处理</div><div style="font:300 28px 'Inter',sans-serif;margin-top:8px;color:#B33A2E">1</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:32px">
+            <div style="display:flex;flex-direction:column;gap:8px"><div style="font:500 13px 'Noto Sans SC',sans-serif;padding-bottom:8px;border-bottom:1px solid rgba(28,28,26,.15)">网站托管</div><div style="font:400 12px/1.6 'Inter',sans-serif;color:rgba(28,28,26,.5)">7 站点在线</div></div>
+            <div style="display:flex;flex-direction:column;gap:8px"><div style="font:500 13px 'Noto Sans SC',sans-serif;padding-bottom:8px;border-bottom:1px solid rgba(28,28,26,.15)">AI 模型</div><div style="font:400 12px/1.6 'Inter',sans-serif;color:rgba(28,28,26,.5)">120ms 延迟</div></div>
+            <div style="display:flex;flex-direction:column;gap:8px"><div style="font:500 13px 'Noto Sans SC',sans-serif;padding-bottom:8px;border-bottom:1px solid rgba(28,28,26,.15)">内容发布</div><div style="font:400 12px/1.6 'Inter',sans-serif;color:rgba(28,28,26,.5)">1 篇待审核</div></div>
+            <div style="display:flex;flex-direction:column;gap:8px"><div style="font:500 13px 'Noto Sans SC',sans-serif;padding-bottom:8px;border-bottom:1px solid rgba(28,28,26,.15)">GitHub / CI-CD</div><div style="font:400 12px/1.6 'Inter',sans-serif;color:#B33A2E">构建失败</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">下一步可以试："以 <a class="dv-oid" href="#3b">3b</a> 的网格系统做各模块详情页" · "把 <a class="dv-oid" href="#3c">3c</a> 的竖排标签风格延伸到导航" · "还要更浅、更少线条"</p>
+</section>
+
+<section class="dv-turn" id="t2">
+  <div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">更多布局 · 从人因角度出发(任务优先/分区看板/极简单栏/主从详情)</span></div>
+  <div class="dv-opts">
+
+    <!-- 2A: Task-first triage -->
+    <div class="dv-opt" id="2a">
+      <div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>任务优先 · 待处理事项置顶,降低认知负荷</div>
+      <div class="dv-card" style="width:1080px;height:720px;display:flex;flex-direction:column;color:#1A1A17">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 32px;border-bottom:1px solid rgba(26,26,23,.1)">
+          <div style="display:flex;align-items:center;gap:10px"><div class="seal">控</div><div style="font:700 15px 'Noto Sans SC',sans-serif">控制台 · 总览</div></div>
+          <div style="display:flex;gap:20px;font:500 12px 'Inter',sans-serif;color:rgba(26,26,23,.5)">
+            <span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>安全</span>
+          </div>
+        </div>
+        <!-- action-required band, high contrast, top -->
+        <div style="background:#1A1A17;padding:22px 32px;display:flex;gap:16px">
+          <div style="flex:1;background:rgba(167,48,31,.18);border:1px solid rgba(167,48,31,.5);border-radius:6px;padding:14px 18px;display:flex;flex-direction:column;gap:4px">
+            <div style="font:600 12px 'Inter',sans-serif;color:#E9998A">需要处理 · 1</div>
+            <div style="font:600 14px 'Noto Sans SC',sans-serif;color:#EDE9E1">docs-site 构建失败 — 查看日志</div>
+          </div>
+          <div style="flex:1;background:rgba(176,138,46,.18);border:1px solid rgba(176,138,46,.5);border-radius:6px;padding:14px 18px;display:flex;flex-direction:column;gap:4px">
+            <div style="font:600 12px 'Inter',sans-serif;color:#E3C878">待审核 · 1</div>
+            <div style="font:600 14px 'Noto Sans SC',sans-serif;color:#EDE9E1">一篇公告等待发布确认</div>
+          </div>
+          <div style="flex:1;background:rgba(46,107,62,.18);border:1px solid rgba(46,107,62,.5);border-radius:6px;padding:14px 18px;display:flex;flex-direction:column;gap:4px">
+            <div style="font:600 12px 'Inter',sans-serif;color:#8FCB9E">其余一切正常</div>
+            <div style="font:600 14px 'Noto Sans SC',sans-serif;color:#EDE9E1">7 站点 · 3 模型端点在线</div>
+          </div>
+        </div>
+        <!-- secondary calm grid below -->
+        <div style="flex:1;padding:24px 32px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+          <div style="border:1px solid rgba(26,26,23,.1);padding:16px;display:flex;flex-direction:column;gap:6px"><div style="font:600 12px 'Noto Sans SC',sans-serif">网站托管</div><div style="font:400 11px 'Inter',sans-serif;color:rgba(26,26,23,.5)">7 个站点在线</div></div>
+          <div style="border:1px solid rgba(26,26,23,.1);padding:16px;display:flex;flex-direction:column;gap:6px"><div style="font:600 12px 'Noto Sans SC',sans-serif">AI 模型</div><div style="font:400 11px 'Inter',sans-serif;color:rgba(26,26,23,.5)">120ms 平均延迟</div></div>
+          <div style="border:1px solid rgba(26,26,23,.1);padding:16px;display:flex;flex-direction:column;gap:6px"><div style="font:600 12px 'Noto Sans SC',sans-serif">GitHub / CI-CD</div><div style="font:400 11px 'Inter',sans-serif;color:rgba(26,26,23,.5)">12 次部署 · 本周</div></div>
+          <div style="border:1px solid rgba(26,26,23,.1);padding:16px;display:flex;flex-direction:column;gap:6px"><div style="font:600 12px 'Noto Sans SC',sans-serif">域名与安全</div><div style="font:400 11px 'Inter',sans-serif;color:rgba(26,26,23,.5)">SSL 均有效</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2B: Kanban triage by status -->
+    <div class="dv-opt" id="2b">
+      <div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>分区看板 · 按状态分列,一眼定位问题</div>
+      <div class="dv-card" style="width:1080px;height:720px;display:flex;flex-direction:column;color:#1A1A17">
+        <div style="padding:20px 32px;border-bottom:1px solid rgba(26,26,23,.1);display:flex;align-items:center;gap:10px"><div class="seal">控</div><div style="font:700 15px 'Noto Sans SC',sans-serif">控制台 · 按状态查看</div></div>
+        <div style="flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(26,26,23,.1)">
+          <div style="background:#F7F4EC;padding:20px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;gap:8px;font:700 13px 'Noto Sans SC',sans-serif;color:#A7301F"><span style="width:8px;height:8px;border-radius:50%;background:#A7301F;display:inline-block"></span>异常 · 1</div>
+            <div style="background:#FBFAF7;border:1px solid rgba(167,48,31,.3);border-radius:6px;padding:14px;font:500 12px 'Inter',sans-serif">docs-site 构建失败<br/><span style="color:rgba(26,26,23,.45);font-size:11px">GitHub / CI-CD · 14分钟前</span></div>
+          </div>
+          <div style="background:#F7F4EC;padding:20px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;gap:8px;font:700 13px 'Noto Sans SC',sans-serif;color:#B08A2E"><span style="width:8px;height:8px;border-radius:50%;background:#B08A2E;display:inline-block"></span>待处理 · 1</div>
+            <div style="background:#FBFAF7;border:1px solid rgba(176,138,46,.3);border-radius:6px;padding:14px;font:500 12px 'Inter',sans-serif">公告待审核发布<br/><span style="color:rgba(26,26,23,.45);font-size:11px">内容发布 · 今天 09:12</span></div>
+          </div>
+          <div style="background:#F7F4EC;padding:20px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;gap:8px;font:700 13px 'Noto Sans SC',sans-serif;color:#2E6B3E"><span style="width:8px;height:8px;border-radius:50%;background:#2E6B3E;display:inline-block"></span>正常 · 4</div>
+            <div style="background:#FBFAF7;border:1px solid rgba(46,107,62,.25);border-radius:6px;padding:14px;font:500 12px 'Inter',sans-serif">网站托管 <span style="color:rgba(26,26,23,.45);font-size:11px">· 7 站点在线</span></div>
+            <div style="background:#FBFAF7;border:1px solid rgba(46,107,62,.25);border-radius:6px;padding:14px;font:500 12px 'Inter',sans-serif">AI 模型 <span style="color:rgba(26,26,23,.45);font-size:11px">· 3 端点在线</span></div>
+            <div style="background:#FBFAF7;border:1px solid rgba(46,107,62,.25);border-radius:6px;padding:14px;font:500 12px 'Inter',sans-serif">域名与安全 <span style="color:rgba(26,26,23,.45);font-size:11px">· SSL 有效</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2C: Minimal single column, glanceable -->
+    <div class="dv-opt" id="2c">
+      <div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>极简单栏 · 大字号纵向扫读,减少视线跳转</div>
+      <div class="dv-card" style="width:640px;height:760px;display:flex;flex-direction:column;color:#1A1A17">
+        <div style="padding:28px 32px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(26,26,23,.1)"><div class="seal">控</div><div style="font:700 16px 'Noto Sans SC',sans-serif">总览</div></div>
+        <div style="flex:1;padding:22px 32px;display:flex;flex-direction:column;gap:14px;overflow:hidden">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-radius:8px;background:#FBFAF7;border:1px solid rgba(26,26,23,.1)">
+            <div><div style="font:700 15px 'Noto Sans SC',sans-serif">网站托管</div><div style="font:400 12px 'Inter',sans-serif;color:rgba(26,26,23,.5);margin-top:3px">7 个站点在线</div></div>
+            <span style="width:10px;height:10px;border-radius:50%;background:#2E6B3E;display:inline-block"></span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-radius:8px;background:#FBFAF7;border:1px solid rgba(26,26,23,.1)">
+            <div><div style="font:700 15px 'Noto Sans SC',sans-serif">AI 模型 / API</div><div style="font:400 12px 'Inter',sans-serif;color:rgba(26,26,23,.5);margin-top:3px">3 个端点 · 120ms</div></div>
+            <span style="width:10px;height:10px;border-radius:50%;background:#2E6B3E;display:inline-block"></span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-radius:8px;background:#FBFAF7;border:1px solid rgba(176,138,46,.4)">
+            <div><div style="font:700 15px 'Noto Sans SC',sans-serif">内容发布</div><div style="font:400 12px 'Inter',sans-serif;color:rgba(26,26,23,.5);margin-top:3px">1 篇待审核</div></div>
+            <span style="width:10px;height:10px;border-radius:50%;background:#B08A2E;display:inline-block"></span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-radius:8px;background:#FBFAF7;border:1px solid rgba(167,48,31,.4)">
+            <div><div style="font:700 15px 'Noto Sans SC',sans-serif">GitHub / CI-CD</div><div style="font:400 12px 'Inter',sans-serif;color:rgba(26,26,23,.5);margin-top:3px">docs-site 构建失败</div></div>
+            <span style="width:10px;height:10px;border-radius:50%;background:#A7301F;display:inline-block"></span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-radius:8px;background:#FBFAF7;border:1px solid rgba(26,26,23,.1)">
+            <div><div style="font:700 15px 'Noto Sans SC',sans-serif">域名与安全</div><div style="font:400 12px 'Inter',sans-serif;color:rgba(26,26,23,.5);margin-top:3px">SSL 均有效</div></div>
+            <span style="width:10px;height:10px;border-radius:50%;background:#2E6B3E;display:inline-block"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2D: Master-detail progressive disclosure -->
+    <div class="dv-opt" id="2d">
+      <div class="dv-olabel"><a class="dv-oid" href="#2d">2d</a>主从详情 · 左侧精简列表,右侧按需展开细节</div>
+      <div class="dv-card" style="width:1080px;height:720px;display:flex;color:#1A1A17">
+        <div style="width:260px;border-right:1px solid rgba(26,26,23,.1);padding:24px 0;display:flex;flex-direction:column;flex:none">
+          <div style="padding:0 24px 18px;display:flex;align-items:center;gap:10px"><div class="seal">控</div><div style="font:700 14px 'Noto Sans SC',sans-serif">模块</div></div>
+          <div style="display:flex;flex-direction:column">
+            <div style="padding:13px 24px;background:rgba(26,26,23,.06);border-left:3px solid #1A1A17;font:600 13px 'Noto Sans SC',sans-serif;display:flex;justify-content:space-between">网站托管<span style="width:8px;height:8px;border-radius:50%;background:#2E6B3E;align-self:center"></span></div>
+            <div style="padding:13px 24px;font:500 13px 'Noto Sans SC',sans-serif;color:rgba(26,26,23,.55);display:flex;justify-content:space-between">AI 模型 / API<span style="width:8px;height:8px;border-radius:50%;background:#2E6B3E;align-self:center"></span></div>
+            <div style="padding:13px 24px;font:500 13px 'Noto Sans SC',sans-serif;color:rgba(26,26,23,.55);display:flex;justify-content:space-between">内容发布<span style="width:8px;height:8px;border-radius:50%;background:#B08A2E;align-self:center"></span></div>
+            <div style="padding:13px 24px;font:500 13px 'Noto Sans SC',sans-serif;color:rgba(26,26,23,.55);display:flex;justify-content:space-between">GitHub / CI-CD<span style="width:8px;height:8px;border-radius:50%;background:#A7301F;align-self:center"></span></div>
+            <div style="padding:13px 24px;font:500 13px 'Noto Sans SC',sans-serif;color:rgba(26,26,23,.55);display:flex;justify-content:space-between">域名与安全<span style="width:8px;height:8px;border-radius:50%;background:#2E6B3E;align-self:center"></span></div>
+          </div>
+        </div>
+        <div style="flex:1;padding:32px 36px;display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:900 22px 'Noto Sans SC',sans-serif">网站托管</div><div style="font:500 12px 'Inter',sans-serif;color:#2E6B3E">● 全部正常</div></div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(26,26,23,.1);border:1px solid rgba(26,26,23,.1)">
+            <div style="background:#FBFAF7;padding:16px 18px"><div style="font:500 11px 'Inter',sans-serif;color:rgba(26,26,23,.5)">在线站点</div><div style="font:800 26px 'Inter',sans-serif">7</div></div>
+            <div style="background:#FBFAF7;padding:16px 18px"><div style="font:500 11px 'Inter',sans-serif;color:rgba(26,26,23,.5)">本月流量</div><div style="font:800 26px 'Inter',sans-serif">1.8TB</div></div>
+            <div style="background:#FBFAF7;padding:16px 18px"><div style="font:500 11px 'Inter',sans-serif;color:rgba(26,26,23,.5)">平均响应</div><div style="font:800 26px 'Inter',sans-serif">88ms</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;font:400 12px/1.5 'Inter',sans-serif">
+            <div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(26,26,23,.08);padding-bottom:8px"><span>portfolio.site</span><span style="color:rgba(26,26,23,.45)">Vercel 镜像 · 香港CDN</span></div>
+            <div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(26,26,23,.08);padding-bottom:8px"><span>blog.site</span><span style="color:rgba(26,26,23,.45)">自建 · 阿里云香港</span></div>
+            <div style="display:flex;justify-content:space-between"><span>docs.site</span><span style="color:#B08A2E">部署中…</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">下一步可以试："展开 <a class="dv-oid" href="#2a">2a</a> 的‘待处理事项’为独立模块" · "用 <a class="dv-oid" href="#2d">2d</a> 的主从结构做各模块详情页" · "还要再来一轮"</p>
+</section>
+
+<section class="dv-turn" id="t1">
+  <div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">总览页布局方向 — 3 个选项</span></div>
+  <div class="dv-opts">
+
+    <!-- OPTION 1A: Swiss grid, sidebar + module cards -->
+    <div class="dv-opt" id="1a">
+      <div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>瑞士网格 · 侧栏 + 模块卡</div>
+      <div class="dv-card" style="width:1180px;height:760px;display:flex;color:#1A1A17">
+        <!-- sidebar -->
+        <div style="width:220px;background:#1A1A17;color:#EDE9E1;padding:28px 22px;display:flex;flex-direction:column;gap:32px;flex:none">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div class="seal">控</div>
+            <div style="font:700 15px 'Noto Sans SC',sans-serif;letter-spacing:.02em">控制台</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:2px;font:500 13px/1 'Inter',sans-serif">
+            <div style="padding:10px 12px;background:rgba(237,233,225,.1);border-radius:6px;color:#EDE9E1;display:flex;align-items:center;gap:10px"><span>总览</span></div>
+            <div style="padding:10px 12px;border-radius:6px;color:rgba(237,233,225,.55)">网站托管</div>
+            <div style="padding:10px 12px;border-radius:6px;color:rgba(237,233,225,.55)">AI 模型</div>
+            <div style="padding:10px 12px;border-radius:6px;color:rgba(237,233,225,.55)">内容发布</div>
+            <div style="padding:10px 12px;border-radius:6px;color:rgba(237,233,225,.55)">GitHub / CI-CD</div>
+            <div style="padding:10px 12px;border-radius:6px;color:rgba(237,233,225,.55)">域名与安全</div>
+          </div>
+          <div style="margin-top:auto;font:400 11px/1.5 'Inter',sans-serif;color:rgba(237,233,225,.4);border-top:1px solid rgba(237,233,225,.15);padding-top:14px">
+            香港节点 · 运行正常<br/>3 位团队成员
+          </div>
+        </div>
+        <!-- main -->
+        <div style="flex:1;padding:36px 40px;display:flex;flex-direction:column;gap:28px;min-width:0">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <div style="font:900 26px/1.1 'Noto Sans SC',sans-serif">总览</div>
+            <div style="font:500 12px 'Inter',sans-serif;color:rgba(26,26,23,.45)">2026年7月14日 · 星期二</div>
+          </div>
+          <!-- stat row -->
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(26,26,23,.1);border:1px solid rgba(26,26,23,.1)">
+            <div style="background:#FBFAF7;padding:18px 20px"><div style="font:500 11px 'Inter',sans-serif;color:rgba(26,26,23,.5);text-transform:uppercase;letter-spacing:.06em">在线站点</div><div style="font:800 30px 'Inter',sans-serif;margin-top:6px">7</div></div>
+            <div style="background:#FBFAF7;padding:18px 20px"><div style="font:500 11px 'Inter',sans-serif;color:rgba(26,26,23,.5);text-transform:uppercase;letter-spacing:.06em">模型端点</div><div style="font:800 30px 'Inter',sans-serif;margin-top:6px">3</div></div>
+            <div style="background:#FBFAF7;padding:18px 20px"><div style="font:500 11px 'Inter',sans-serif;color:rgba(26,26,23,.5);text-transform:uppercase;letter-spacing:.06em">本周部署</div><div style="font:800 30px 'Inter',sans-serif;margin-top:6px">12</div></div>
+            <div style="background:#FBFAF7;padding:18px 20px"><div style="font:500 11px 'Inter',sans-serif;color:rgba(26,26,23,.5);text-transform:uppercase;letter-spacing:.06em">待处理告警</div><div style="font:800 30px 'Inter',sans-serif;margin-top:6px;color:#A7301F">1</div></div>
+          </div>
+          <!-- module cards grid -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1">
+            <div style="border:1px solid rgba(26,26,23,.12);padding:20px;display:flex;flex-direction:column;gap:8px">
+              <div style="font:600 13px 'Noto Sans SC',sans-serif">网站托管</div>
+              <div style="font:400 12px/1.6 'Inter',sans-serif;color:rgba(26,26,23,.55)">portfolio.site · blog.site<br/>docs.site 部署中…</div>
+            </div>
+            <div style="border:1px solid rgba(26,26,23,.12);padding:20px;display:flex;flex-direction:column;gap:8px">
+              <div style="font:600 13px 'Noto Sans SC',sans-serif">AI 模型</div>
+              <div style="font:400 12px/1.6 'Inter',sans-serif;color:rgba(26,26,23,.55)">/v1/chat · 120ms 平均延迟<br/>/v1/embed · 正常</div>
+            </div>
+            <div style="border:1px solid rgba(26,26,23,.12);padding:20px;display:flex;flex-direction:column;gap:8px">
+              <div style="font:600 13px 'Noto Sans SC',sans-serif">内容发布</div>
+              <div style="font:400 12px/1.6 'Inter',sans-serif;color:rgba(26,26,23,.55)">3 篇草稿 · 1 篇待审核</div>
+            </div>
+            <div style="border:1px solid rgba(26,26,23,.12);padding:20px;display:flex;flex-direction:column;gap:8px">
+              <div style="font:600 13px 'Noto Sans SC',sans-serif">GitHub / CI-CD</div>
+              <div style="font:400 12px/1.6 'Inter',sans-serif;color:rgba(26,26,23,.55)">最近构建成功 · 4 分钟前</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 1B: Command-center, top stat bar + asymmetric tiles -->
+    <div class="dv-opt" id="1b">
+      <div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>指挥中心 · 顶部状态条 + 不对称模块</div>
+      <div class="dv-card" style="width:1180px;height:760px;display:flex;flex-direction:column;color:#1A1A17">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 32px;border-bottom:1px solid rgba(26,26,23,.1)">
+          <div style="display:flex;align-items:center;gap:10px"><div class="seal">控</div><div style="font:700 15px 'Noto Sans SC',sans-serif">控制台 · 总览</div></div>
+          <div style="display:flex;gap:22px;font:500 12px 'Inter',sans-serif;color:rgba(26,26,23,.5)">
+            <span>网站托管</span><span>AI 模型</span><span>内容发布</span><span>GitHub</span><span>安全</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font:600 12px 'Inter',sans-serif;color:#2E6B3E"><span style="width:7px;height:7px;border-radius:50%;background:#2E6B3E;display:inline-block"></span>全部正常</div>
+        </div>
+        <div style="display:flex;gap:1px;background:rgba(26,26,23,.1);border-bottom:1px solid rgba(26,26,23,.1)">
+          <div style="flex:1;background:#FBFAF7;padding:16px 28px"><div style="font:500 10px 'Inter',sans-serif;color:rgba(26,26,23,.45);text-transform:uppercase;letter-spacing:.08em">站点</div><div style="font:800 26px 'Inter',sans-serif">7</div></div>
+          <div style="flex:1;background:#FBFAF7;padding:16px 28px"><div style="font:500 10px 'Inter',sans-serif;color:rgba(26,26,23,.45);text-transform:uppercase;letter-spacing:.08em">模型调用/日</div><div style="font:800 26px 'Inter',sans-serif">48.2k</div></div>
+          <div style="flex:1;background:#FBFAF7;padding:16px 28px"><div style="font:500 10px 'Inter',sans-serif;color:rgba(26,26,23,.45);text-transform:uppercase;letter-spacing:.08em">本月流量</div><div style="font:800 26px 'Inter',sans-serif">1.8TB</div></div>
+          <div style="flex:1;background:#FBFAF7;padding:16px 28px"><div style="font:500 10px 'Inter',sans-serif;color:rgba(26,26,23,.45);text-transform:uppercase;letter-spacing:.08em">团队成员</div><div style="font:800 26px 'Inter',sans-serif">3</div></div>
+          <div style="flex:1;background:#FBFAF7;padding:16px 28px"><div style="font:500 10px 'Inter',sans-serif;color:rgba(26,26,23,.45);text-transform:uppercase;letter-spacing:.08em">告警</div><div style="font:800 26px 'Inter',sans-serif;color:#A7301F">1</div></div>
+        </div>
+        <div style="flex:1;display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:16px;padding:24px 32px">
+          <div style="border:1px solid rgba(26,26,23,.12);grid-row:1/3;padding:22px;display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:700 15px 'Noto Sans SC',sans-serif">部署流水线</div><div style="font:500 11px 'Inter',sans-serif;color:rgba(26,26,23,.45)">GitHub / CI-CD</div></div>
+            <div style="display:flex;flex-direction:column;gap:10px;font:400 12px/1.5 'Inter',sans-serif">
+              <div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(26,26,23,.08);padding-bottom:8px"><span>blog-site · main</span><span style="color:#2E6B3E">✓ 成功 · 4分钟前</span></div>
+              <div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(26,26,23,.08);padding-bottom:8px"><span>ai-gateway · main</span><span style="color:#2E6B3E">✓ 成功 · 2小时前</span></div>
+              <div style="display:flex;justify-content:space-between"><span>docs-site · dev</span><span style="color:#A7301F">✕ 构建失败</span></div>
+            </div>
+          </div>
+          <div style="border:1px solid rgba(26,26,23,.12);padding:22px;display:flex;flex-direction:column;gap:8px">
+            <div style="font:700 15px 'Noto Sans SC',sans-serif">AI 模型端点</div>
+            <div style="font:400 12px/1.6 'Inter',sans-serif;color:rgba(26,26,23,.55)">/v1/chat — 120ms<br/>/v1/embed — 正常</div>
+          </div>
+          <div style="border:1px solid rgba(26,26,23,.12);padding:22px;display:flex;flex-direction:column;gap:8px">
+            <div style="font:700 15px 'Noto Sans SC',sans-serif">内容发布</div>
+            <div style="font:400 12px/1.6 'Inter',sans-serif;color:rgba(26,26,23,.55)">3 篇草稿 · 1 篇待审核</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 1C: Localized ledger/table console -->
+    <div class="dv-opt" id="1c">
+      <div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>本土化台账 · 大标题列表</div>
+      <div class="dv-card" style="width:1180px;height:760px;display:flex;flex-direction:column;color:#1A1A17;background:#F7F4EC">
+        <div style="padding:32px 40px 20px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #1A1A17">
+          <div>
+            <div style="font:900 34px/1 'Noto Sans SC',sans-serif;letter-spacing:.01em">服务台账</div>
+            <div style="font:400 13px 'Inter',sans-serif;color:rgba(26,26,23,.5);margin-top:6px">香港节点 · 3 位管理员 · 2026-07-14</div>
+          </div>
+          <div class="seal" style="width:44px;height:44px;font-size:16px;border-radius:4px">控</div>
+        </div>
+        <div style="display:flex;flex:1">
+          <div style="flex:1;padding:24px 40px;display:flex;flex-direction:column">
+            <div style="display:grid;grid-template-columns:1.6fr .8fr 1fr .9fr;gap:0;font:600 11px 'Inter',sans-serif;text-transform:uppercase;letter-spacing:.06em;color:rgba(26,26,23,.45);padding-bottom:10px;border-bottom:1px solid rgba(26,26,23,.15)">
+              <div>模块</div><div>状态</div><div>关键指标</div><div>最近更新</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1.6fr .8fr 1fr .9fr;align-items:center;padding:16px 0;border-bottom:1px solid rgba(26,26,23,.08);font:500 13px 'Noto Sans SC',sans-serif">
+              <div>网站托管</div><div style="color:#2E6B3E;font-family:'Inter';font-size:12px">● 正常</div><div style="font:400 12px 'Inter',sans-serif;color:rgba(26,26,23,.6)">7 个站点在线</div><div style="font:400 12px 'Inter',sans-serif;color:rgba(26,26,23,.45)">4 分钟前</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1.6fr .8fr 1fr .9fr;align-items:center;padding:16px 0;border-bottom:1px solid rgba(26,26,23,.08);font:500 13px 'Noto Sans SC',sans-serif">
+              <div>AI 模型 / API</div><div style="color:#2E6B3E;font-family:'Inter';font-size:12px">● 正常</div><div style="font:400 12px 'Inter',sans-serif;color:rgba(26,26,23,.6)">3 个端点 · 120ms</div><div style="font:400 12px 'Inter',sans-serif;color:rgba(26,26,23,.45)">2 小时前</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1.6fr .8fr 1fr .9fr;align-items:center;padding:16px 0;border-bottom:1px solid rgba(26,26,23,.08);font:500 13px 'Noto Sans SC',sans-serif">
+              <div>内容发布</div><div style="color:#B08A2E;font-family:'Inter';font-size:12px">● 待审核</div><div style="font:400 12px 'Inter',sans-serif;color:rgba(26,26,23,.6)">1 篇待审核</div><div style="font:400 12px 'Inter',sans-serif;color:rgba(26,26,23,.45)">今天 09:12</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1.6fr .8fr 1fr .9fr;align-items:center;padding:16px 0;border-bottom:1px solid rgba(26,26,23,.08);font:500 13px 'Noto Sans SC',sans-serif">
+              <div>GitHub / CI-CD</div><div style="color:#A7301F;font-family:'Inter';font-size:12px">● 1 处失败</div><div style="font:400 12px 'Inter',sans-serif;color:rgba(26,26,23,.6)">docs-site 构建失败</div><div style="font:400 12px 'Inter',sans-serif;color:rgba(26,26,23,.45)">14 分钟前</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1.6fr .8fr 1fr .9fr;align-items:center;padding:16px 0;font:500 13px 'Noto Sans SC',sans-serif">
+              <div>域名与安全</div><div style="color:#2E6B3E;font-family:'Inter';font-size:12px">● 正常</div><div style="font:400 12px 'Inter',sans-serif;color:rgba(26,26,23,.6)">SSL 均有效</div><div style="font:400 12px 'Inter',sans-serif;color:rgba(26,26,23,.45)">昨天</div>
+            </div>
+          </div>
+          <div style="width:280px;border-left:1px solid rgba(26,26,23,.15);padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+            <div style="font:700 13px 'Noto Sans SC',sans-serif">团队</div>
+            <div style="display:flex;flex-direction:column;gap:10px;font:400 12px 'Inter',sans-serif;color:rgba(26,26,23,.6)">
+              <div>周明 · 管理员</div><div>李颀 · 部署</div><div>陈舒 · 内容</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p class="dv-next">下一步可以试：“按 <a class="dv-oid" href="#1a">1a</a> 的布局展开‘网站托管’详情页” · “把 <a class="dv-oid" href="#1c">1c</a> 的台账列表用在GitHub模块” · “三个都不满意，再来一轮”</p>
+</section>
+
+</x-dc>
+</body>
+</html>

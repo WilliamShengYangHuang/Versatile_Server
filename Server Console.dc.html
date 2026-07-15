@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@300;400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;background:#2A1740;font-family:'Inter','Noto Sans SC',sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:#D9B94A}
+  a:hover{color:#F1EAD8}
+  .nav-item{cursor:pointer}
+  .row{display:grid;grid-template-columns:1.4fr 3fr .8fr;align-items:center;padding:14px 0;border-bottom:1px solid rgba(237,231,224,.1)}
+  .badge{justify-self:end;display:inline-flex;align-items:center;justify-content:center;width:64px;height:26px;font:600 11px 'Inter',sans-serif;border-radius:4px}
+  .b-ok{color:#8FCB9E;border:1px solid rgba(143,203,158,.45)}
+  .b-warn{color:#D9B94A;border:1px solid rgba(217,185,74,.45)}
+  .b-bad{color:#E9998A;border:1px solid rgba(233,153,138,.5)}
+  .b-neutral{color:rgba(237,231,224,.4);border:1px solid rgba(237,231,224,.2)}
+  button{white-space:nowrap;font-family:inherit}
+  .page-title{white-space:nowrap}
+  .empty-row{padding:36px 0;text-align:center;font:400 13px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.35)}
+  .lang-toggle{display:flex;border:1px solid rgba(237,231,224,.25);border-radius:6px;overflow:hidden}
+  .lang-opt{padding:7px 12px;font:600 11px 'Inter',sans-serif;cursor:pointer}
+</style>
+</helmet>
+
+<div style="width:100%;min-height:100vh;display:flex;flex-direction:column;color:#EDE7E0;background:#2A1740;font-family:'Inter','Noto Sans SC',sans-serif;box-sizing:border-box">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:24px 24px 0;max-width:1168px;width:100%;margin:0 auto;box-sizing:border-box;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="width:6px;height:6px;border-radius:50%;background:#D9B94A;display:inline-block"></span>
+      <div style="font:600 12px 'Inter',sans-serif;letter-spacing:.12em;color:rgba(237,231,224,.65)">SERVER CONSOLE</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="lang-toggle">
+        <span class="lang-opt" onClick="{{ setLangZh }}" style="background:{{ zhBg }};padding:6px 10px;opacity:{{ zhOpacity }}">
+          <svg width="20" height="14" viewBox="0 0 30 20"><rect width="30" height="20" fill="rgba(237,231,224,.85)"/><path d="M6 4 L7.2 7.6 L11 7.6 L8 9.8 L9 13.4 L6 11.2 L3 13.4 L4 9.8 L1 7.6 L4.8 7.6 Z" fill="#2A1740"/><circle cx="11" cy="3" r="0.9" fill="#2A1740"/><circle cx="13" cy="5.5" r="0.9" fill="#2A1740"/><circle cx="13" cy="8.5" r="0.9" fill="#2A1740"/><circle cx="11" cy="11" r="0.9" fill="#2A1740"/></svg>
+        </span>
+        <span class="lang-opt" onClick="{{ setLangEn }}" style="background:{{ enBg }};padding:6px 10px;opacity:{{ enOpacity }}">
+          <svg width="20" height="14" viewBox="0 0 60 30"><rect width="60" height="30" fill="rgba(237,231,224,.85)"/><path d="M0 0 L60 30 M60 0 L0 30" stroke="#2A1740" stroke-width="6"/><path d="M30 0 L30 30 M0 15 L60 15" stroke="#2A1740" stroke-width="10"/><path d="M30 0 L30 30 M0 15 L60 15" stroke="rgba(237,231,224,.85)" stroke-width="4"/></svg>
+        </span>
+      </div>
+      <span class="{{ connBadgeClass }}" style="display:inline-flex;align-items:center;white-space:nowrap;width:auto;height:26px;padding:0 12px;font:600 11px 'Inter',sans-serif;border-radius:4px">{{ connLabel }}</span>
+      <button onClick="{{ openDataSourceModal }}" style="cursor:pointer;background:none;border:1px solid rgba(237,231,224,.25);color:rgba(237,231,224,.7);border-radius:6px;padding:7px 14px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.dataSource }}</button>
+      <a href="Setup Wizard.dc.html" style="display:inline-flex;align-items:center;gap:7px;font:600 12px 'Noto Sans SC',sans-serif;text-decoration:none;color:rgba(237,231,224,.7);border:1px solid rgba(237,231,224,.25);border-radius:6px;padding:7px 14px"><span style="width:7px;height:7px;border-radius:50%;background:{{ statusDotColor }};display:inline-block"></span>{{ L.deploy }}</a>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:24px;flex-wrap:wrap;font:500 13px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.55);padding:14px 24px 0;max-width:1168px;width:100%;margin:0 auto;box-sizing:border-box">
+    <span class="nav-item" style="color:{{ tabColor.overview }}" onClick="{{ goOverview }}">{{ L.navOverview }}</span>
+    <span class="nav-item" style="color:{{ tabColor.sites }}" onClick="{{ goSites }}">{{ L.navSites }}</span>
+    <span class="nav-item" style="color:{{ tabColor.ai }}" onClick="{{ goAi }}">{{ L.navAi }}</span>
+    <span class="nav-item" style="color:{{ tabColor.content }}" onClick="{{ goContent }}">{{ L.navContent }}</span>
+    <span class="nav-item" style="color:{{ tabColor.cicd }}" onClick="{{ goCicd }}">{{ L.navCicd }}</span>
+    <span class="nav-item" style="color:{{ tabColor.usage }}" onClick="{{ goUsage }}">{{ L.navUsage }}</span>
+    <span class="nav-item" style="color:{{ tabColor.security }}" onClick="{{ goSecurity }}">{{ L.navSecurity }}</span>
+  </div>
+
+  <div style="padding:16px 24px 22px;max-width:1168px;width:100%;margin:0 auto;box-sizing:border-box;display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px">
+    <div class="page-title" style="font:400 34px/1 'Noto Serif SC',serif;color:#F1EAD8">{{ pageTitle }}</div>
+    <div style="display:flex;align-items:center;gap:7px;font:500 13px 'Inter',sans-serif;color:rgba(237,231,224,.48)"><span style="width:7px;height:7px;border-radius:50%;background:{{ statusDotColor }};display:inline-block"></span>{{ nodeLabel }}</div>
+  </div>
+
+  <div style="width:100%;max-width:1168px;margin:0 auto;padding:0 24px;box-sizing:border-box;display:flex;flex-direction:column;flex:1">
+
+  <!-- 总览 -->
+  <sc-if value="{{ isOverview }}">
+    <div style="display:flex;gap:18px;flex-wrap:wrap;border-top:1px solid rgba(237,231,224,.14);padding-top:22px">
+      <div style="background:{{ pendingCardBg }};border:1px solid {{ pendingCardBorder }};border-radius:8px;padding:16px 22px;display:flex;align-items:center;gap:16px;min-width:260px">
+        <div style="font:600 32px 'Inter',sans-serif;color:{{ pendingColor }};line-height:1">{{ pendingCount }}</div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <div style="font:600 12px 'Inter',sans-serif;color:{{ pendingColor }};letter-spacing:.04em">{{ pendingLabel }}</div>
+          <div style="font:500 14px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.85)">{{ pendingDetail }}</div>
+        </div>
+      </div>
+      <div style="flex:1;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0;min-width:280px">
+        <div style="padding:0 20px;border-right:1px solid rgba(237,231,224,.12)"><div style="font:500 12px 'Inter',sans-serif;color:rgba(237,231,224,.48);letter-spacing:.04em">{{ L.metricSites }}</div><div style="font:600 26px 'Inter',sans-serif;margin-top:8px;color:#F1EAD8">{{ siteCount }}</div></div>
+        <div style="padding:0 20px;border-right:1px solid rgba(237,231,224,.12)"><div style="font:500 12px 'Inter',sans-serif;color:rgba(237,231,224,.48);letter-spacing:.04em">{{ L.metricEndpoints }}</div><div style="font:600 26px 'Inter',sans-serif;margin-top:8px;color:#F1EAD8">{{ endpointCount }}</div></div>
+        <div style="padding:0 20px;border-right:1px solid rgba(237,231,224,.12)"><div style="font:500 12px 'Inter',sans-serif;color:rgba(237,231,224,.48);letter-spacing:.04em">{{ L.metricRepos }}</div><div style="font:600 26px 'Inter',sans-serif;margin-top:8px;color:#F1EAD8">{{ pipelineCount }}</div></div>
+        <div style="padding:0 20px"><div style="font:500 12px 'Inter',sans-serif;color:rgba(237,231,224,.48);letter-spacing:.04em">{{ L.metricTraffic }}</div><div style="font:600 20px 'Inter',sans-serif;margin-top:8px;color:rgba(237,231,224,.4)">{{ trafficLabel }}</div></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.4fr 3fr .8fr;font:600 11px 'Inter',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:rgba(237,231,224,.4);padding-top:26px;padding-bottom:8px">
+      <div>{{ L.colModule }}</div><div>{{ L.colDetail }}</div><div style="text-align:right">{{ L.colStatus }}</div>
+    </div>
+    <div style="flex:1;padding-bottom:22px;display:flex;flex-direction:column">
+      <div class="row" onClick="{{ goSites }}" style="cursor:pointer"><span style="font:600 15px 'Noto Sans SC',sans-serif;color:#F1EAD8">{{ L.navSites }}</span><span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.55)">{{ sitesSummary }}</span><span class="badge {{ sitesBadge }}">{{ sitesStatus }}</span></div>
+      <div class="row" onClick="{{ goAi }}" style="cursor:pointer"><span style="font:600 15px 'Noto Sans SC',sans-serif;color:#F1EAD8">{{ L.navAi }}</span><span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.55)">{{ endpointsSummary }}</span><span class="badge {{ endpointsBadge }}">{{ endpointsStatus }}</span></div>
+      <div class="row" onClick="{{ goContent }}" style="cursor:pointer"><span style="font:600 15px 'Noto Sans SC',sans-serif;color:#F1EAD8">{{ L.navContent }}</span><span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.55)">{{ postsSummary }}</span><span class="badge {{ postsBadge }}">{{ postsStatus }}</span></div>
+      <div class="row" onClick="{{ goCicd }}" style="cursor:pointer"><span style="font:600 15px 'Noto Sans SC',sans-serif;color:#F1EAD8">{{ L.navCicd }}</span><span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.55)">{{ pipelinesSummary }}</span><span class="badge {{ pipelinesBadge }}">{{ pipelinesStatus }}</span></div>
+      <div class="row" onClick="{{ goUsage }}" style="cursor:pointer;border-bottom:none"><span style="font:600 15px 'Noto Sans SC',sans-serif;color:#F1EAD8">{{ L.navUsage }}</span><span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.55)">{{ usageSummary }}</span><span class="badge b-neutral">{{ usageStatusLabel }}</span></div>
+    </div>
+  </sc-if>
+
+  <!-- 网站托管 -->
+  <sc-if value="{{ isSites }}">
+    <div style="display:flex;justify-content:flex-end;padding-top:22px;border-top:1px solid rgba(237,231,224,.14)">
+      <button onClick="{{ openSiteModal }}" style="cursor:pointer;background:rgba(217,185,74,.1);border:1px solid rgba(217,185,74,.45);color:#D9B94A;border-radius:6px;padding:8px 16px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.addSite }}</button>
+    </div>
+    <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr .8fr;font:600 11px 'Inter',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:rgba(237,231,224,.4);padding-top:14px;padding-bottom:8px">
+      <div>{{ L.colDomain }}</div><div>{{ L.colNode }}</div><div>{{ L.colTraffic }}</div><div>{{ L.colLatency }}</div><div style="text-align:right">{{ L.colStatus }}</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column">
+      <sc-if value="{{ sitesEmpty }}"><div class="empty-row">{{ L.emptySites }}</div></sc-if>
+      <sc-for list="{{ sites }}" as="s" hint-placeholder-count="0">
+        <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr .8fr;align-items:center;padding:15px 0;border-bottom:1px solid rgba(237,231,224,.1)">
+          <span style="font:600 14px 'Noto Sans SC',sans-serif;color:#F1EAD8">{{ s.domain }}</span>
+          <span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.55)">{{ s.node }}</span>
+          <span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.4)">{{ s.traffic }}</span>
+          <span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.4)">{{ s.latency }}</span>
+          <span class="badge {{ s.badgeClass }}" style="justify-self:end">{{ s.status }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <!-- AI 模型 -->
+  <sc-if value="{{ isAi }}">
+    <div style="display:flex;justify-content:flex-end;padding-top:22px;border-top:1px solid rgba(237,231,224,.14)">
+      <button onClick="{{ openModelModal }}" style="cursor:pointer;background:rgba(217,185,74,.1);border:1px solid rgba(217,185,74,.45);color:#D9B94A;border-radius:6px;padding:8px 16px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.deployModel }}</button>
+    </div>
+    <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr .8fr;font:600 11px 'Inter',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:rgba(237,231,224,.4);padding-top:14px;padding-bottom:8px">
+      <div>{{ L.colEndpoint }}</div><div>{{ L.colAvgLatency }}</div><div>{{ L.colCallsDay }}</div><div>{{ L.colModel }}</div><div style="text-align:right">{{ L.colStatus }}</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column">
+      <sc-if value="{{ endpointsEmpty }}"><div class="empty-row">{{ L.emptyEndpoints }}</div></sc-if>
+      <sc-for list="{{ endpoints }}" as="e" hint-placeholder-count="0">
+        <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr .8fr;align-items:center;padding:15px 0;border-bottom:1px solid rgba(237,231,224,.1)">
+          <span style="font:600 14px 'Inter',sans-serif;color:#F1EAD8">{{ e.path }}</span>
+          <span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.4)">{{ e.latency }}</span>
+          <span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.4)">{{ e.calls }}</span>
+          <span style="font:400 13px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.55)">{{ e.model }}</span>
+          <span class="badge {{ e.badgeClass }}" style="justify-self:end">{{ e.status }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <!-- 内容发布 -->
+  <sc-if value="{{ isContent }}">
+    <div style="display:flex;justify-content:flex-end;padding-top:22px;border-top:1px solid rgba(237,231,224,.14)">
+      <button onClick="{{ openPostModal }}" style="cursor:pointer;background:rgba(217,185,74,.1);border:1px solid rgba(217,185,74,.45);color:#D9B94A;border-radius:6px;padding:8px 16px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.publishPost }}</button>
+    </div>
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr .8fr;font:600 11px 'Inter',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:rgba(237,231,224,.4);padding-top:14px;padding-bottom:8px">
+      <div>{{ L.colTitle }}</div><div>{{ L.colAuthor }}</div><div>{{ L.colUpdated }}</div><div style="text-align:right">{{ L.colStatus }}</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column">
+      <sc-if value="{{ postsEmpty }}"><div class="empty-row">{{ L.emptyPosts }}</div></sc-if>
+      <sc-for list="{{ posts }}" as="p" hint-placeholder-count="0">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr .8fr;align-items:center;padding:15px 0;border-bottom:1px solid rgba(237,231,224,.1)">
+          <span style="font:600 14px 'Noto Sans SC',sans-serif;color:#F1EAD8">{{ p.title }}</span>
+          <span style="font:400 13px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.55)">{{ p.author }}</span>
+          <span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.4)">{{ p.updated }}</span>
+          <span class="badge {{ p.badgeClass }}" style="justify-self:end">{{ p.status }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <!-- GitHub / CI-CD -->
+  <sc-if value="{{ isCicd }}">
+    <div style="display:flex;justify-content:flex-end;padding-top:22px;border-top:1px solid rgba(237,231,224,.14)">
+      <button onClick="{{ openRepoModal }}" style="cursor:pointer;background:rgba(217,185,74,.1);border:1px solid rgba(217,185,74,.45);color:#D9B94A;border-radius:6px;padding:8px 16px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.connectRepo }}</button>
+    </div>
+    <div style="display:grid;grid-template-columns:1.8fr 1fr 1.2fr .8fr;font:600 11px 'Inter',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:rgba(237,231,224,.4);padding-top:14px;padding-bottom:8px">
+      <div>{{ L.colRepoBranch }}</div><div>{{ L.colTrigger }}</div><div>{{ L.colLastCommit }}</div><div style="text-align:right">{{ L.colStatus }}</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column">
+      <sc-if value="{{ pipelinesEmpty }}"><div class="empty-row">{{ L.emptyPipelines }}</div></sc-if>
+      <sc-for list="{{ pipelines }}" as="b" hint-placeholder-count="0">
+        <div style="display:grid;grid-template-columns:1.8fr 1fr 1.2fr .8fr;align-items:center;padding:15px 0;border-bottom:1px solid rgba(237,231,224,.1)">
+          <span style="font:600 14px 'Inter',sans-serif;color:#F1EAD8">{{ b.repo }}</span>
+          <span style="font:400 13px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.55)">{{ b.trigger }}</span>
+          <span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.4)">{{ b.time }}</span>
+          <span class="badge {{ b.badgeClass }}" style="justify-self:end">{{ b.status }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <!-- 流量与用量 -->
+  <sc-if value="{{ isUsage }}">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;padding-top:22px;border-top:1px solid rgba(237,231,224,.14)">
+      <div style="font:400 13px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.55)">{{ L.thresholdLabel }} <span style="color:#D9B94A;font-weight:600">{{ usageThreshold }}TB</span> / {{ L.perMonth }}</div>
+      <div style="display:flex;gap:10px">
+        <button onClick="{{ openLogModal }}" style="background:none;border:1px solid rgba(237,231,224,.25);color:rgba(237,231,224,.7);border-radius:6px;padding:8px 16px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.viewLog }}</button>
+        <button onClick="{{ downloadLog }}" style="background:none;border:1px solid rgba(237,231,224,.25);color:rgba(237,231,224,.7);border-radius:6px;padding:8px 16px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.downloadLog }}</button>
+        <button onClick="{{ openThresholdModal }}" style="background:rgba(217,185,74,.1);border:1px solid rgba(217,185,74,.45);color:#D9B94A;border-radius:6px;padding:8px 16px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.setThreshold }}</button>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:22px;flex-wrap:wrap;gap:10px">
+      <div style="font:500 12px 'Inter',sans-serif;color:rgba(237,231,224,.45);letter-spacing:.05em;white-space:nowrap;flex:none">{{ L.speedTestLabel }}</div>
+      <button onClick="{{ runSpeedTest }}" disabled="{{ speedTestRunning }}" style="background:rgba(217,185,74,.1);border:1px solid rgba(217,185,74,.45);color:#D9B94A;border-radius:6px;padding:8px 16px;font:600 12px 'Noto Sans SC',sans-serif;opacity:{{ speedTestBtnOpacity }}">{{ speedTestBtnLabel }}</button>
+    </div>
+    <sc-if value="{{ speedTestUnavailable }}">
+      <div style="background:rgba(237,231,224,.03);border:1px solid rgba(237,231,224,.1);border-radius:10px;padding:20px;text-align:center;font:400 13px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.4);margin-top:12px">{{ L.speedTestNeedConn }}</div>
+    </sc-if>
+    <sc-if value="{{ speedTestHasResult }}">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px">
+        <div style="background:rgba(237,231,224,.03);border:1px solid rgba(237,231,224,.1);border-radius:10px;padding:18px;display:flex;flex-direction:column;align-items:center;gap:10px">
+          <svg width="76" height="76" viewBox="0 0 76 76"><circle cx="38" cy="38" r="32" fill="none" stroke="rgba(237,231,224,.1)" stroke-width="6"/><circle cx="38" cy="38" r="32" fill="none" stroke="#8FCB9E" stroke-width="6" stroke-linecap="round" stroke-dasharray="{{ downloadArc }} 999" transform="rotate(-90 38 38)"/></svg>
+          <div style="font:600 20px 'Inter',sans-serif;color:#F1EAD8;margin-top:-58px">{{ downloadMbps }}</div>
+          <div style="font:500 10px 'Inter',sans-serif;color:rgba(237,231,224,.4);letter-spacing:.05em;margin-top:36px">Mbps</div>
+          <div style="font:500 12px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.6)">{{ L.download }}</div>
+        </div>
+        <div style="background:rgba(237,231,224,.03);border:1px solid rgba(237,231,224,.1);border-radius:10px;padding:18px;display:flex;flex-direction:column;align-items:center;gap:10px">
+          <svg width="76" height="76" viewBox="0 0 76 76"><circle cx="38" cy="38" r="32" fill="none" stroke="rgba(237,231,224,.1)" stroke-width="6"/><circle cx="38" cy="38" r="32" fill="none" stroke="#D9B94A" stroke-width="6" stroke-linecap="round" stroke-dasharray="{{ uploadArc }} 999" transform="rotate(-90 38 38)"/></svg>
+          <div style="font:600 20px 'Inter',sans-serif;color:#F1EAD8;margin-top:-58px">{{ uploadMbps }}</div>
+          <div style="font:500 10px 'Inter',sans-serif;color:rgba(237,231,224,.4);letter-spacing:.05em;margin-top:36px">Mbps</div>
+          <div style="font:500 12px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.6)">{{ L.upload }}</div>
+        </div>
+        <div style="background:rgba(237,231,224,.03);border:1px solid rgba(237,231,224,.1);border-radius:10px;padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
+          <div style="font:600 26px 'Inter',sans-serif;color:#F1EAD8">{{ pingMs }}</div>
+          <div style="font:500 12px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.6)">{{ L.latency }}</div>
+        </div>
+      </div>
+      <div style="font:400 11px 'Inter',sans-serif;color:rgba(237,231,224,.3);margin-top:10px">{{ speedTestTimestamp }}</div>
+    </sc-if>
+
+    <div style="padding:26px 0 14px;font:500 12px 'Inter',sans-serif;color:rgba(237,231,224,.45);letter-spacing:.05em">{{ L.bandwidthTelemetry }}</div>
+    <div style="position:relative;background:rgba(237,231,224,.03);border:1px solid rgba(237,231,224,.1);border-radius:10px;padding:20px 8px 8px">
+      <svg width="100%" height="220" viewBox="0 0 1120 220" preserveAspectRatio="none">
+        <line x1="52" y1="{{ y0 }}" x2="1104" y2="{{ y0 }}" stroke="rgba(237,231,224,.08)" stroke-width="1"></line>
+        <line x1="52" y1="{{ y1 }}" x2="1104" y2="{{ y1 }}" stroke="rgba(237,231,224,.08)" stroke-width="1"></line>
+        <line x1="52" y1="{{ y2 }}" x2="1104" y2="{{ y2 }}" stroke="rgba(237,231,224,.08)" stroke-width="1"></line>
+        <line x1="52" y1="{{ y3 }}" x2="1104" y2="{{ y3 }}" stroke="rgba(237,231,224,.08)" stroke-width="1"></line>
+        <line x1="52" y1="{{ y4 }}" x2="1104" y2="{{ y4 }}" stroke="rgba(237,231,224,.08)" stroke-width="1"></line>
+
+        <line x1="{{ x0 }}" y1="10" x2="{{ x0 }}" y2="180" stroke="rgba(237,231,224,.06)" stroke-width="1"></line>
+        <line x1="{{ x1 }}" y1="10" x2="{{ x1 }}" y2="180" stroke="rgba(237,231,224,.06)" stroke-width="1"></line>
+        <line x1="{{ x2 }}" y1="10" x2="{{ x2 }}" y2="180" stroke="rgba(237,231,224,.06)" stroke-width="1"></line>
+        <line x1="{{ x3 }}" y1="10" x2="{{ x3 }}" y2="180" stroke="rgba(237,231,224,.06)" stroke-width="1"></line>
+        <line x1="{{ x4 }}" y1="10" x2="{{ x4 }}" y2="180" stroke="rgba(237,231,224,.06)" stroke-width="1"></line>
+        <line x1="{{ x5 }}" y1="10" x2="{{ x5 }}" y2="180" stroke="rgba(237,231,224,.06)" stroke-width="1"></line>
+        <line x1="{{ x6 }}" y1="10" x2="{{ x6 }}" y2="180" stroke="rgba(237,231,224,.06)" stroke-width="1"></line>
+
+        <line x1="52" y1="180" x2="1104" y2="180" stroke="rgba(237,231,224,.16)" stroke-width="1"></line>
+      </svg>
+
+      <div style="position:absolute;left:8px;top:{{ y0PxTop }}px;font:400 11px 'Inter',sans-serif;color:rgba(237,231,224,.4)">{{ v0 }}</div>
+      <div style="position:absolute;left:8px;top:{{ y1PxTop }}px;font:400 11px 'Inter',sans-serif;color:rgba(237,231,224,.4)">{{ v1 }}</div>
+      <div style="position:absolute;left:8px;top:{{ y2PxTop }}px;font:400 11px 'Inter',sans-serif;color:rgba(237,231,224,.4)">{{ v2 }}</div>
+      <div style="position:absolute;left:8px;top:{{ y3PxTop }}px;font:400 11px 'Inter',sans-serif;color:rgba(237,231,224,.4)">{{ v3 }}</div>
+      <div style="position:absolute;left:8px;top:{{ y4PxTop }}px;font:400 11px 'Inter',sans-serif;color:rgba(237,231,224,.4)">{{ v4 }}</div>
+
+      <div style="display:flex;justify-content:space-between;padding:6px 4px 2px 56px;font:400 11px 'Inter',sans-serif;color:rgba(237,231,224,.4)">
+        <span>07.08</span><span>07.09</span><span>07.10</span><span>07.11</span><span>07.12</span><span>07.13</span><span>07.14</span>
+      </div>
+
+      <sc-if value="{{ usageSeriesEmpty }}">
+        <div style="position:absolute;inset:20px 8px 40px;display:flex;align-items:center;justify-content:center;text-align:center">
+          <div style="font:400 13px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.4)">{{ L.noTelemetry }}<br/><span style="font:400 12px 'Inter',sans-serif;color:rgba(237,231,224,.32)">{{ L.noTelemetryHint }}</span></div>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="padding:26px 0 8px;font:500 12px 'Inter',sans-serif;color:rgba(237,231,224,.45);letter-spacing:.05em">{{ L.moduleCounts }}</div>
+    <div style="flex:1;padding-bottom:22px;display:flex;flex-direction:column;gap:16px">
+      <svg width="100%" height="140" viewBox="0 0 600 140" preserveAspectRatio="none">
+        <line x1="40" y1="10" x2="40" y2="110" stroke="rgba(237,231,224,.2)" stroke-width="1"/>
+        <line x1="40" y1="110" x2="580" y2="110" stroke="rgba(237,231,224,.2)" stroke-width="1"/>
+        <sc-for list="{{ moduleCountBars }}" as="m" hint-placeholder-count="0">
+          <rect x="{{ m.x }}" y="{{ m.y }}" width="70" height="{{ m.h }}" fill="#D9B94A" opacity="0.75" rx="2"></rect>
+          <text x="{{ m.labelX }}" y="128" fill="rgba(237,231,224,.5)" font-size="11" text-anchor="middle" font-family="Noto Sans SC, sans-serif">{{ m.name }}</text>
+          <text x="{{ m.labelX }}" y="{{ m.valueY }}" fill="#F1EAD8" font-size="12" text-anchor="middle" font-family="Inter, sans-serif">{{ m.count }}</text>
+        </sc-for>
+        <text x="36" y="14" fill="rgba(237,231,224,.35)" font-size="10" text-anchor="end" font-family="Inter, sans-serif">{{ maxCount }}</text>
+        <text x="36" y="112" fill="rgba(237,231,224,.35)" font-size="10" text-anchor="end" font-family="Inter, sans-serif">0</text>
+      </svg>
+    </div>
+  </sc-if>
+
+  <!-- 域名与安全 -->
+  <sc-if value="{{ isSecurity }}">
+    <div style="display:flex;justify-content:flex-end;padding-top:22px;border-top:1px solid rgba(237,231,224,.14)">
+      <button onClick="{{ openDomainModal }}" style="cursor:pointer;background:rgba(217,185,74,.1);border:1px solid rgba(217,185,74,.45);color:#D9B94A;border-radius:6px;padding:8px 16px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.bindDomain }}</button>
+    </div>
+    <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr .8fr;font:600 11px 'Inter',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:rgba(237,231,224,.4);padding-top:14px;padding-bottom:8px">
+      <div>{{ L.colDomain }}</div><div>{{ L.colSsl }}</div><div>{{ L.colExpiry }}</div><div style="text-align:right">{{ L.colStatus }}</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column">
+      <sc-if value="{{ domainsEmpty }}"><div class="empty-row">{{ L.emptyDomains }}</div></sc-if>
+      <sc-for list="{{ domains }}" as="d" hint-placeholder-count="0">
+        <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr .8fr;align-items:center;padding:15px 0;border-bottom:1px solid rgba(237,231,224,.1)">
+          <span style="font:600 14px 'Inter',sans-serif;color:#F1EAD8">{{ d.domain }}</span>
+          <span style="font:400 13px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.55)">{{ d.cert }}</span>
+          <span style="font:400 13px 'Inter',sans-serif;color:rgba(237,231,224,.4)">{{ d.expiry }}</span>
+          <span class="badge {{ d.badgeClass }}" style="justify-self:end">{{ d.status }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  </div>
+
+  <div style="width:100%;max-width:1168px;margin:0 auto;padding:16px 24px;box-sizing:border-box;border-top:1px solid rgba(237,231,224,.1);font:500 12px 'Inter',sans-serif;color:rgba(237,231,224,.42);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
+    <span>{{ L.footerAuthor }}</span><span>{{ footerStatus }}</span>
+  </div>
+
+  <sc-if value="{{ isModalOpen }}">
+    <div onClick="{{ closeModal }}" style="position:fixed;inset:0;background:rgba(20,12,30,.6);display:flex;align-items:center;justify-content:center;z-index:50;padding:24px">
+      <div onClick="{{ stopPropagation }}" style="background:#2A1740;border:1px solid rgba(237,231,224,.15);border-radius:12px;padding:28px 32px;width:{{ modalWidth }};max-width:100%;box-shadow:0 20px 60px rgba(0,0,0,.4);display:flex;flex-direction:column;gap:18px">
+
+        <sc-if value="{{ isModalLog }}">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <div style="font:400 22px 'Noto Serif SC',serif;color:#F1EAD8">{{ L.logTitle }}</div>
+            <button onClick="{{ downloadLog }}" style="background:none;border:1px solid rgba(237,231,224,.25);color:rgba(237,231,224,.7);border-radius:6px;padding:6px 12px;font:600 11px 'Noto Sans SC',sans-serif">{{ L.download }}</button>
+          </div>
+          <div style="max-height:360px;overflow-y:auto;display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ logsReversed }}" as="l" hint-placeholder-count="3">
+              <div style="border-bottom:1px solid rgba(237,231,224,.08);padding-bottom:8px">
+                <div style="font:500 11px 'Inter',sans-serif;color:rgba(237,231,224,.4)">{{ l.time }}</div>
+                <div style="font:400 13px 'Noto Sans SC',sans-serif;color:rgba(237,231,224,.8);margin-top:2px">{{ l.text }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;justify-content:flex-end;margin-top:6px">
+            <button onClick="{{ closeModal }}" style="background:#D9B94A;border:1px solid #D9B94A;color:#2A1740;border-radius:6px;padding:9px 18px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.close }}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isModalDatasource }}">
+          <div style="font:400 22px 'Noto Serif SC',serif;color:#F1EAD8">{{ L.dataSourceTitle }}</div>
+          <div style="font:400 12px/1.6 'Inter',sans-serif;color:rgba(237,231,224,.45)">{{ L.dataSourceDesc }} <a href="Setup Wizard.dc.html">{{ L.dataSourceDeployLink }}</a></div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="font:500 11px 'Inter',sans-serif;color:rgba(237,231,224,.5);letter-spacing:.05em">{{ L.apiBaseLabel }}</label>
+            <input value="{{ modal.apiBase }}" onChange="{{ onApiBaseChange }}" placeholder="https://api.your-domain.com" style="background:rgba(237,231,224,.06);border:1px solid rgba(237,231,224,.18);border-radius:6px;padding:10px 12px;color:#F1EAD8;font:400 13px 'Inter',sans-serif;outline:none" />
+          </div>
+          <sc-if value="{{ hasConnError }}"><div style="font:400 12px 'Inter',sans-serif;color:#E9998A">{{ L.connFailPrefix }}{{ connError }}</div></sc-if>
+          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:6px">
+            <button onClick="{{ closeModal }}" style="cursor:pointer;background:none;border:1px solid rgba(237,231,224,.2);color:rgba(237,231,224,.6);border-radius:6px;padding:9px 18px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.cancel }}</button>
+            <button onClick="{{ submitDatasource }}" style="cursor:pointer;background:#D9B94A;border:1px solid #D9B94A;color:#2A1740;border-radius:6px;padding:9px 18px;font:600 12px 'Noto Sans SC',sans-serif">{{ connectBtnLabel }}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isModalSite }}">
+          <div style="font:400 22px 'Noto Serif SC',serif;color:#F1EAD8">{{ L.addSiteTitle }}</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="font:500 11px 'Inter',sans-serif;color:rgba(237,231,224,.5);letter-spacing:.05em">{{ L.domainLabel }}</label>
+            <input value="{{ modal.domain }}" onChange="{{ onDomainChange }}" placeholder="shop.site" style="background:rgba(237,231,224,.06);border:1px solid rgba(237,231,224,.18);border-radius:6px;padding:10px 12px;color:#F1EAD8;font:400 13px 'Inter',sans-serif;outline:none" />
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="font:500 11px 'Inter',sans-serif;color:rgba(237,231,224,.5);letter-spacing:.05em">{{ L.nodeLabel }}</label>
+            <select value="{{ modal.node }}" onChange="{{ onNodeChange }}" style="background:rgba(237,231,224,.06);border:1px solid rgba(237,231,224,.18);border-radius:6px;padding:10px 12px;color:#F1EAD8;font:400 13px 'Inter',sans-serif;outline:none">
+              <option value="香港 · 阿里云">{{ L.nodeAliyun }}</option>
+              <option value="香港 · 腾讯云">{{ L.nodeTencent }}</option>
+              <option value="香港 · 华为云">{{ L.nodeHuawei }}</option>
+            </select>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:6px">
+            <button onClick="{{ closeModal }}" style="cursor:pointer;background:none;border:1px solid rgba(237,231,224,.2);color:rgba(237,231,224,.6);border-radius:6px;padding:9px 18px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.cancel }}</button>
+            <button onClick="{{ submitSite }}" style="cursor:pointer;background:#D9B94A;border:1px solid #D9B94A;color:#2A1740;border-radius:6px;padding:9px 18px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.add }}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isModalModel }}">
+          <div style="font:400 22px 'Noto Serif SC',serif;color:#F1EAD8">{{ L.deployModelTitle }}</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="font:500 11px 'Inter',sans-serif;color:rgba(237,231,224,.5);letter-spacing:.05em">{{ L.endpointPathLabel }}</label>
+            <input value="{{ modal.path }}" onChange="{{ onPathChange }}" placeholder="/v1/rerank" style="background:rgba(237,231,224,.06);border:1px solid rgba(237,231,224,.18);border-radius:6px;padding:10px 12px;color:#F1EAD8;font:400 13px 'Inter',sans-serif;outline:none" />
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="font:500 11px 'Inter',sans-serif;color:rgba(237,231,224,.5);letter-spacing:.05em">{{ L.modelNameLabel }}</label>
+            <input value="{{ modal.model }}" onChange="{{ onModelNameChange }}" placeholder="Qwen2.5-32B" style="background:rgba(237,231,224,.06);border:1px solid rgba(237,231,224,.18);border-radius:6px;padding:10px 12px;color:#F1EAD8;font:400 13px 'Inter',sans-serif;outline:none" />
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:6px">
+            <button onClick="{{ closeModal }}" style="cursor:pointer;background:none;border:1px solid rgba(237,231,224,.2);color:rgba(237,231,224,.6);border-radius:6px;padding:9px 18px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.cancel }}</button>
+            <button onClick="{{ submitModel }}" style="cursor:pointer;background:#D9B94A;border:1px solid #D9B94A;color:#2A1740;border-radius:6px;padding:9px 18px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.deployBtn }}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isModalRepo }}">
+          <div style="font:400 22px 'Noto Serif SC',serif;color:#F1EAD8">{{ L.connectRepoTitle }}</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="font:500 11px 'Inter',sans-serif;color:rgba(237,231,224,.5);letter-spacing:.05em">{{ L.repoBranchLabel }}</label>
+            <input value="{{ modal.repo }}" onChange="{{ onRepoChange }}" placeholder="lab-tools · main" style="background:rgba(237,231,224,.06);border:1px solid rgba(237,231,224,.18);border-radius:6px;padding:10px 12px;color:#F1EAD8;font:400 13px 'Inter',sans-serif;outline:none" />
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="font:500 11px 'Inter',sans-serif;color:rgba(237,231,224,.5);letter-spacing:.05em">{{ L.triggerLabel }}</label>
+            <select value="{{ modal.trigger }}" onChange="{{ onTriggerChange }}" style="background:rgba(237,231,224,.06);border:1px solid rgba(237,231,224,.18);border-radius:6px;padding:10px 12px;color:#F1EAD8;font:400 13px 'Inter',sans-serif;outline:none">
+              <option value="push">{{ L.triggerPush }}</option>
+              <option value="manual">{{ L.triggerManual }}</option>
+              <option value="tag">{{ L.triggerTag }}</option>
+            </select>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:6px">
+            <button onClick="{{ closeModal }}" style="cursor:pointer;background:none;border:1px solid rgba(237,231,224,.2);color:rgba(237,231,224,.6);border-radius:6px;padding:9px 18px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.cancel }}</button>
+            <button onClick="{{ submitRepo }}" style="cursor:pointer;background:#D9B94A;border:1px solid #D9B94A;color:#2A1740;border-radius:6px;padding:9px 18px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.connectBtn }}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isModalDomain }}">
+          <div style="font:400 22px 'Noto Serif SC',serif;color:#F1EAD8">{{ L.bindDomainTitle }}</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="font:500 11px 'Inter',sans-serif;color:rgba(237,231,224,.5);letter-spacing:.05em">{{ L.domainLabel }}</label>
+            <input value="{{ modal.domain }}" onChange="{{ onDomainChange }}" placeholder="events.site" style="background:rgba(237,231,224,.06);border:1px solid rgba(237,231,224,.18);border-radius:6px;padding:10px 12px;color:#F1EAD8;font:400 13px 'Inter',sans-serif;outline:none" />
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="font:500 11px 'Inter',sans-serif;color:rgba(237,231,224,.5);letter-spacing:.05em">{{ L.sslLabel }}</label>
+            <select value="{{ modal.cert }}" onChange="{{ onCertChange }}" style="background:rgba(237,231,224,.06);border:1px solid rgba(237,231,224,.18);border-radius:6px;padding:10px 12px;color:#F1EAD8;font:400 13px 'Inter',sans-serif;outline:none">
+              <option value="Let's Encrypt">{{ L.certLetsEncrypt }}</option>
+              <option value="阿里云 SSL">{{ L.certAliyun }}</option>
+              <option value="腾讯云 SSL">{{ L.certTencent }}</option>
+            </select>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:6px">
+            <button onClick="{{ closeModal }}" style="cursor:pointer;background:none;border:1px solid rgba(237,231,224,.2);color:rgba(237,231,224,.6);border-radius:6px;padding:9px 18px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.cancel }}</button>
+            <button onClick="{{ submitDomain }}" style="cursor:pointer;background:#D9B94A;border:1px solid #D9B94A;color:#2A1740;border-radius:6px;padding:9px 18px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.bindBtn }}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isModalThreshold }}">
+          <div style="font:400 22px 'Noto Serif SC',serif;color:#F1EAD8">{{ L.setThresholdTitle }}</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="font:500 11px 'Inter',sans-serif;color:rgba(237,231,224,.5);letter-spacing:.05em">{{ L.thresholdInputLabel }}</label>
+            <input value="{{ modal.threshold }}" onChange="{{ onThresholdChange }}" type="number" step="0.1" placeholder="2.5" style="background:rgba(237,231,224,.06);border:1px solid rgba(237,231,224,.18);border-radius:6px;padding:10px 12px;color:#F1EAD8;font:400 13px 'Inter',sans-serif;outline:none" />
+            <div style="font:400 11px 'Inter',sans-serif;color:rgba(237,231,224,.4)">{{ L.thresholdHint }}</div>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:6px">
+            <button onClick="{{ closeModal }}" style="cursor:pointer;background:none;border:1px solid rgba(237,231,224,.2);color:rgba(237,231,224,.6);border-radius:6px;padding:9px 18px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.cancel }}</button>
+            <button onClick="{{ submitThreshold }}" style="cursor:pointer;background:#D9B94A;border:1px solid #D9B94A;color:#2A1740;border-radius:6px;padding:9px 18px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.save }}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isModalPost }}">
+          <div style="font:400 22px 'Noto Serif SC',serif;color:#F1EAD8">{{ L.publishPostTitle }}</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="font:500 11px 'Inter',sans-serif;color:rgba(237,231,224,.5);letter-spacing:.05em">{{ L.titleLabel }}</label>
+            <input value="{{ modal.title }}" onChange="{{ onTitleChange }}" placeholder="{{ L.titlePlaceholder }}" style="background:rgba(237,231,224,.06);border:1px solid rgba(237,231,224,.18);border-radius:6px;padding:10px 12px;color:#F1EAD8;font:400 13px 'Noto Sans SC',sans-serif;outline:none" />
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="font:500 11px 'Inter',sans-serif;color:rgba(237,231,224,.5);letter-spacing:.05em">{{ L.authorLabel }}</label>
+            <input value="{{ modal.author }}" onChange="{{ onAuthorChange }}" style="background:rgba(237,231,224,.06);border:1px solid rgba(237,231,224,.18);border-radius:6px;padding:10px 12px;color:#F1EAD8;font:400 13px 'Noto Sans SC',sans-serif;outline:none" />
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:6px">
+            <button onClick="{{ closeModal }}" style="cursor:pointer;background:none;border:1px solid rgba(237,231,224,.2);color:rgba(237,231,224,.6);border-radius:6px;padding:9px 18px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.cancel }}</button>
+            <button onClick="{{ submitPost }}" style="cursor:pointer;background:#D9B94A;border:1px solid #D9B94A;color:#2A1740;border-radius:6px;padding:9px 18px;font:600 12px 'Noto Sans SC',sans-serif">{{ L.saveDraft }}</button>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const STORAGE_KEY = 'serverConsoleData_v2';
+
+const DICT = {
+  zh: {
+    dataSource: '数据源设置', deploy: '部署', hkNode: 'HK 节点',
+    navOverview: '总览', navSites: '网站托管', navAi: 'AI 模型', navContent: '内容发布',
+    navCicd: 'GitHub / CI-CD', navUsage: '流量与用量', navSecurity: '域名与安全',
+    metricSites: '在线站点', metricEndpoints: '模型端点', metricRepos: 'CI/CD 仓库', metricTraffic: '本月流量',
+    colModule: '模块', colDetail: '详情', colStatus: '状态',
+    addSite: '+ 添加站点', colDomain: '域名', colNode: '节点', colTraffic: '本月流量', colLatency: '响应时间',
+    emptySites: '目前无数据 · 点击上方按钮添加站点',
+    deployModel: '+ 部署模型', colEndpoint: '端点', colAvgLatency: '平均延迟', colCallsDay: '调用量/日', colModel: '模型',
+    emptyEndpoints: '目前无数据 · 点击上方按钮部署模型',
+    publishPost: '+ 发布内容', colTitle: '标题', colAuthor: '作者', colUpdated: '更新时间',
+    emptyPosts: '目前无数据 · 点击上方按钮发布内容',
+    connectRepo: '+ 连接仓库', colRepoBranch: '仓库 / 分支', colTrigger: '触发方式', colLastCommit: '最近提交',
+    emptyPipelines: '目前无数据 · 点击上方按钮连接仓库',
+    thresholdLabel: '当前告警阈值', perMonth: '月',
+    viewLog: '查看日志', downloadLog: '下载日志', setThreshold: '设置流量阈值告警',
+    bandwidthTelemetry: '带宽流量遥测 · 近 7 日',
+    noTelemetry: '目前无数据 · 尚未连接可提供带宽遥测的数据源',
+    noTelemetryHint: '点击右上角"数据源设置"接入后将显示真实带宽曲线',
+    moduleCounts: '各模块条目数(真实统计)',
+    bindDomain: '+ 绑定域名', colSsl: 'SSL 证书', colExpiry: '到期时间',
+    emptyDomains: '目前无数据 · 点击上方按钮绑定域名',
+    footerAuthor: '黄圣扬 | 南京大学人工智能创造力实验室',
+    logTitle: '操作日志', download: '下载', close: '关闭',
+    dataSourceTitle: '数据源设置',
+    dataSourceDesc: '填写后台服务的 API 基础地址,控制台将从该地址读取真实运行数据(站点/模型/流量遥测)。留空则各页保持"目前无数据"。还没搭建后端?',
+    dataSourceDeployLink: '按引导一键部署',
+    apiBaseLabel: 'API 基础地址', connFailPrefix: '连接失败:', cancel: '取消',
+    addSiteTitle: '添加站点', domainLabel: '域名', nodeLabel: '部署节点',
+    nodeAliyun: '香港 · 阿里云', nodeTencent: '香港 · 腾讯云', nodeHuawei: '香港 · 华为云',
+    add: '添加',
+    deployModelTitle: '部署模型', endpointPathLabel: '端点路径', modelNameLabel: '模型名称', deployBtn: '部署',
+    connectRepoTitle: '连接 GitHub 仓库', repoBranchLabel: '仓库 · 分支', triggerLabel: '触发方式',
+    triggerPush: 'push · 每次提交自动构建', triggerManual: 'manual · 手动触发', triggerTag: 'tag · 打标签时构建',
+    connectBtn: '连接',
+    bindDomainTitle: '绑定域名', sslLabel: 'SSL 证书',
+    certLetsEncrypt: "Let's Encrypt (免费自动续期)", certAliyun: '阿里云 SSL', certTencent: '腾讯云 SSL',
+    bindBtn: '绑定',
+    setThresholdTitle: '设置流量阈值告警', thresholdInputLabel: '每月流量阈值 (TB)',
+    thresholdHint: '超过阈值将标记为待处理并提醒团队', save: '保存',
+    publishPostTitle: '发布内容', titleLabel: '标题', titlePlaceholder: '文章标题', authorLabel: '作者', saveDraft: '保存为草稿',
+    pendingNeedsAttention: '待处理 · 需关注', pendingNone: '待处理', pendingNoneDetail: '暂无待处理事项',
+    buildsFailed: (n) => n + ' 个构建失败', postsPending: (n) => n + ' 篇待发布', sitesNotReady: (n) => n + ' 个站点未就绪',
+    noSitesShort: '暂无站点 · 点击添加', noEndpointsShort: '暂无模型端点 · 点击部署',
+    postsCountFmt: (n, p) => n + ' 篇内容,' + p + ' 篇待处理', noContentShort: '暂无内容 · 点击发布',
+    pipelinesCountFmt: (n) => n + ' 个仓库接入', pipelinesFailedSuffix: (n) => '，' + n + ' 个构建失败', noReposShort: '暂无仓库 · 点击连接',
+    connUnconfigured: '未连接数据源', connConnecting: '连接中…', connConnected: '数据源已连接', connError: '数据源连接失败',
+    nodeUnknown: '节点未连接', today: (d) => d,
+    speedTestLabel: '连线速度测试', speedTestBtn: '开始测速', speedTestRunningBtn: '测速中…',
+    speedTestNeedConn: '需先连接数据源才能测速', download: '下载', upload: '上传', latency: '延迟',
+    noData: '无数据', normal: '正常', pending: '待处理', abnormal: '异常', reviewing: '待审核', deploying: '部署中',
+    usageAccessing: '接入中', usageNoData: '暂无数据',
+    usageSummaryPrefix: '各模块条目数已统计,带宽遥测', usageAccessedSuffix: '已接入', usageNoDataSuffix: '暂无数据',
+    usageAccessed: '已接入',
+    footerConnected: '数据源已连接', footerDisconnected: '数据源未连接',
+    connectingBtn: '连接中…', saveTestBtn: '保存并测试连接',
+    just: '刚刚', waitingBuild: '等待首次构建', justConnected: '刚刚接入', pendingIssue: '待验证', pendingIssuance: '待签发',
+    logStarted: '控制台已启动', logDsOk: '数据源连接成功 · ', logDsFail: '数据源连接失败 · ', logUnknownErr: '未知错误',
+    logAddSite: '添加站点 · ', logDeployModel: '部署模型 · ', logPublish: '发布内容 · ', logConnectRepo: '连接仓库 · ',
+    logBindDomain: '绑定域名 · ', logSetThreshold: '设置流量阈值告警 · ',
+  },
+  en: {
+    dataSource: 'Data Source', deploy: 'Deploy', hkNode: 'HK Node',
+    navOverview: 'Overview', navSites: 'Hosting', navAi: 'AI Models', navContent: 'Content',
+    navCicd: 'GitHub / CI-CD', navUsage: 'Usage & Traffic', navSecurity: 'Domains & Security',
+    metricSites: 'Live Sites', metricEndpoints: 'Model Endpoints', metricRepos: 'CI/CD Repos', metricTraffic: 'Monthly Traffic',
+    colModule: 'Module', colDetail: 'Detail', colStatus: 'Status',
+    addSite: '+ Add Site', colDomain: 'Domain', colNode: 'Node', colTraffic: 'Monthly Traffic', colLatency: 'Latency',
+    emptySites: 'No data yet · Click above to add a site',
+    deployModel: '+ Deploy Model', colEndpoint: 'Endpoint', colAvgLatency: 'Avg Latency', colCallsDay: 'Calls/day', colModel: 'Model',
+    emptyEndpoints: 'No data yet · Click above to deploy a model',
+    publishPost: '+ Publish', colTitle: 'Title', colAuthor: 'Author', colUpdated: 'Updated',
+    emptyPosts: 'No data yet · Click above to publish content',
+    connectRepo: '+ Connect Repo', colRepoBranch: 'Repo / Branch', colTrigger: 'Trigger', colLastCommit: 'Last Commit',
+    emptyPipelines: 'No data yet · Click above to connect a repo',
+    thresholdLabel: 'Current alert threshold', perMonth: 'mo',
+    viewLog: 'View Log', downloadLog: 'Download Log', setThreshold: 'Set Traffic Alert',
+    bandwidthTelemetry: 'Bandwidth Telemetry · Last 7 days',
+    noTelemetry: 'No data yet · No bandwidth telemetry source connected',
+    noTelemetryHint: 'Connect a data source (top right) to show a real bandwidth curve',
+    moduleCounts: 'Entry Counts per Module (live)',
+    bindDomain: '+ Bind Domain', colSsl: 'SSL Cert', colExpiry: 'Expiry',
+    emptyDomains: 'No data yet · Click above to bind a domain',
+    footerAuthor: 'Huang Shengyang | Nanjing University AI Creativity Lab',
+    logTitle: 'Activity Log', download: 'Download', close: 'Close',
+    dataSourceTitle: 'Data Source Settings',
+    dataSourceDesc: 'Enter your backend API base URL — the console will read live data (sites/models/traffic) from it. Leave blank to keep pages showing "no data yet". No backend yet?',
+    dataSourceDeployLink: 'Deploy with the guided wizard',
+    apiBaseLabel: 'API base URL', connFailPrefix: 'Connection failed: ', cancel: 'Cancel',
+    addSiteTitle: 'Add Site', domainLabel: 'Domain', nodeLabel: 'Deployment node',
+    nodeAliyun: 'Hong Kong · Alibaba Cloud', nodeTencent: 'Hong Kong · Tencent Cloud', nodeHuawei: 'Hong Kong · Huawei Cloud',
+    add: 'Add',
+    deployModelTitle: 'Deploy Model', endpointPathLabel: 'Endpoint path', modelNameLabel: 'Model name', deployBtn: 'Deploy',
+    connectRepoTitle: 'Connect GitHub Repo', repoBranchLabel: 'Repo · Branch', triggerLabel: 'Trigger',
+    triggerPush: 'push · auto-build on commit', triggerManual: 'manual · trigger manually', triggerTag: 'tag · build on tag',
+    connectBtn: 'Connect',
+    bindDomainTitle: 'Bind Domain', sslLabel: 'SSL Certificate',
+    certLetsEncrypt: "Let's Encrypt (free auto-renew)", certAliyun: 'Alibaba Cloud SSL', certTencent: 'Tencent Cloud SSL',
+    bindBtn: 'Bind',
+    setThresholdTitle: 'Set Traffic Alert Threshold', thresholdInputLabel: 'Monthly traffic threshold (TB)',
+    thresholdHint: 'Above this threshold, an item will be flagged pending and the team notified', save: 'Save',
+    publishPostTitle: 'Publish Content', titleLabel: 'Title', titlePlaceholder: 'Post title', authorLabel: 'Author', saveDraft: 'Save as Draft',
+    pendingNeedsAttention: 'Needs Attention', pendingNone: 'Pending', pendingNoneDetail: 'Nothing pending',
+    buildsFailed: (n) => n + ' build(s) failed', postsPending: (n) => n + ' post(s) pending', sitesNotReady: (n) => n + ' site(s) not ready',
+    noSitesShort: 'No sites yet · click to add', noEndpointsShort: 'No model endpoints yet · click to deploy',
+    postsCountFmt: (n, p) => n + ' posts, ' + p + ' pending', noContentShort: 'No content yet · click to publish',
+    pipelinesCountFmt: (n) => n + ' repo(s) connected', pipelinesFailedSuffix: (n) => ', ' + n + ' build(s) failed', noReposShort: 'No repos yet · click to connect',
+    connUnconfigured: 'No data source', connConnecting: 'Connecting…', connConnected: 'Data source connected', connError: 'Connection failed',
+    nodeUnknown: 'Node not connected', today: (d) => d,
+    speedTestLabel: 'Connection Speed Test', speedTestBtn: 'Run Speed Test', speedTestRunningBtn: 'Testing…',
+    speedTestNeedConn: 'Connect a data source first to run a speed test', download: 'Download', upload: 'Upload', latency: 'Latency',
+    noData: 'No data', normal: 'Normal', pending: 'Pending', abnormal: 'Issue', reviewing: 'Reviewing', deploying: 'Deploying',
+    usageAccessing: 'Connected', usageNoData: 'No data',
+    usageSummaryPrefix: 'Live entry counts tracked, bandwidth telemetry', usageAccessedSuffix: 'connected', usageNoDataSuffix: 'no data',
+    usageAccessed: 'Connected',
+    footerConnected: 'Data source connected', footerDisconnected: 'No data source',
+    connectingBtn: 'Connecting…', saveTestBtn: 'Save & Test Connection',
+    just: 'just now', waitingBuild: 'awaiting first build', justConnected: 'just connected', pendingIssue: 'pending verification', pendingIssuance: 'pending issuance',
+    logStarted: 'Console started', logDsOk: 'Data source connected · ', logDsFail: 'Data source connection failed · ', logUnknownErr: 'unknown error',
+    logAddSite: 'Added site · ', logDeployModel: 'Deployed model · ', logPublish: 'Published content · ', logConnectRepo: 'Connected repo · ',
+    logBindDomain: 'Bound domain · ', logSetThreshold: 'Set traffic alert · ',
+  }
+};
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); } catch (e) {}
+    this.state = {
+      lang: (saved && saved.lang) || 'zh',
+      tab: 'overview',
+      sites: (saved && saved.sites) || [],
+      endpoints: (saved && saved.endpoints) || [],
+      posts: (saved && saved.posts) || [],
+      pipelines: (saved && saved.pipelines) || [],
+      domains: (saved && saved.domains) || [],
+      usageThreshold: (saved && saved.usageThreshold) || 2,
+      apiBase: (saved && saved.apiBase) || '',
+      connectionStatus: 'unconfigured',
+      connError: '',
+      speedTest: (saved && saved.speedTest) || null,
+      speedTestRunning: false,
+      logs: (saved && saved.logs) || [{ time: new Date().toLocaleString('zh-CN'), text: '控制台已启动' }],
+      modal: { type: null, domain: '', node: '香港 · 阿里云', path: '', model: '', title: '', author: '黄圣扬', repo: '', trigger: 'push', cert: "Let's Encrypt", threshold: '', apiBase: '' },
+    };
+  }
+
+  componentDidMount() {
+    if (this.state.apiBase) this.testConnection();
+  }
+
+  async loadFromBackend() {
+    const base = this.state.apiBase.trim().replace(/\/$/, '');
+    if (!base) return;
+    try {
+      const [sites, models, posts, pipelines, domains, settings] = await Promise.all(
+        ['sites', 'models', 'posts', 'pipelines', 'domains', 'settings'].map(k =>
+          fetch(base + '/api/' + k).then(r => r.ok ? r.json() : (k === 'settings' ? {} : []))
+        )
+      );
+      this.setState({
+        sites, endpoints: models, posts, pipelines, domains,
+        usageThreshold: settings.usageThreshold || this.state.usageThreshold,
+      }, () => this.persist());
+    } catch (e) {}
+  }
+
+  persist() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        sites: this.state.sites, endpoints: this.state.endpoints, posts: this.state.posts,
+        pipelines: this.state.pipelines, domains: this.state.domains,
+        usageThreshold: this.state.usageThreshold, apiBase: this.state.apiBase, logs: this.state.logs,
+        lang: this.state.lang, speedTest: this.state.speedTest
+      }));
+    } catch (e) {}
+  }
+
+  log(text) {
+    const entry = { time: new Date().toLocaleString('zh-CN'), text };
+    this.setState(prev => ({ logs: [...prev.logs, entry].slice(-300) }), () => this.persist());
+  }
+
+  downloadLog() {
+    const lines = this.state.logs.map(l => '[' + l.time + '] ' + l.text).join('\n');
+    const blob = new Blob([lines], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'server-console-log-' + Date.now() + '.txt';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  async testConnection() {
+    const base = this.state.apiBase.trim();
+    const t = DICT[this.state.lang];
+    if (!base) { this.setState({ connectionStatus: 'unconfigured', connError: '' }); return; }
+    this.setState({ connectionStatus: 'connecting' });
+    try {
+      const res = await fetch(base.replace(/\/$/, '') + '/api/health', { method: 'GET' });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      await res.json();
+      this.setState({ connectionStatus: 'connected', connError: '' });
+      this.log(t.logDsOk + base);
+      this.loadFromBackend();
+    } catch (e) {
+      this.setState({ connectionStatus: 'error', connError: (e && e.message) || t.logUnknownErr });
+      this.log(t.logDsFail + base + ' · ' + ((e && e.message) || t.logUnknownErr));
+    }
+  }
+
+  async backendPost(key, item) {
+    const base = this.state.apiBase.trim().replace(/\/$/, '');
+    if (!base || this.state.connectionStatus !== 'connected') return null;
+    try {
+      const res = await fetch(base + '/api/' + key, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(item)
+      });
+      if (!res.ok) return null;
+      return await res.json();
+    } catch (e) { return null; }
+  }
+
+  setTab(tab) { this.setState({ tab }); }
+  setLang(lang) { this.setState({ lang }, () => this.persist()); }
+
+  openModal(type) {
+    this.setState({ modal: { type, domain: '', node: '香港 · 阿里云', path: '', model: '', title: '', author: '黄圣扬', repo: '', trigger: 'push', cert: "Let's Encrypt", threshold: String(this.state.usageThreshold), apiBase: this.state.apiBase } });
+  }
+  closeModal() { this.setState({ modal: { ...this.state.modal, type: null } }); }
+  setModalField(field, val) { this.setState(prev => ({ modal: { ...prev.modal, [field]: val } })); }
+
+  async addSite() {
+    const m = this.state.modal, t = DICT[this.state.lang];
+    if (!m.domain.trim()) return;
+    const s = { domain: m.domain.trim(), node: m.node, traffic: t.noData, latency: t.noData, status: t.deploying, badgeClass: 'b-warn' };
+    const saved = await this.backendPost('sites', s);
+    this.setState(prev => ({ sites: [...prev.sites, saved || s] }), () => this.persist());
+    this.log(t.logAddSite + s.domain);
+    this.closeModal();
+  }
+  async addModel() {
+    const m = this.state.modal, t = DICT[this.state.lang];
+    if (!m.path.trim() || !m.model.trim()) return;
+    const e = { path: m.path.trim(), latency: t.noData, calls: t.noData, model: m.model.trim(), status: t.deploying, badgeClass: 'b-warn' };
+    const saved = await this.backendPost('models', e);
+    this.setState(prev => ({ endpoints: [...prev.endpoints, saved || e] }), () => this.persist());
+    this.log(t.logDeployModel + e.path + ' (' + e.model + ')');
+    this.closeModal();
+  }
+  async addPost() {
+    const m = this.state.modal, t = DICT[this.state.lang];
+    if (!m.title.trim()) return;
+    const p = { title: m.title.trim(), author: m.author.trim() || '黄圣扬', updated: t.just, status: t.deploying === '部署中' ? '草稿' : 'Draft', badgeClass: 'b-warn' };
+    const saved = await this.backendPost('posts', p);
+    this.setState(prev => ({ posts: [...prev.posts, saved || p] }), () => this.persist());
+    this.log(t.logPublish + p.title);
+    this.closeModal();
+  }
+  async addRepo() {
+    const m = this.state.modal, t = DICT[this.state.lang];
+    if (!m.repo.trim()) return;
+    const b = { repo: m.repo.trim(), trigger: m.trigger || 'push', time: t.justConnected, status: t.waitingBuild, badgeClass: 'b-warn' };
+    const saved = await this.backendPost('pipelines', b);
+    this.setState(prev => ({ pipelines: [...prev.pipelines, saved || b] }), () => this.persist());
+    this.log(t.logConnectRepo + b.repo);
+    this.closeModal();
+  }
+  async addDomain() {
+    const m = this.state.modal, t = DICT[this.state.lang];
+    if (!m.domain.trim()) return;
+    const d = { domain: m.domain.trim(), cert: m.cert || "Let's Encrypt", expiry: t.pendingIssuance, status: t.pendingIssue, badgeClass: 'b-warn' };
+    const saved = await this.backendPost('domains', d);
+    this.setState(prev => ({ domains: [...prev.domains, saved || d] }), () => this.persist());
+    this.log(t.logBindDomain + d.domain);
+    this.closeModal();
+  }
+  setThreshold() {
+    const m = this.state.modal, t = DICT[this.state.lang];
+    const v = parseFloat(m.threshold);
+    if (!v || v <= 0) return;
+    this.setState({ usageThreshold: v }, () => this.persist());
+    this.log(t.logSetThreshold + v + 'TB / ' + t.perMonth);
+    this.closeModal();
+  }
+  saveDatasource() {
+    const base = this.state.modal.apiBase.trim();
+    this.setState({ apiBase: base }, () => { this.persist(); this.testConnection(); });
+  }
+
+  async runSpeedTest() {
+    const base = this.state.apiBase.trim().replace(/\/$/, '');
+    if (!base || this.state.connectionStatus !== 'connected') return;
+    this.setState({ speedTestRunning: true });
+    try {
+      // Ping (average of 3 round trips to /api/health)
+      const pings = [];
+      for (let i = 0; i < 3; i++) {
+        const t0 = performance.now();
+        await fetch(base + '/api/health', { cache: 'no-store' });
+        pings.push(performance.now() - t0);
+      }
+      const pingMs = Math.round(pings.reduce((a, b) => a + b, 0) / pings.length);
+
+      // Download: fetch a real payload, time it
+      const size = 3000000;
+      const dt0 = performance.now();
+      const dres = await fetch(base + '/api/speedtest/download?size=' + size, { cache: 'no-store' });
+      const blob = await dres.blob();
+      const dt1 = performance.now();
+      const downloadMbps = ((blob.size * 8) / ((dt1 - dt0) / 1000) / 1_000_000);
+
+      // Upload: send a real payload, time it
+      const uploadBuf = new Uint8Array(1500000);
+      crypto.getRandomValues ? crypto.getRandomValues(uploadBuf) : uploadBuf.fill(1);
+      const ut0 = performance.now();
+      await fetch(base + '/api/speedtest/upload', { method: 'POST', body: uploadBuf });
+      const ut1 = performance.now();
+      const uploadMbps = ((uploadBuf.length * 8) / ((ut1 - ut0) / 1000) / 1_000_000);
+
+      const result = { pingMs, downloadMbps: downloadMbps.toFixed(1), uploadMbps: uploadMbps.toFixed(1), time: new Date().toLocaleString(this.state.lang === 'zh' ? 'zh-CN' : 'en-US') };
+      this.setState({ speedTest: result, speedTestRunning: false }, () => this.persist());
+      this.log((this.state.lang === 'zh' ? '测速完成 · 下行 ' + result.downloadMbps + 'Mbps · 上行 ' + result.uploadMbps + 'Mbps · 延迟 ' + result.pingMs + 'ms' : 'Speed test done · Down ' + result.downloadMbps + 'Mbps · Up ' + result.uploadMbps + 'Mbps · Latency ' + result.pingMs + 'ms'));
+    } catch (e) {
+      this.setState({ speedTestRunning: false });
+      this.log((this.state.lang === 'zh' ? '测速失败 · ' : 'Speed test failed · ') + ((e && e.message) || ''));
+    }
+  }
+
+  renderVals() {
+    const t = this.state.tab;
+    const lang = this.state.lang;
+    const L = DICT[lang];
+    const active = '#F1EAD8', inactive = 'rgba(237,231,224,.55)';
+    const m = this.state.modal;
+    const sites = this.state.sites, endpoints = this.state.endpoints, posts = this.state.posts,
+          pipelines = this.state.pipelines, domains = this.state.domains;
+
+    const titles = {
+      overview: lang === 'zh' ? '伺服器总览' : 'Server Overview', sites: L.navSites, ai: L.navAi, content: L.navContent,
+      cicd: L.navCicd, usage: L.navUsage, security: L.navSecurity
+    };
+
+    const failedPipelines = pipelines.filter(p => p.badgeClass === 'b-bad').length;
+    const pendingPosts = posts.filter(p => p.badgeClass === 'b-warn').length;
+    const pendingSites = sites.filter(s => s.badgeClass !== 'b-ok').length;
+    const totalPending = failedPipelines + pendingPosts + pendingSites;
+
+    let pendingLabel, pendingDetail, pendingColor, pendingCardBg, pendingCardBorder, pendingCount;
+    if (totalPending > 0) {
+      pendingCount = String(totalPending).padStart(2, '0');
+      pendingLabel = L.pendingNeedsAttention;
+      const parts = [];
+      if (failedPipelines) parts.push(L.buildsFailed(failedPipelines));
+      if (pendingPosts) parts.push(L.postsPending(pendingPosts));
+      if (pendingSites) parts.push(L.sitesNotReady(pendingSites));
+      pendingDetail = parts.join(' · ');
+      pendingColor = '#D9B94A'; pendingCardBg = 'rgba(217,185,74,.12)'; pendingCardBorder = 'rgba(217,185,74,.45)';
+    } else {
+      pendingCount = '00';
+      pendingLabel = L.pendingNone;
+      pendingDetail = L.pendingNoneDetail;
+      pendingColor = 'rgba(237,231,224,.4)'; pendingCardBg = 'rgba(237,231,224,.04)'; pendingCardBorder = 'rgba(237,231,224,.15)';
+    }
+
+    const summarize = (list, empty, fmt) => list.length === 0 ? empty : fmt(list);
+    const sitesSummary = summarize(sites, L.noSitesShort, l => l.slice(0, 3).map(s => s.domain).join(' · ') + (l.length > 3 ? ' +' + l.length : ''));
+    const endpointsSummary = summarize(endpoints, L.noEndpointsShort, l => l.slice(0, 2).map(e => e.path).join(' · '));
+    const postsSummary = summarize(posts, L.noContentShort, l => L.postsCountFmt(l.length, pendingPosts));
+    const pipelinesSummary = summarize(pipelines, L.noReposShort, l => L.pipelinesCountFmt(l.length) + (failedPipelines ? L.pipelinesFailedSuffix(failedPipelines) : ''));
+
+    const connLabelMap = { unconfigured: L.connUnconfigured, connecting: L.connConnecting, connected: L.connConnected, error: L.connError };
+    const connBadgeClassMap = { unconfigured: 'b-neutral', connecting: 'b-warn', connected: 'b-ok', error: 'b-bad' };
+
+    const moduleCounts = [
+      { name: lang === 'zh' ? '网站' : 'Sites', count: sites.length },
+      { name: lang === 'zh' ? 'AI 端点' : 'AI', count: endpoints.length },
+      { name: lang === 'zh' ? '内容' : 'Posts', count: posts.length },
+      { name: lang === 'zh' ? '仓库' : 'Repos', count: pipelines.length },
+      { name: lang === 'zh' ? '域名' : 'Domains', count: domains.length },
+    ];
+    const usageSeries = this.state.usageSeries || [];
+    const yMax = this.state.usageThreshold * 1.5;
+    const yTicks = [0, 1, 2, 3, 4].map(i => {
+      const frac = i / 4;
+      const y = 180 - frac * 170;
+      return { y, label: (yMax * frac).toFixed(1) + 'TB' };
+    });
+    const xTicks = ['07.08', '07.09', '07.10', '07.11', '07.12', '07.13', '07.14'].map((label, i) => ({ label, x: 52 + (i / 6) * 1052 }));
+
+    const maxCount = Math.max(1, ...moduleCounts.map(x => x.count));
+    const chartBottom = 110;
+    const moduleCountBars = moduleCounts.map((mc, i) => {
+      const x = 60 + i * 105;
+      const h = mc.count === 0 ? 0 : Math.max(4, (mc.count / maxCount) * (chartBottom - 10));
+      return { name: mc.name, count: mc.count, x, y: chartBottom - h, h, labelX: x + 35, valueY: chartBottom - h - 8 };
+    });
+
+    return {
+      L,
+      nodeLabel: (() => {
+        if (this.state.connectionStatus !== 'connected') return L.nodeUnknown;
+        const host = this.state.apiBase.replace(/^https?:\/\//, '');
+        const isLocal = /^(127\.0\.0\.1|localhost|0\.0\.0\.0)/.test(host);
+        const hostLabel = isLocal ? (lang === 'zh' ? '本地部署 · ' + host : 'Local deployment · ' + host) : host;
+        return hostLabel + ' · ' + new Date().toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US');
+      })(),
+      setLangZh: () => this.setLang('zh'), setLangEn: () => this.setLang('en'),
+      zhBg: lang === 'zh' ? 'rgba(237,231,224,.14)' : 'transparent', zhOpacity: lang === 'zh' ? 1 : 0.4,
+      enBg: lang === 'en' ? 'rgba(237,231,224,.14)' : 'transparent', enOpacity: lang === 'en' ? 1 : 0.4,
+      goOverview: () => this.setTab('overview'),
+      goSites: () => this.setTab('sites'),
+      goAi: () => this.setTab('ai'),
+      goContent: () => this.setTab('content'),
+      goCicd: () => this.setTab('cicd'),
+      goUsage: () => this.setTab('usage'),
+      goSecurity: () => this.setTab('security'),
+      pageTitle: titles[t],
+      isOverview: t === 'overview', isSites: t === 'sites', isAi: t === 'ai',
+      isContent: t === 'content', isCicd: t === 'cicd', isUsage: t === 'usage', isSecurity: t === 'security',
+      tabColor: {
+        overview: t === 'overview' ? active : inactive, sites: t === 'sites' ? active : inactive,
+        ai: t === 'ai' ? active : inactive, content: t === 'content' ? active : inactive,
+        cicd: t === 'cicd' ? active : inactive, usage: t === 'usage' ? active : inactive,
+        security: t === 'security' ? active : inactive,
+      },
+      sites, endpoints, posts, pipelines, domains,
+      sitesEmpty: sites.length === 0, endpointsEmpty: endpoints.length === 0, postsEmpty: posts.length === 0,
+      pipelinesEmpty: pipelines.length === 0, domainsEmpty: domains.length === 0,
+      usageThreshold: this.state.usageThreshold,
+      siteCount: sites.length, endpointCount: endpoints.length, pipelineCount: pipelines.length,
+      trafficLabel: this.state.connectionStatus === 'connected' ? L.usageAccessing : L.usageNoData,
+      pendingCount, pendingLabel, pendingDetail, pendingColor, pendingCardBg, pendingCardBorder,
+      sitesSummary, endpointsSummary, postsSummary, pipelinesSummary,
+      sitesBadge: sites.length === 0 ? 'b-neutral' : (pendingSites ? 'b-warn' : 'b-ok'),
+      sitesStatus: sites.length === 0 ? L.noData : (pendingSites ? L.pending : L.normal),
+      endpointsBadge: endpoints.length === 0 ? 'b-neutral' : 'b-ok',
+      endpointsStatus: endpoints.length === 0 ? L.noData : L.normal,
+      postsBadge: posts.length === 0 ? 'b-neutral' : (pendingPosts ? 'b-warn' : 'b-ok'),
+      postsStatus: posts.length === 0 ? L.noData : (pendingPosts ? L.reviewing : L.normal),
+      pipelinesBadge: pipelines.length === 0 ? 'b-neutral' : (failedPipelines ? 'b-bad' : 'b-ok'),
+      pipelinesStatus: pipelines.length === 0 ? L.noData : (failedPipelines ? L.abnormal : L.normal),
+      usageSummary: L.usageSummaryPrefix + ' ' + (this.state.connectionStatus === 'connected' ? L.usageAccessedSuffix : L.usageNoDataSuffix),
+      usageStatusLabel: this.state.connectionStatus === 'connected' ? L.usageAccessed : L.noData,
+      moduleCountBars, maxCount,
+      usageSeriesEmpty: usageSeries.length === 0,
+      y0: yTicks[4].y, v0: yTicks[4].label, y0PxTop: yTicks[4].y - 7,
+      y1: yTicks[3].y, v1: yTicks[3].label, y1PxTop: yTicks[3].y - 7,
+      y2: yTicks[2].y, v2: yTicks[2].label, y2PxTop: yTicks[2].y - 7,
+      y3: yTicks[1].y, v3: yTicks[1].label, y3PxTop: yTicks[1].y - 7,
+      y4: yTicks[0].y, v4: yTicks[0].label, y4PxTop: yTicks[0].y - 7,
+      x0: xTicks[0].x, x1: xTicks[1].x, x2: xTicks[2].x, x3: xTicks[3].x, x4: xTicks[4].x, x5: xTicks[5].x, x6: xTicks[6].x,
+      statusDotColor: { unconfigured: 'rgba(237,231,224,.3)', connecting: '#D9B94A', connected: '#8FCB9E', error: '#E9998A' }[this.state.connectionStatus],
+      connLabel: connLabelMap[this.state.connectionStatus],
+      connBadgeClass: connBadgeClassMap[this.state.connectionStatus],
+      hasConnError: this.state.connectionStatus === 'error',
+      connError: this.state.connError,
+      connectBtnLabel: this.state.connectionStatus === 'connecting' ? L.connectingBtn : L.saveTestBtn,
+      footerStatus: this.state.connectionStatus === 'connected' ? L.footerConnected : L.footerDisconnected,
+      openSiteModal: () => this.openModal('site'),
+      openModelModal: () => this.openModal('model'),
+      openPostModal: () => this.openModal('post'),
+      openRepoModal: () => this.openModal('repo'),
+      openDomainModal: () => this.openModal('domain'),
+      openThresholdModal: () => this.openModal('threshold'),
+      openDataSourceModal: () => this.openModal('datasource'),
+      openLogModal: () => this.openModal('log'),
+      isModalLog: m.type === 'log',
+      logs: this.state.logs, logsReversed: [...this.state.logs].reverse(),
+      downloadLog: () => this.downloadLog(),
+      closeModal: () => this.closeModal(),
+      submitSite: () => this.addSite(),
+      submitModel: () => this.addModel(),
+      submitPost: () => this.addPost(),
+      submitRepo: () => this.addRepo(),
+      submitDomain: () => this.addDomain(),
+      submitThreshold: () => this.setThreshold(),
+      submitDatasource: () => this.saveDatasource(),
+      runSpeedTest: () => this.runSpeedTest(),
+      speedTestRunning: this.state.speedTestRunning,
+      speedTestBtnLabel: this.state.speedTestRunning ? L.speedTestRunningBtn : L.speedTestBtn,
+      speedTestBtnOpacity: this.state.speedTestRunning ? 0.5 : 1,
+      speedTestUnavailable: this.state.connectionStatus !== 'connected' && !this.state.speedTest,
+      speedTestHasResult: !!this.state.speedTest,
+      downloadMbps: this.state.speedTest ? this.state.speedTest.downloadMbps : '0',
+      uploadMbps: this.state.speedTest ? this.state.speedTest.uploadMbps : '0',
+      pingMs: this.state.speedTest ? this.state.speedTest.pingMs + 'ms' : '—',
+      downloadArc: this.state.speedTest ? Math.min(201, (parseFloat(this.state.speedTest.downloadMbps) / 200) * 201).toFixed(0) : 0,
+      uploadArc: this.state.speedTest ? Math.min(201, (parseFloat(this.state.speedTest.uploadMbps) / 200) * 201).toFixed(0) : 0,
+      speedTestTimestamp: this.state.speedTest ? this.state.speedTest.time : '',
+      modal: m,
+      isModalSite: m.type === 'site', isModalModel: m.type === 'model', isModalPost: m.type === 'post',
+      isModalRepo: m.type === 'repo', isModalDomain: m.type === 'domain', isModalThreshold: m.type === 'threshold',
+      isModalDatasource: m.type === 'datasource',
+      isModalOpen: !!m.type,
+      modalWidth: m.type === 'log' ? '520px' : '420px',
+      onDomainChange: (e) => this.setModalField('domain', e.target.value),
+      onNodeChange: (e) => this.setModalField('node', e.target.value),
+      onPathChange: (e) => this.setModalField('path', e.target.value),
+      onModelNameChange: (e) => this.setModalField('model', e.target.value),
+      onTitleChange: (e) => this.setModalField('title', e.target.value),
+      onAuthorChange: (e) => this.setModalField('author', e.target.value),
+      onRepoChange: (e) => this.setModalField('repo', e.target.value),
+      onTriggerChange: (e) => this.setModalField('trigger', e.target.value),
+      onCertChange: (e) => this.setModalField('cert', e.target.value),
+      onThresholdChange: (e) => this.setModalField('threshold', e.target.value),
+      onApiBaseChange: (e) => this.setModalField('apiBase', e.target.value),
+      stopPropagation: (e) => e.stopPropagation(),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
