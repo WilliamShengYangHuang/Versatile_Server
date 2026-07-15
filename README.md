@@ -1,5 +1,7 @@
 # Versatile Server · 多功能服务器架构设计
 
+*[English below](#versatile-server--english)*
+
 一个面向个人/小团队的多功能服务器管理平台原型 + 后端骨架:统一管理网站托管、AI 模型部署、内容发布、GitHub / CI-CD、流量与用量、域名与安全,并提供一键部署脚本(Windows / Linux 均支持),优先服务于团队内部使用,预留未来对外开放的接口。
 
 ## 项目结构
@@ -63,6 +65,73 @@ powershell -ExecutionPolicy Bypass -File install.ps1
 - 前端:纯 HTML + 内联样式的 Design Component(无构建步骤,浏览器直接打开)
 - 后端:Node.js + Express,JSON 文件持久化,无数据库依赖
 
+---
+
+# Versatile Server · English
+
+A self-hosted, multi-purpose server management console prototype + backend skeleton for individuals or small teams: manage website hosting, AI model deployment, content publishing, GitHub / CI-CD, traffic & usage, and domains & security from one dashboard. Ships with one-click installers for both Windows and Linux, defaults to internal-only use, and leaves a clear path to open external access later.
+
+## Project Structure
+
+```
+Server Console.dc.html   Frontend console (overview + 6 module pages, bilingual EN/中文)
+Setup Wizard.dc.html     Step-by-step deployment wizard (pick machine type → one-click install → test connection → internal/external → done)
+backend/                 Backend service (Node.js + Express, JSON file persistence)
+  server.js              Main API server
+  install.sh             Linux one-click installer (registers a systemd service)
+  install.ps1            Windows one-click installer (registers a scheduled task / NSSM service)
+  package.json
+  README.md              Backend deployment & ops notes
+```
+
+## Key Features
+
+- **Overview dashboard**: live counts per module, pending items surfaced prominently; shows an honest "no data yet" when empty — no fake/mock data anywhere.
+- **Sites / AI Models / Content / GitHub CI-CD / Domains & Security**: add real entries directly from the UI (add a site, deploy a model, publish a post, connect a repo, bind a domain); writes sync live to the backend.
+- **Usage & Traffic**: set a traffic alert threshold, view/download the activity log, and run a real network speed test (download/upload throughput + latency, shown as gradient ring gauges).
+- **Data source settings**: point the console at your backend's API URL; a status indicator shows unconfigured / connecting / connected / error in real time.
+- **Language toggle**: every string in the UI switches between 中文 and English instantly.
+- **Setup wizard**: 5-step guided flow, lets you choose a Windows PC or a Linux machine and shows the matching commands.
+
+## Quick Start
+
+### 1. Open the frontend
+
+Open `Server Console.dc.html` directly in a browser to preview the UI (no data source configured by default — every module shows "no data yet").
+
+### 2. Deploy the backend
+
+Open `Setup Wizard.dc.html` and follow the steps, or run directly:
+
+**Linux**
+```bash
+cd backend
+chmod +x install.sh
+sudo bash install.sh
+```
+
+**Windows** (PowerShell as Administrator)
+```powershell
+cd backend
+powershell -ExecutionPolicy Bypass -File install.ps1
+```
+
+Registers as an auto-starting background service by default, internal mode listening only on `127.0.0.1:8787`. The terminal prints the access URL and admin token when done.
+
+### 3. Connect
+
+Back in `Server Console.dc.html`, open "Data Source" (top right), enter the backend URL (e.g. `http://127.0.0.1:8787`), and save — every module switches from "no data" to live data.
+
+## Internal Use / External Access
+
+- Default is **internal mode**: accessible only on the local machine / LAN, no public IP or business registration needed — ideal for internal team use.
+- To open specific endpoints externally later (e.g. a public AI model API), switch to `MODE=external` per `backend/README.md`; write operations then require `Authorization: Bearer <ADMIN_TOKEN>`, and adding nginx/a reverse proxy + HTTPS in front is recommended.
+
+## Tech Stack
+
+- Frontend: plain HTML with inline styles, built as a Design Component (no build step, opens directly in a browser)
+- Backend: Node.js + Express, JSON file persistence, no database dependency
+
 ## License
 
-GNU Affero General Public License v3.0 (AGPL-3.0)
+See `LICENSE`.
